@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>replaceChild</title>
+		<script>
+			window.onload = function(){
+				var oForm =  document.getElementById('form1');
+				oForm.onsubmit = function(){   //onsubmit 表单提交事件
+					if(this.text1.value==''){
+						alert('请输入内容');
+						return false;
+					}
+				};
+				/* setInterval(function(){
+					oForm.submit();		//submit() 表单提交方法
+				},1000); */
+				oForm.onreset = function(){
+					return confirm('您确定重置吗？');
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<form id="form1" action="www.baidu.com">
+			<input type="text" name="text1" />
+			<input type="submit" value="提交" name="dosubmit" />
+			<input type="reset" value="重置" name="bin2" />
+		</form>
+	</body>
+</html>

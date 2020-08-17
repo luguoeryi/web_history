@@ -1,0 +1,42 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<script>
+			window.onload = function(){
+				setInterval(times,1000);
+				times()
+			}
+			function times(){
+				var Op = document.getElementsByTagName('p')[0];
+				var oImg = document.getElementsByTagName('img');
+				var myTime = new Date();    //时间
+				var iHours = myTime.getHours();      //时
+				var iMinutes = myTime.getMinutes();    //分
+				var iSeconds = myTime.getSeconds();		//秒
+				var str = numb(iHours)+':'+numb(iMinutes)+':'+numb(iSeconds);
+				Op.innerHTML = str;
+				for(var i=0;i<str.length;i++){
+				oImg[i].src = 'img/'+str.charAt(i)+'.JPG';
+				oImg[2].src = 'img/colon.JPG';
+				oImg[5].src = 'img/colon.JPG';
+				}
+			}
+			function numb(n){
+			    return	n<10 ? '0'+n : ''+n; 
+			}
+		</script>
+	</head>
+	<body style="font-size:60px;">
+	<p></p>
+	<img src="img/0.JPG" />
+	<img src="img/0.JPG" />
+	<img src="img/colon.JPG" />
+	<img src="img/0.JPG" />
+	<img src="img/0.JPG" />
+	<img src="img/colon.JPG" />
+	<img src="img/0.JPG" />
+	<img src="img/0.JPG" />
+	</body>
+</html>

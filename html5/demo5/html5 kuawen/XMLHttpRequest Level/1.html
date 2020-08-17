@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var  aBtn = document.getElementById('btn1');
+					aBtn.onclick = function(){
+						var xhr = new XMLHttpRequest();
+						xhr.onreadystatechange = function(){
+							if(xhr.readyState == 4){
+								if(xhr.status == 200){
+									alert(xhr.responseText);
+								}
+							}
+						};
+						xhr.open('get','1.php',true);
+						xhr.send();
+					};
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" value="提交" id="btn1" />
+	</body>
+</html>

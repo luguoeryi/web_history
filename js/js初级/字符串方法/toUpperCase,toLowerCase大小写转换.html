@@ -1,0 +1,39 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>大小写转换以及分隔符split</title>
+		<meta charset="utf-8">
+		<style>
+		*{margin:0;padding:0;}
+		p{width:400px;border:5px solid #ccc;font-size:14px;line-height:18px;background:#D5F256;margin:100px auto;}
+		</style>
+		<script>
+		window.onload = function(){
+			var str = 'www.MIAOV.com'
+			//alert(str.toUpperCase())  转换成大写
+			//alert(str.toLowerCase())  转换成小写
+			
+			/* 1 var arr = str.split('.')   ['www'.'MIAOV'.'com']  以str中的 . 为分割；
+			alert(arr[1]) */
+			
+			// 2 alert(typeof(str.split()))  转成了object  中间没有则变成 ['www.MIAOV.com']
+			// 3 alert(str.split(''))  空‘’则 ['w','w','w','.','M',...]
+			
+			/* var sor = '妙味课堂'
+			alert(sor.split('味'))   ['妙','课堂'] */
+			
+			/*  4 var ssr = '/123/';
+			alert(ssr.split('/'))    [,'123',]  长度为3 */
+			/* 5 var sor2 = '2015-11-15-11-3';
+			alert(sor2.split('-',3))     截取前三段 */
+		};  
+		</script>
+	</head>
+	<body>
+		<p onclick="alert(this.innerHTML.toUpperCase())">
+			<span>
+				泥土之中，千年以后是么奇怪呀千年以后后，繁华落幕，我还在风雨你等候！
+			</span> 
+		</p>
+	</body>
+</html>

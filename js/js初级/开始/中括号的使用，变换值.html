@@ -1,0 +1,33 @@
+<!DOCTPY HTML>
+<html>
+<head>
+<title>中括号的使用，变换值</title>
+<style>
+#div1{
+width:200px;height:150px;
+background:#ccc;
+border:1px solid #444444;
+}
+</style>
+<script>
+window.onload = function () {
+var Bin1 = document['getElementById']('bin1');
+var Bin2 = document.getElementById('bin2');
+var Que = document.getElementById('que');
+var Div1 = document.getElementById('div1');
+
+Que.onclick = function () {
+//Div1.style.width = Bin1.value;
+Div1.style[Bin1.value] = Bin2.value;
+};  //js中允许将‘.’换成‘【】’  一般用在变值
+
+};
+</script>
+</head>
+<body>
+请输入属性名称：<input id="bin1" type="text" />
+请输入属性值:<input id="bin2" type="text" />
+<input id="que" type="button" value="确定" />
+<div id="div1"></div>
+</body>
+</html>

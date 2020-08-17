@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>合成 全局阿尔法</title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+				oGC.fillRect(0,0,100,100);
+
+				oGC.fillStyle = 'red';
+				oGC.fillRect(50,50,100,100);
+			};
+		</script>
+	</head>
+	<body style="background:#000;">
+		<canvas id="c1" width="400" height="400" style="background:#fff;">
+			<span style="color:#fff;"></span>
+		</canvas>
+	</body>
+</html>

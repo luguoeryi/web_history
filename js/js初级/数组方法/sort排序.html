@@ -1,0 +1,23 @@
+<!DOCTPY html>
+<html>
+	<head>
+    	<title>sort排序</title>
+        <meta charset="utf-8" />
+        <script>
+			var arr = ['b','g','a'];
+			//arr.sort()  a b g
+			var arr2 = ['5','3','78','8'];
+			//arr2.sort();  3 5 78 8 字符比较
+			var arr3 = [5,3,78,8];
+			//arr3.sort(); 同上 默认为字符串比较  3 5 78 8
+			/*arr3.sort(function(a,b){  由小到大 3 5 8 78   反之 b-a 则由大到小 78 8 5 3
+				return a-b;
+			});*/
+			var arr4 = ['350px','23px','54px','10px','3px'];
+			arr4.sort(function(a,b){
+				return parseInt(a)-parseInt(b)    //必须数字进行比较 ，返回时不加单位
+			});
+			alert(arr4)
+		</script>
+    </head>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>图片切换</title>
+		<meta charset="utf-8" />
+		<style>
+		*{margin:0;padding:0;} li{list-style:none;}
+		</style>
+		<script src="zuanshu.js"></script>
+		<script>	
+		window.onload = function(){
+			var oDiv = document.getElementsByTagName('div')[0];
+			oDiv.onclick = function(){
+				getDo(oDiv,600,200,20)
+			};
+		};
+		function getDo(obj,Whig,Hhig,time){
+			var num = 21;
+			var nus = 7;
+			clearInterval(obj.timeo);
+			obj.timeo = setInterval(function(){
+				num = Whig>obj.offsetWidth ? num : -num ;
+					obj.style.width = obj.offsetWidth + num + 'px';
+					if(obj.offsetWidth >= Whig && num > 0 || obj.offsetWidth <= Whig && num < 0){
+						obj.style.width = Whig + 'px';
+					} 
+				nus = Hhig>obj.offsetHeight ? nus : -nus ;
+					obj.style.height = obj.offsetHeight + nus + 'px';
+					if(obj.offsetHeight >= Hhig && nus > 0 || obj.offsetHeight <= Hhig && nus < 0){
+						obj.style.height = Hhig + 'px';
+					} 
+				if(obj.offsetWidth == Whig && obj.offsetHeight == Hhig){
+					clearInterval(obj.timeo);
+				}
+			},time);
+		}
+		</script>
+	</head>
+	<body>
+		<div style="width:300px;height:100px;background:red;position:absolute;left:500px;top:200px;"></div>
+	</body>
+</html>

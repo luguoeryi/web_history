@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>例子:渐变</title>
+		<meta charset="utf-8">
+		<style>
+			body{ background:#000; color:#fff; font-size:30px;}
+			#c1{ background:#fff;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+				var yImg = new Image();
+				yImg.src = '2.png';
+
+				yImg.onload = function(){
+					show(this);
+				}
+
+				function show(obj){
+					oC.width = obj.width ;
+					oGC.drawImage(obj,0,0);
+
+					var aImg = oGC.getImageData(0,0,obj.width,obj.height) ;  //服务器下ok
+
+					var h = aImg.height ;
+					var w = aImg.width ;
+
+					var newImage = oGC.createImageData(obj.width,obj.height);
+
+					for(var i=0;i<h;i++){
+						for(var j=0;j<w;j++){
+							var result = [];
+							var color = getXY(aImg,j,i);
+							result[0] = 255 - color[0];
+							result[1] = 255 - color[1];
+							result[2] = 255 - color[2];
+							result[3] = (255*i/h);
+
+							setXY(newImage,j,h-i,result);
+						}
+					}
+					oGC.putImageData(newImage,0,aImg.height);
+
+				};
+			};
+
+			function getXY(obj,x,y){
+				var w = obj.width ;
+				var h = obj.height ;
+				var d = obj.data ;
+
+				var color = [];
+
+				color[0] = obj.data[4*(y*w+x)] ;
+				color[1] = obj.data[4*(y*w+x)+1] ;
+				color[2] = obj.data[4*(y*w+x)+2] ;
+				color[3] = obj.data[4*(y*w+x)+3] ;
+
+				return color;
+			}
+
+			function setXY(obj,x,y,color){
+				var w = obj.width ;
+				var h = obj.height ;
+				var d = obj.data ;
+
+				obj.data[4*(y*w+x)] = color[0] ;
+				obj.data[4*(y*w+x)+1] = color[1] ;
+				obj.data[4*(y*w+x)+2] = color[2] ;
+				obj.data[4*(y*w+x)+3] = color[3] ;
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="400" height="400">
+			<span></span>
+		</canvas>
+	</body>
+</html>

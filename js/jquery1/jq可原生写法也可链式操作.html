@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>可共存不可混用</title>
+        <meta charset="utf-8">
+        <script src="jQuery/jquery-1.11.3.min.js"></script>
+        <script>
+			$(function(){
+				/*var oDiv = $('#div1');        原生写法
+				oDiv.html(123);
+				oDiv.css('background','red');
+				oDiv.click(function(){
+					alert(123)
+				});*/
+				
+				$('#div1').html(123).css('background','red').click(function(){     //jq链式写法
+					alert(123)
+				})
+			})
+		</script>
+    </head>
+    <body>
+    	<div id="div1"></div>
+    </body>
+</html>

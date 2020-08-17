@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>onfocus/onblur及方法</title>
+		<script>
+			window.onload = function(){
+				var oInp = document.getElementsByTagName('input');
+				oInp[0].onfocus = function(){
+					if(this.value=='请输入内容'){
+						this.value = '';
+					}
+				};
+				oInp[0].onblur = function(){
+					if(this.value==''){
+						this.value = '请输入内容';
+					}
+				};
+				oInp[0].focus();	//让指定的元素聚焦
+				//oInp[0].blur();  让指定的元素失去焦点  
+				oInp[2].onclick = function(){
+					oInp[0].select();         //让指定的元素全选
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<input type="text" value="请输入内容" />
+		<input type="text" />
+		<input type="button" value="全选" />
+	</body>
+</html>

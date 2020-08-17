@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>第一课js</title>
+   <style>
+     body,ul,li,a{
+	 margin:0px;
+	 padding:0px;
+	 }
+	 
+	 ul{
+	 list-style:none;
+	 }
+	 
+	 img{
+	 float:left;
+	 border:none;
+	 }
+	 
+	 a{
+	 text-decoration:none;
+	 }
+	 
+	 #box{
+	 width:150px;
+	 text-align:center;
+	 line-height:60px;
+	 margin:0 auto;
+	 font-size:21px;
+	 }
+	 
+	 #box li{
+	 background:pink;
+	 }
+	 
+	 #box li a{
+	 display:block;
+	 height:60px;
+	 color:green;
+	 }
+	 
+	 #box ul{
+	 width:150px;
+	 display:none;
+	 }
+	 
+	 #box ul li a{
+	 display:block;
+	 height:60px;
+	 border:green;
+	 background:yellow;
+	 }
+	 
+   </style>
+   
+  
+</head>
+<body>
+
+<ul id="box">
+   <li id="show">
+   <a href="#">微博</a>
+    <ul id="kuai">
+      <li><a href="#">私信</a></li>
+	  <li><a href="#">评论</a></li>
+	  <li><a href="#">@我</a></li>
+   </ul>
+   </li>
+  
+</ul>
+  <script>
+   document.getElementById('show').onmouseover = one ; 
+   document.getElementById('show').onmouseout = two ;
+   function one(){
+    document.getElementById('kuai').style.display = 'block';
+	document.getElementById('show').style.background = 'blue';
+   } 
+   function two(){
+   document.getElementById('kuai').style.display = 'none';
+   document.getElementById('show').style.background = 'pink';
+   }
+  
+   </script>
+  
+</body>
+</html>

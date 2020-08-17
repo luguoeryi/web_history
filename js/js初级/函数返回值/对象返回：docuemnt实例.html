@@ -1,0 +1,28 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>函数返回值</title>
+		<style>
+		*{margin:0;padding:0;} #bin2{width:100px;height:100px;border:1px solid green;background:pink;text-align:center;line-height:88px;}
+		</style>
+		<script>
+		window.onload = function(){
+		// var oBin1= document.getElementById('bin1');
+		// var oBin2= document.getElementById('bin2');
+		$('bin1').onclick = function(){
+			alert($('bin2').innerHTML);
+		};
+		
+		};
+		function $(Id){
+			return document.getElementById(Id);
+		};
+		</script>
+	</head>
+	<body>
+		<div style="width:102px;margin:10px auto 0;">
+			<input style="margin-left:32px;" id="bin1" type="button" value="按钮" />
+			<div id="bin2">我是obj</div>
+		</div>
+	</body>
+</html>

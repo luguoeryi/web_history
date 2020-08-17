@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var  aBtn = document.getElementById('btn1');
+					//标准下跨域 
+					/*aBtn.onclick = function(){ 
+						var xhr = new XMLHttpRequest();
+						xhr.onreadystatechange = function(){
+							if(xhr.readyState == 4){
+								if(xhr.status == 200){
+									alert(xhr.responseText);
+								}
+							}
+						};
+						xhr.open('get','http://www.a.com/1.php',true);//需要后端设置请求头配合
+						xhr.send();
+					};*/
+
+					//ie下跨域 
+					aBtn.onclick = function(){ 
+						var oXDomainRequest = new XDomainRequest();
+						oXDomainRequest.onload = function(){
+							alert(this.responseText);
+						};
+						oXDomainRequest.open('get','http://www.a.com/1.php',true);//需要后端设置请求头配合
+						oXDomainRequest.send();
+					};
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" value="提交" id="btn1" />
+	</body>
+</html>

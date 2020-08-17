@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>jquery编写选项卡</title>
+        <meta charset="utf-8">
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+        <script>
+        	$(function(){
+
+        		// $('span').insertBefore($('div'));   insertBefore()  添加至前面
+
+        		//$('div').insertAfter($('span'));   insertAfter()   添加到后面  原生没有
+
+        $('div').appendTo($('span'));与原生一样appendChild添加至某个元素里最后一个子节点
+
+        	//$('div').prependTo($('span'));    prependTo 与上相反，添加至元素里第一个节点
+
+        	})  
+        </script>
+    </head>
+    <body>	
+   		<div>div</div>
+        <span>span</span>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+﻿<html>
+	<head>
+		<title>全局捕获</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+			var oInp = document.getElementsByTagName('input');
+			oInp[0].setCapture();
+			oInp[0].onclick = function(){
+				alert(1);
+			};
+			oInp[1].onclick = function(){
+				alert(2);
+			};
+			
+		};
+		</script>
+	</head>
+	<body style="height:2000px;">
+		<input type="button" value="按钮" />
+		<input type="button" value="按钮" />
+	</body>
+</html>

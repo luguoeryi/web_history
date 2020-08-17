@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>on()off()</title>
+        <meta charset="utf-8">
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+        <script>
+        	$(function(){/*
+                 $('div').bind('click',function(){alert(123)
+                        $('div').unbind('click')
+                 })
+                 .bind('mouseover',function(){alert(245)})*/
+
+        		
+                /*  $('div').click(function(){
+                        alert(123)
+                  })*/
+
+                 /* $('div').on('click mouseover',function(){
+                    alert(321)
+                  }) */            // on() 支持多事件 和自定义事件 以及不同操作
+                  $('div').on({
+                    'click':function(){
+                        alert(123);
+                        $('div').off('click')    //off 
+                    },
+                    'mouseover':function(){
+                        alert(456)
+                    }
+                  });
+
+
+        	})  
+        </script>
+    </head>
+    <body>	
+   		<div>div</div>
+        <span>span</span>
+        <br />
+        <input type="button" value="按钮" />
+    </body>
+</html>

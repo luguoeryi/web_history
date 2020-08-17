@@ -1,0 +1,75 @@
+<!DOCTPY html>
+<html>
+	<head>
+    	<title>点击排序</title>
+        <meta charset="utf-8" />
+        <style>
+			*{margin:0;padding:0;} li{list-style:none;float:left;}
+			#list li{width:120px;height:35px;line-height:30px;background:#009999;margin-left:10px;} #list{width:260px;padding-right:10px;margin:30px auto 15px;overflow:hidden;color:#fff;text-align:center;}
+			#cont li{margin:20px 0 0 20px;background:#F1F1F1;} #cont{width:1200px;padding:0 20px 20px 0;overflow:hidden;margin:0 auto;background:#fff;}
+			span{width:280px;color:#006699;text-align:center;line-height:35px;height:35px;display:block;} #list li:hover{background:#00B4B4;cursor:pointer;}
+		</style>
+		<script src="zuanshu.js"></script>
+		<script>
+			window.onload = function(){
+				var oImg = document.getElementsByTagName('img');
+				var oSpan = document.getElementsByTagName('span');
+				var oUl = document.getElementById('list');
+				var oLi = oUl.getElementsByTagName('li');
+				var num = [['1','1-温馨办公'],['2','2-游戏桌面'],['3','3-汽车摇滚'],['4','4-狭路相逢'],['5','5-棒球小子'],['6','6-球鞋动力'],['7','7-游戏官网'],['8','8-指尖社区']];
+				var onOff = true;
+					lis();
+					oLi[1].onclick = function(){
+						num.sort(function(a,b){
+							return Math.random()-0.5;
+						});
+						lis();
+					};
+					oLi[0].onclick = function(){
+						if(onOff){
+							num.sort(function(a,b){
+								return parseInt(b)-parseInt(a);
+							})
+							oLi[0].innerHTML = '从小到大';
+							onOff = !onOff;
+						} else{
+							num.sort(function(a,b){
+								return parseInt(a)-parseInt(b);
+							})
+							oLi[0].innerHTML = '从大到小';
+							onOff = !onOff;
+						}
+						lis();
+					};
+					function lis(){
+						for(var i=0;i<oImg.length;i++){
+							oImg[i].src = 'images/0'+num[i][0]+'.gif';
+							oSpan[i].innerHTML = num[i][1];
+							opacity(oImg[i],100,5,30,function(){
+								for(var i=0;i<oImg.length;i++){
+								opacity(oImg[i],49,5,30)
+								}
+							})
+						}
+					}
+					
+			};
+		</script>
+    </head>
+    <body bgcolor="#EAB793">
+    	<ul id="list">
+        	<li>从大到小</li>
+            <li>打乱顺序</li>
+        </ul>
+        <ul id="cont">
+        	<li><img src="images/01.gif" /><span></span></li>
+            <li><img src="images/02.gif" /><span></span></li>
+            <li><img src="images/03.gif" /><span></span></li>
+            <li><img src="images/04.gif" /><span></span></li>
+            <li><img src="images/05.gif" /><span></span></li>
+            <li><img src="images/06.gif" /><span></span></li>
+            <li><img src="images/07.gif" /><span></span></li>
+            <li><img src="images/08.gif" /><span></span></li>
+        </ul>
+    </body>
+</html>

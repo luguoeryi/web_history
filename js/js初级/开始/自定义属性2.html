@@ -1,0 +1,45 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>自定义属性</title>
+		<style>
+		li{
+		list-style:none;
+		width:104px;height:120px;float:left;margin:30px;background:url(images/one.jpg) center;
+		}
+		</style>
+		<script>
+		window.onload = function (){
+		var oLi = document.getElementsByTagName('li');
+			for(var i =0;i<oLi.length;i++){
+			oLi[i].abc = true;
+			oLi[i].onclick = function(){
+				if(this.abc){
+					this.style.background = 'url(images/two.jpg)';
+				    this.abc = false;
+				} else {
+					this.style.background = 'url(images/one.jpg)';
+				     this.abc = true;
+				}
+			};
+			/* oLi[i].onmouseover = function (){
+				this.style.background = 'url(images/two.jpg)';
+			}
+			oLi[i].onmouseout = function (){
+					this.style.background = 'url(images/one.jpg)';
+				}
+				 */
+			}
+			
+			
+		};
+		</script>
+	</head>
+	<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	</body>
+</html>

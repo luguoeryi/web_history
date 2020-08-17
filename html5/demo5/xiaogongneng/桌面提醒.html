@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<script>
+			window.webkitNotifications.requestPermission();
+			statue = window.webkitNotifications.checkPermission();
+			var notification =window.webkitNotifications.createNotification("[imgurl]","Title","Body");
+			notification.show();
+		</script>
+	</head>
+	<body>
+		<input type="text" x-webkit-speech />
+	</body>
+</html>

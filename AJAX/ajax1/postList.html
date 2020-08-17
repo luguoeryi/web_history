@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title></title>
+        <meta charset="utf-8">
+        <script>
+			window.onload = function(){
+				var oInp = document.getElementById('btn');
+				
+				oInp.onclick = function(){
+					var xhr = null;
+					if(window.XMLHttpRequest){
+						xhr = new XMLHttpRequest();
+					}else{
+						xhr = ActiveXObject('Microsoft.XMLHTTP');
+					}
+					xhr.open('post','postList.php',true);
+					
+					//声明发送的数据类型
+					xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+					xhr.send('username=刘伟&age=30'); //post方式解决中文问题 及不用即时处理
+					
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							if(xhr.status == 200){
+								alert(xhr.responseText);
+							}else{
+								alert('出错了，Err:'+xhr.status);
+							}
+						}	
+					};	
+				};	
+			};
+		</script>
+    </head>
+    <body>
+    	<input type="button" value="提交" id="btn" />
+    </body>
+</html>

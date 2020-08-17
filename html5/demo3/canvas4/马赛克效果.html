@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>例子:马赛克</title>
+		<meta charset="utf-8">
+		<style>
+			body{ background:#000; color:#fff; font-size:30px;}
+			#c1{ background:#fff;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+				var yImg = new Image();
+				yImg.src = '2.jpg';
+
+				yImg.onload = function(){
+					show(this);
+				}
+
+				function show(obj){
+					oC.width = obj.width ;
+					oC.height = obj.height * 2;
+					oGC.drawImage(obj,0,0);
+
+					var aImg = oGC.getImageData(0,0,obj.width,obj.height) ;  //服务器下ok
+
+					var h = aImg.height ;
+					var w = aImg.width ;
+
+					var newImage = oGC.createImageData(obj.width,obj.height);
+
+					var num = 5; //5像素一格
+
+					var stepW = w/num; //获得一行模糊的格子数
+					var stepH = h/num; //获得一列模糊的格子数
+
+					for(var i=0;i<stepH;i++){
+						for(var j=0;j<stepW;j++){
+							var color = getXY(aImg,j*num+Math.floor(Math.random()*num),i*num+Math.floor(Math.random()*num));
+
+							for(var k=0;k<num;k++){
+								for(var l=0;l<num;l++){
+									setXY(newImage,j*num+l,i*num+k,color);
+								}
+							}
+						}
+					}
+
+					oGC.putImageData(newImage,0,obj.height);
+
+				};
+			};
+
+			function getXY(obj,x,y){
+				var w = obj.width ;
+				var h = obj.height ;
+				var d = obj.data ;
+
+				var color = [];
+
+				color[0] = obj.data[4*(y*w+x)] ;
+				color[1] = obj.data[4*(y*w+x)+1] ;
+				color[2] = obj.data[4*(y*w+x)+2] ;
+				color[3] = obj.data[4*(y*w+x)+3] ;
+
+				return color;
+			}
+
+			function setXY(obj,x,y,color){
+				var w = obj.width ;
+				var h = obj.height ;
+				var d = obj.data ;
+
+				obj.data[4*(y*w+x)] = color[0] ;
+				obj.data[4*(y*w+x)+1] = color[1] ;
+				obj.data[4*(y*w+x)+2] = color[2] ;
+				obj.data[4*(y*w+x)+3] = color[3] ;
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="400" height="400">
+			<span></span>
+		</canvas>
+	</body>
+</html>

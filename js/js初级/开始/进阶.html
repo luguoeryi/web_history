@@ -1,0 +1,285 @@
+<html>
+	<head>
+		<title>script</title>
+		<style type="text/css">
+		body,ul,li,a,p,{
+		margin:0;padding:0;
+		}
+	
+		body{
+		font-family:微软雅黑;
+		}
+		body,html{
+		height:100%;
+		}
+		#bacgd{
+		position:absolute;
+		left:0px;top:0px;
+		width:100%;height:100%;
+		background:#000000;
+		opacity:0.6;
+		filter:alpha(opacity=60);
+		display:none;
+		}
+		img{
+		float:left;border:none;
+		}
+		ul{
+		list-style:none;
+		}
+		a{
+		text-decoration:none;
+		}
+		p{
+		font-size:28px;
+		float:left;
+		margin:20px 5px 20px 20px;
+		}
+		#dan{
+		float:left;
+		width:100px;
+		height:35px;
+		color:white;
+		background:#FF0000;
+		line-height:35px;
+		text-align:center;
+		margin-top:23px;
+		font-size:14px;
+		}
+		#s_d{
+		width:100px;height:100px;
+		border:3px solid black;
+		margin-left:20px;
+		clear:both;
+		}
+		#main{
+		width:300px;height:200px;
+		position:absolute;
+		left:50%;
+		top:50%;
+		background:white;
+		margin-top:-100px;
+		margin-left:-155px;
+		font-size:12px;
+		border:20px solid #878785;
+		display:none;
+		}
+		#main div{
+		overflow:hidden;
+		margin:15px 0 0 42px;
+
+		}
+		#main div span{
+		display:block;
+		float:left;
+		font-size:14px;
+		}
+		#main .yiys a{
+		display:block;
+		float:left;
+		border:1px solid #C5C5C3;
+		padding:4px 7px;
+		margin-right:2px;
+		background:#EFEFEE;
+		color:#757279;
+		}
+		#main .yiys{
+		clear:both;
+		}
+		#main .yiys span{
+		line-height:25px;
+		}
+		#one1 span{
+		font-weight:bold;
+		margin-top:4px;
+		}
+		#one1 a{
+		float:left;
+		padding:6px 11px;
+		margin-right:2px;
+		}
+		#chaoli{
+		clear:both;
+		overflow:hidden;
+		font-size:15px;
+		padding-left:46px;
+		}
+		#chaoli a{
+		display:block;
+		float:left;
+		padding:5px 14px;
+		background:#001F54;
+		color:white;
+		}
+		#one1 #butm1{
+		color:#E8F14F;
+		background:#89B011;
+		border:1px solid #90A048;
+		}
+		#one1 #butm2{
+		color:#FFE51D;
+		background:#FEBB16;
+		border:1px solid #D9B958;
+		}
+		#one1 #butm3{
+		color:#A2C9FA;
+		background:#548DF3;
+		border:1px solid #6585B7;
+		}
+		</style>
+	</head>
+    <body>
+	<div id="bacgd"></div> 
+	<p>请为下面的DIV设置样式：</p>
+	<a href="#" id="dan">点击设置</a>
+	<div id="s_d"></div>
+	 <div id="main">
+			 <div id="one1">
+			 <span>请选择背景色：</span>
+			 <a href="#" id="butm1">红</a>
+			 <a href="#" id="butm2">黄</a>
+			 <a href="#" id="butm3">蓝</a>
+			 </div>
+			  <div class="yiys">
+			 <span>请选择宽(px)：</span>
+			 <a href="#" id="butm4">200</a>
+			 <a href="#" id="butm5">300</a>
+			 <a href="#" id="butm6">400</a>
+			 </div>
+			  <div class="yiys">
+			 <span>请选择高(px)：</span>
+			 <a href="#" id="butm7">200</a>
+			 <a href="#" id="butm8">300</a>
+			 <a href="#" id="butm9">400</a>
+			 </div>
+			 <div id="chaoli">
+				 <a href="#" id="butm10">恢复</a>
+				 <a href="#" id="butm11" style="margin-left:3px;">确定</a>
+			 </div>
+		</div>
+	<script>
+	var ao = document.getElementById('dan');
+	var ddiv = document.getElementById('bacgd');
+	var mdiv = document.getElementById('main');
+	var bndiv = document.getElementById('s_d');
+	var a11 = document.getElementById('butm11');
+	var a1 = document.getElementById('butm1');
+	var a2 = document.getElementById('butm2');
+	var a3 = document.getElementById('butm3');
+	var a4 = document.getElementById('butm4');
+	var a5 = document.getElementById('butm5');
+	var a6 = document.getElementById('butm6');
+	var a7 = document.getElementById('butm7');
+	var a8 = document.getElementById('butm8');
+	var a9 = document.getElementById('butm9');
+	var a10 = document.getElementById('butm10');
+	ao.onclick = function () {
+	ddiv.style.display = 'block';
+	mdiv.style.display = 'block';
+	}
+	a11.onclick = function () {
+	ddiv.style.display = 'none';
+	mdiv.style.display = 'none';
+	}
+	
+	a1.onmouseover = function () {
+	a1.style.background = 'red';
+	}
+	a1.onmouseout = function () {
+	a1.style.background = '#89B011';
+	}
+	a1.onclick = function () {
+	bndiv.style.background = 'red';
+	}
+	
+	a2.onmouseover = function () {
+	a2.style.background = 'yellow';
+	}
+	a2.onmouseout = function () {
+	a2.style.background = '#FEBB16';
+	}
+	a2.onclick = function () {
+	bndiv.style.background = 'yellow';
+	}
+	
+	a3.onmouseover = function () {
+	a3.style.background = 'blue';
+	}
+	a3.onmouseout = function () {
+	a3.style.background = '#548DF3';
+	}
+	a3.onclick = function () {
+	bndiv.style.background = 'blue';
+	}
+	
+	a4.onmouseover = function () {
+	a4.style.background = 'orange';
+	}
+	a4.onmouseout = function () {
+	a4.style.background = '#EFEFEE';
+	}
+	a4.onclick = function () {
+	bndiv.style.width = '200px';
+	}
+	
+	a5.onmouseover = function () {
+	a5.style.background = 'orange';
+	}
+	a5.onmouseout = function () {
+	a5.style.background = '#EFEFEE';
+	}
+	a5.onclick = function () {
+	bndiv.style.width = '300px';
+	}
+	
+	a6.onmouseover = function () {
+	a6.style.background = 'orange';
+	}
+	a6.onmouseout = function () {
+	a6.style.background = '#EFEFEE';
+	}
+	a6.onclick = function () {
+	bndiv.style.width = '400px';
+	}
+	
+	a7.onmouseover = function () {
+	a7.style.background = 'orange';
+	}
+	a7.onmouseout = function () {
+	a7.style.background = '#EFEFEE';
+	}
+	a7.onclick = function () {
+	bndiv.style.height = '200px';
+	}
+	
+	a8.onmouseover = function () {
+	a8.style.background = 'orange';
+	}
+	a8.onmouseout = function () {
+	a8.style.background = '#EFEFEE';
+	}
+	a8.onclick = function () {
+	bndiv.style.height = '300px';
+	}
+	
+	a9.onmouseover = function () {
+	a9.style.background = 'orange';
+	}
+	a9.onmouseout = function () {
+	a9.style.background = '#EFEFEE';
+	}
+	a9.onclick = function () {
+	bndiv.style.height = '400px';
+	}
+	
+	
+	a10.onclick = function () {
+	bndiv.style.height = '100px';
+	bndiv.style.width = '100px';
+	bndiv.style.background = 'none';
+	}
+	
+	
+	</script>
+    </body>
+</html>	

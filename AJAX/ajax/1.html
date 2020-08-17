@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title></title>
+        <meta charset="utf-8">
+        <script>
+			window.onload = function(){
+				var oInp = document.getElementById('btn');
+				
+				oInp.onclick = function(){
+					var xhr = null ;                    //打开浏览器  --创建ajax对象
+					if(window.XMLHttpRequest){
+						xhr = new XMLHttpRequest();
+					}else{
+						xhr = ActiveXObject('Microsoft.XMLHTTP');      //兼容ie6 ;
+					}
+				
+						xhr.open('get','1.txt',true);  // 将地址输入地址栏
+						xhr.send();                    // 提交
+						xhr.onreadystatechange = function(){   //等待服务器返回数据
+							if(xhr.readyState == 4){
+								alert(xhr.responseText);
+							}	
+						};	
+				};	
+			};
+			
+			/*	try{
+					xhr = new XMLHttpRequest();   有错误则执行下一句
+				}catch(e){
+					xhr = ActiveXObject('Miscrosoft.XMLHTTP');
+				}   */
+		</script>
+    </head>
+    <body>
+    	<input type="button" value="确定" id="btn" />
+    </body>
+</html>

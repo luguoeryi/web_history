@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>add组合操作，slice裁切</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+			
+         //$('span').css('background','yellow')
+         var colos2 = $('span').add($('p')).add($('div'))   //多个元素有相同操作可以进行组合
+         colos2.css('background','yellow')   
+
+         $('li').slice(1,4).css('background','green')
+
+			})
+			
+		</script>
+    </head>
+    <body>
+       <span>span</span>
+       <p>pp</p>
+       <div>div</div>
+       <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+       </ul>
+    </body>
+</html>

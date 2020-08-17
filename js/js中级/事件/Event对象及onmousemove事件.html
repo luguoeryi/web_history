@@ -1,0 +1,30 @@
+﻿<html>
+	<head>
+		<title>Event</title>
+		<script>
+			/* 	window.onload = function(){
+					document.onclick = fn1;    //费标准下window点击事件event无效
+						function fn1(ev){
+							var ev = ev || event;
+							alert(ev.clientY);
+							for(var attr in ev){
+								console.log(attr + '-'+ ev[attr])
+							}
+						}
+					
+				} */
+			window.onload = function(){
+				var oDiv = document.getElementsByTagName('div')[0];
+					document.onmousemove = function(ev){
+						var ev = ev || event;
+						var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+						oDiv.style.left = ev.clientX + 'px';
+						oDiv.style.top = scrollTop+ev.clientY +'px';
+					};
+			};
+		</script>
+	</head>
+	<body style="height:2000px;">
+		<div style="width:100px;height:100px;background:red;position:absolute;left:0px;top:0px;"></div>
+	</body>
+</html>

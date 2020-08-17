@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>offsetParent,val()</title>
+        <meta charset="utf-8">
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+         <script>
+             $(function(){
+                //alert($('li').size())  // size() 长度 = length
+
+                $('li').each(function(i,aEls){  // 一参 ：下标  二参：每个元素
+                    $(aEls).html(i);
+                })
+             })  
+         </script>
+    </head>
+    <body>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </body>
+</html>

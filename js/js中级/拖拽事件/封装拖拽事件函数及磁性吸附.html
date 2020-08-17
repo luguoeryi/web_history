@@ -1,0 +1,52 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>封装拖拽磁性吸附</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+			var oDiv = document.getElementsByTagName('div')[0];
+			drag(oDiv)
+		};
+		function drag(obj){
+			obj.onmousedown = function(ev){
+				var ev = ev || event;
+				var disX = ev.clientX - this.offsetLeft;
+				var disY = ev.clientY - this.offsetTop;
+				if(obj.setCapture){       //阻止选择的文字，给当前添加全局捕获   
+					obj.setCapture();
+				}
+				document.onmousemove = function(ev){
+					var ev = ev || event;
+					var L = ev.clientX - disX ;
+					var T = ev.clientY - disY ;
+					if(L<100){                           //磁性效果小于100时自动吸附
+						L = 0;
+					} else if(L > document.documentElement.clientWidth - obj.offsetWidth-100){
+						L = document.documentElement.clientWidth - obj.offsetWidth;
+					}
+					if(T<0){
+						T = 0;
+					} else if(T > document.documentElement.clientHeight - obj.offsetHeight){
+						T = document.documentElement.clientHeight - obj.offsetHeight;
+					}
+					obj.style.left = L + 'px';
+					obj.style.top = T + 'px';
+				};
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+					if(obj.releaseCapture){
+						obj.releaseCapture();      //释放全局捕获
+					}
+				};
+				return false;
+			}; 
+		}
+		</script>
+	</head>
+	<body style="height:2000px;">
+		kjlkjlfsfji
+		<div style="width:100px;height:100px;background:red;position:fixed;"></div>
+		<div style="width:100px;height:100px;background:green;position:absolute;left:200px;top:400px;"></div>
+	</body>
+</html>

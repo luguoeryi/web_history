@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{ margin: 0; height: 500px; border: 1px solid #000; }
+			.box, .box2{ width: 100px; height: 100px;  background: red; transition: .3s; }
+			body:hover .box{ transform: translateX(100px) scale(0.5);}
+			body:hover .box2{ transform: scale(0.5) translateX(100px);}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="box2"></div>
+	</body>
+</html>

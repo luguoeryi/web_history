@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>serialize</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+			
+        // console.log($('form').serialize())   a=1&b=2&c=3  数据化串联
+            console.log($('form').serializeArray())     /*[      //可对后台交互操作
+                                                         {name:'a',value:'1'}
+                                                         {name:'b',value:'2'}
+                                                         {name:'c',value:'3'}
+                                                                              ]*/
+
+			})
+			
+		</script>
+    </head>
+    <body>
+        <form>
+            <input type="text" name="a" value="1" />
+            <input type="text" name="b" value="2" />
+            <input type="text" name="c" value="3" />
+        </form>
+    </body>
+</html>

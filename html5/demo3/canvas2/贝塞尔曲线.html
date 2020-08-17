@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>贝塞尔曲线</title>
+        <meta charset="utf-8">
+        <style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+        <script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				
+				var oGC = oC.getContext('2d');
+				
+				/*oGC.moveTo(100,200);
+				oGC.quadraticCurveTo(100,100,200,100);   //一组控制点
+				oGC.stroke();	*/
+				
+				oGC.moveTo(100,200);
+				oGC.bezierCurveTo(100,100,200,200,200,100);	//两组控制点
+				oGC.stroke();
+			};
+		</script>
+    </head>
+    <body>
+    	<canvas id="c1" width="400" height="400">
+        	<span>您的浏览器不支持canvas</span>
+        </canvas>
+    </body>
+</html>

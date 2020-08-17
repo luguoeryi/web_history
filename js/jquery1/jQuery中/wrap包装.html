@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>wrap,wrapAll,wrapInner,unwrao</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+			
+		     $('span').wrap('<div>');  每个包装          //可包装多个元素及内容类似创建
+        // $('span').wrapAll('<div>');  整体包装
+        // $('span').wrapInner('<div>'); 每个内部包装
+
+         //$('span').unwrap()  删除包装（删除父级，body除外）
+
+			})
+			
+		</script>
+    </head>
+    <body>
+       <span>span</span>
+       <span>span</span>
+       <div>
+       <span>span</span>
+       </div>
+       <span>span</span>
+    </body>
+</html>

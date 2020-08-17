@@ -1,0 +1,40 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>join</title>
+		<meta charset="utf-8">
+		<style>
+			*{margin:0;padding:0;}
+			div{padding:15px;width:500px;border:5px solid #ccc;background:#CEE5CE;margin:30px auto;font-size:24px;}
+			span{background:gold;}
+		</style>
+		<script>
+		window.onload = function(){
+			var str = ['aa','bb','cc'];
+			//alert(str.join())         'aa,bb,cc'
+			//alert(str.join(''))		'aabbcc'
+			//alert(str.join('-'))     'aa-bb-cc'
+			var oDiv = document.getElementsByTagName('div')[0];
+			var oInp = document.getElementsByTagName('input');
+				oInp[2].onclick = function(){
+					var sor = oInp[0].value;
+					var newsor = oInp[1].value
+					if(!sor) return;
+					oDiv.innerHTML = oDiv.innerHTML.split(sor).join('<span>'+newsor+'</span>');
+					
+					
+				};
+		};
+		
+		</script>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="text" />
+		<input type="button" value="查找" />
+		<div>
+			妙味课堂是一支独具特色的培训机构，妙味独有巨大的师资力量和巨大的开发团队，妙味提供远程，系统教育培训，老师面对
+			面手把手教导,妙味独有巨大的师资力量和巨大的开发团队有巨大的师资力量和巨大的开发团队有巨大的师资力量和巨大的开发团队！
+		</div>
+	</body>
+</html>

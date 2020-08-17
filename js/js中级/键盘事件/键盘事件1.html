@@ -1,0 +1,24 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>取消绑定事件</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+			/* document.onkeydown = function(ev){
+				var ev = ev || event;
+				alert(ev.keyCode);       //ev.keyCode 当前键盘的编码
+			}; */
+			
+			document.onclick = function(ev){
+				var ev = ev || event;
+				alert(ev.ctrlKey);       //ctelKey ,shiftKey ,altKey 为功能键，事件执行时其中一个按下则返回true；否则返回false;
+				   
+			};
+		};
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>保存恢复路径->局部变量</title>
+        <meta charset="utf-8">
+        <style>
+			body{ background:#000; }
+			#c1{ background:white; }
+			span{ color:white; }
+		</style>
+        <script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				
+				var oGC = oC.getContext('2d');
+					
+					
+					
+					oGC.save();   //局部变量  开始
+					oGC.fillStyle = 'red';
+						oGC.beginPath();
+						oGC.moveTo(100,100);
+						oGC.lineTo(200,200);
+						oGC.lineTo(300,200);
+						oGC.closePath();
+						oGC.fill();
+					oGC.restore();	//结束
+					
+					oGC.beginPath();
+					oGC.moveTo(100,200);
+					oGC.lineTo(200,300);
+					oGC.lineTo(300,300);
+					oGC.closePath();
+					oGC.fill();
+			};
+		</script>
+    </head>
+    <body>
+    	<canvas id="c1" width="400" height="400">
+        	<span>此浏览器不支持canvas</span>
+        </canvas>
+    </body>
+</html>	

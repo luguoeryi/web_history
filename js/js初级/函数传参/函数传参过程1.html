@@ -1,0 +1,51 @@
+﻿<html>
+	<head>
+		<title>函数传参</title>
+		<script>
+		
+		
+		/* fn1('123456');
+		fn1('你好我叫传参');
+		function fn1(a){
+			alert(a.charAt(2));
+		} */
+		
+		/* fn1(100,'px');
+		function fn1(a,b){
+			alert(a+b);
+		} */
+		
+		/* fn2(function(){alert(1)});
+		function fn2(fn){
+			fn();
+		} */                     //往函数里塞函数    匿名函数
+		
+		/* fn2(function(a){alert(a)});
+		function fn2(fn){
+			fn(100);
+		} */                     //往函数里塞完函数再塞东西
+		
+		/* function fn4(){
+			alert(4);
+		}
+		fn3(fn4);
+		function fn3(fn){
+			fn();
+		} */                 //塞有名函数
+		
+		
+			/* fn2(window,document);
+			function fn2(w,d){
+				w.onload = function(){
+					d.body.innerHTML +=123;
+				}
+			} */                  //塞对象
+		
+		
+		
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

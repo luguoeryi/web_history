@@ -1,0 +1,54 @@
+﻿<html>
+	<head>
+		<title></title>
+		<style>
+			*{margin:0;padding:0;} li{list-style:none;} 
+			div{width:50px;height:50px;background:red;position:absolute;left:10px;top:40px;}
+			input{margin:10px 0 0 22px}
+		</style>
+		<script>
+		window.onload=function(){
+			var iNput = document.getElementsByTagName('input');
+			var oDiv = document.getElementsByTagName('div')[0];
+			//var timer = null;
+			//oDiv.timer = null;
+			iNput[1].onclick = function(){
+				doMove(oDiv,'left',10,600,10);  //对象 方向 移动数 目标点 时间
+			}
+			iNput[0].onclick = function(){
+				doMove(oDiv,'left',10,40,10);	//对象 方向 移动数 目标点 时间
+			}
+
+
+			
+		};
+			function doMove(obj,attr,dir,target,Times){
+				dir = parseInt(getStyle(obj,attr))<target ? dir : -dir;
+				clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+					var speed = parseInt(getStyle(obj,attr)) + dir;
+					if(speed>target && dir>0 || speed<target && dir<0){//往前跑 往后跑
+						speed=target;
+					}
+					obj.style[attr] = speed+'px';
+					if(speed==target){
+					clearInterval(obj.timer)
+					
+					}
+				},Times)
+			}
+			function getStyle(obj,attr){
+				if(obj.currentStyle){
+					return obj.currentStyle[attr];
+				} else{
+					return getComputedStyle(obj)[attr];
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="后" />
+		<input type="button" value="前" />
+		<div></div>
+	</body>
+</html>

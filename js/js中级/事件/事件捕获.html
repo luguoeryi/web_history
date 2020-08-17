@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>事件捕获</title>
+		<meta charset="utf-8" />
+		<script>
+			window.onload = function(){
+				var oDiv1 = document.getElementById('div1');
+				var oDiv2 = document.getElementById('div2');
+				var oDiv3 = document.getElementById('div3');
+				function fn1(){
+					alert(this.id);
+				};
+				oDiv1.addEventListener('click',fn1,true);    //事件捕获与事件冒泡正好相反事件捕获是从外到里执行！后面的参数为true；
+				oDiv2.addEventListener('click',fn1,true);
+				oDiv3.addEventListener('click',fn1,true);
+			};
+		</script>
+		<style>
+		*{margin:0;padding:0;} div{padding:20px;} #div1{background:red;} #div2{background:green;} #div3{background:yellow;position:absolute;left:200px;top:300px;}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<html>
+	<head>
+		<title>类型转换实例</title>
+		<script>
+		window.onload = function(){
+		var bIn = document.getElementsByTagName('input');
+			/* bIn[1].onclick = function(){
+				if(isNaN(bIn[0].value)){
+				alert(bIn[0].value+'不是数字');
+				} else{
+				alert(bIn[0].value+'是数字');
+				}
+			
+			}; */
+		var str=null;
+			bIn[1].onclick = function(){
+				str = bIn[0].value
+				if(isNaN(str)){
+				alert(str+'不是数字')
+				} else{
+				alert(str+'是数字')
+				}
+			}
+		};
+		</script>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="button" value="请判断类型" />
+	</body>
+</html>

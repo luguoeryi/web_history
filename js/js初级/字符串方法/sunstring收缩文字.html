@@ -1,0 +1,37 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>加密</title>
+		<meta charset="utf-8">
+		<style>
+		*{margin:0;padding:0;}
+		p{width:400px;border:5px solid #ccc;font-size:14px;line-height:18px;background:#D5F256;margin:100px auto;}
+		</style>
+		<script>
+		window.onload = function(){
+		var oSpan = document.getElementsByTagName('span')[0];
+		var oA = document.getElementsByTagName('a')[0];
+		var str = oSpan.innerHTML;
+		var onOff = true;
+			oA.onclick = function(){
+				if(onOff){
+					oSpan.innerHTML = str.substring(0,29);
+					oA.innerHTML = '<<展开';
+				} else{
+					oSpan.innerHTML = str;
+					oA.innerHTML = '>>收缩';
+				}
+					onOff = !onOff;
+			}
+		};
+		</script>
+	</head>
+	<body>
+		<p>
+			<span>
+				你好，你妈好，你全家好，我叫杨立峰，我生来就这样，就是这么的古怪，见谅哈！是么你古怪了么，我很奇怪呀<br />
+				是么你古怪了么，我很奇怪呀，我是一颗小小的石头深深的埋在泥土之中，千年以是么你古怪了么，我很奇怪呀，我是一颗小小的石头深深的埋在泥土之中，千年以后是么奇怪呀，我你古怪了么，我很奇怪呀，我是一颗小小的石头深深的埋在泥土之中，千年以后后，繁华落幕，我还在风雨你等候！
+			</span>   <a href="#">>>收缩</a>
+		</p>
+	</body>
+</html>

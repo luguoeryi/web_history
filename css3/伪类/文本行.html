@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p{ width: 300px; border: 5px solid #000; }
+			p:first-line{ background: pink; }
+			p:first-letter{ background: red; font-size: 20px; }
+			p::selection{ background:greenyellow; color: #fff; }
+			p::before{ content:"你好"; }
+			p:after{ content:"还好"; color: gold; }
+			
+			h1:not(.not){ background: red; } /* 排除 */
+		</style>
+	</head>
+	<body>
+		<p>
+			　草案此次扩大了被监护人的范围，将智力障碍者以及因疾病等原因丧失或者部分丧失辨识认识能力的成年人也纳入被监护人范围，这意味着有利于保护这些人的人身财产权益，也有利于应对人口老龄化，更好维护老年人权益。
+		</p>
+		<h1>111</h1>
+		<h1>111</h1>
+		<h1 class="not">111</h1>
+		<h1>111</h1>
+		<h1>111</h1>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>DOM节点</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul1');
+			//alert(oUl.childNodes.length) 注：兼容性  标准浏览器下包含文本节点 11   
+			//alert(oUl.childNodes[0].nodeType)  nodeType 判断几点类型 文本节点1 属性节点2 元素节点3
+			/* for(var i=0;i<oUl.childNodes.length;i++){  //如果使用则需通过nodeType 来判断节点类型
+				if(oUl.childNodes[i].nodeType == 1){
+					oUl.childNodes[i].style.background = 'red';
+				}
+			} */
+			//alert(oUl.attributes[0].name)  attributes 获取第一个节点属性名
+			//alert(oUl.attributes[1].value) attributes 获取第二个节点属性值
+			//alert(oUl.attributes[0].nodeType)		获取属性类型 2
+		};
+		</script>
+	</head>
+	<body>
+		<ul id="ul1" style="border:1px solid green;">
+			<li class="onsi"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var aBtn1 = document.getElementById('btn1');
+				var aBtn2 = document.getElementById('btn2');
+				var aBtn3 = document.getElementById('btn3');
+				var Iframes = document.getElementById('myIframe');
+
+				var newwindow = null;
+				aBtn1.onclick = function(){
+					newwindow = window.open('newwindow.html','_blank');
+				
+				};
+				aBtn2.onclick = function(){
+					//alert(newwindow)
+					newwindow.document.getElementById('bg').style.background = 'red';
+				};
+				aBtn3.onclick = function(){
+					Iframes.contentWindow.document.body.style.background = 'green';
+				};
+
+
+			};
+		</script>
+	</head>
+	<body>
+		<input id="btn1" type="button" value="打开一个新窗口" />
+		<input id="btn2" type="button" value="改变新窗口颜色" />
+		<input id="btn3" type="button" value="改变儿子颜色" />
+		<iframe id="myIframe" src="iframe.html" width="200" height="200"></iframe>
+	</body>
+</html>

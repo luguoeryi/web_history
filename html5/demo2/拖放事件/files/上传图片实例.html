@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>files</title>
+        <meta charset="utf-8">
+        <style>
+			#div1{ width:200px; height:200px; margin:200px; background:pink; }
+		</style>
+    </head>
+    <body>
+    	<div id="div1" draggable="true">将文件拖放到此区域</div>
+        <ul id="ul1"></ul>
+        <script>
+		
+			var oDiv = document.getElementById('div1');
+			var oUl = document.getElementById('ul1');
+			
+			oDiv.ondragenter = function(){
+				this.innerHTML = '可以释放鼠标啦！';	
+			};
+			
+			oDiv.ondragover = function(ev){
+				var ev = ev || event;
+				ev.preventDefault();
+			};
+			
+			
+			oDiv.ondragleave = function(){
+				this.innerHTML = '将文件拖放到此区域！';
+			};
+			
+			oDiv.ondrop = function(){
+				var ev = ev || event;
+				ev.preventDefault();
+				
+				var fs = ev.dataTransfer.files ;
+				
+				
+				
+				for(var i=0;i<fs.length;i++){
+					if(fs[i].type.indexOf('image') !== -1){
+						var fd = new FileReader();
+						fd.readAsDataURL(fs[i]);
+						fd.onload = function(){
+							var aLi  = document.createElement('li');
+							var aImg  = document.createElement('img');
+							aImg.src= this.result;
+							aLi.appendChild(aImg);
+							oUl.appendChild(aLi);	
+						};
+					}else{
+						alert('将文件拖放到此区域！');
+					}
+				}
+				
+				
+			};
+			
+		</script>
+    </body>
+</html>

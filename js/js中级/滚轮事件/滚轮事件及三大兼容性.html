@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+    	<title>解决滚轮兼容性</title>
+        <meta charset="utf-8" />
+        <style>
+		*{margin0;padding:0;} #div1{width:100px;height:100px;background:red;}
+		</style>
+        <script>
+			window.onload = function(){
+				var oDiv = document.getElementById('div1');                        
+				
+				oDiv.onmousewheel = fn1 ;									//mousewheel 标准浏览器  
+				
+				if(oDiv.addEventListener){                                   //利用绑定事件解决火狐兼容性  DOMMouseScroll
+					oDiv.addEventListener('DOMMouseScroll',fn1,false);
+				}
+				/* document.oncontextmenu = function(){
+					return false;
+				}; */
+				
+				document.attachEvent('oncontextmenu',function(){
+					
+							return false;
+				});
+			};
+			
+				function fn1(ev){
+					var ev = ev || event;
+					
+					var b = true;
+					
+					if(ev.wheelDelta){                                //利用 标准浏览器的 ev.wheelDelta 及火狐 ev.detail 解决方向问题
+						b = ev.wheelDelta > 0 ? true : false ;
+					} else{
+						b = ev.detail < 0 ? true : false ;
+					}
+					
+					b ? this.style.height = this.offsetHeight -  10 +  'px' : this.style.height = this.offsetHeight + 10 + 'px';
+				
+					if(ev.preventDefault){                            //解决火狐默认事件 ev   与绑定形式有关
+						ev.preventDefault();
+					}
+				
+					return false;                                // 解决标准浏览器 on
+				}
+	
+		</script>
+    </head>
+    <body style="height:2000px;">
+    	<div id="div1"></div>
+    </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>坚果</title>
+		<meta charset="utf-8">
+		<style>
+			*{margin:0; padding:0;} div{width:100%; height:100%; overflow: hidden; position:absolute; left:0; top:0;} img{width:100%; height:100%;} li{ position:absolute; top:0px; left:0px; list-style: none;} 
+		</style>
+		<script src="zuanshu.js"></script>
+		<script>
+		window.onload = function(){
+			var oUl = document.getElementById('list');
+			var oLi = document.getElementsByTagName('li');
+			var cliW = 0;
+			var cliH = 0;
+			var oLitW = 0;
+			var oLitH = 0;
+			var aUt = 0;
+			//初始化
+			fn1();
+			window.onresize = fn1 ;
+
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].index = i;
+				var oum = 0;
+				oLi[i].onmouseover = function(){
+					if(!anAff) return;
+					oum = this.index ;
+					getgo(oum,4,cliH*0.07)
+				};
+				oLi[i].onmouseout = function(){
+					if(!anAff) return;
+					num = this.index ;
+					getfamily(num,4)
+				};
+					var timer = null;
+					var onOff = true;
+					var anAff = true;
+				oLi[i].onclick = function(){
+					clearInterval(timer);
+					onOff = !onOff;
+					anAff = false;
+					dex = this.index;
+					if(!onOff){
+						timer = setInterval(function(){
+						var W = oLi[0].offsetWidth ;
+						var	L = oLi[dex].offsetLeft ;
+						var  mewW = W + 20 ;
+							if(mewW>=oLitW*3){
+								mewW = oLitW*3 ;
+								clearInterval(timer);
+							}
+						for(var i=0;i<oLi.length;i++){
+							oLi[i].style.width = mewW + 'px';
+							oLi[i].style.left = mewW*i + 'px';
+						} 
+						var yel = cliW/2-W/2 - L ;
+						oUl.style.left = yel + 'px';
+					},15);
+					getgo(dex,30,cliH*0.17)
+					doMove(oUl,'top',20,cliH*0.15,30);
+					} else{
+						timer = setInterval(function(){
+							var oW = oLi[0].offsetWidth ;
+							newoW = oW - 20;
+								if(newoW<=oLitW){
+									newoW = oLitW ;
+									clearInterval(timer);
+								} 
+							for(var i=0;i<oLi.length;i++){
+								oLi[i].style.width = newoW + 'px';
+								oLi[i].style.left = newoW*i + 'px';
+							}
+							oUl.style.left = 0 + 'px';
+							getfamily(dex,20)
+						},15);
+						doMove(oUl,'top',20,parseInt(aUt),20,function(){ anAff = true; });
+					}
+				};
+			}
+
+			function fn1(){
+				cliW = document.documentElement.clientWidth ;
+				cliH = document.documentElement.clientHeight ;
+				for(var i=0;i<oLi.length;i++){
+					oLi[i].style.width = cliW/oLi.length + 'px';
+					oLi[i].style.left = oLi[0].offsetWidth*i + 'px';
+				}
+				oLitW = oLi[0].offsetWidth ;
+				oLitH = oLi[0].offsetHeight ;
+				oUl.style.height = oLitH + 'px';
+				aUt =  oUl.style.top = cliH - oLitH + 'px';
+			};
+			
+			function getgo(inedx,dir,target){
+				var num = 0;
+				var nus = 0;
+				var speed = 0;
+				var spees = 0;
+				for(var j=inedx;j>=0;j--){
+						speed = speed+dir;
+					if(inedx==oLi.length-1 && j==0){
+						speed = speed-dir;
+						num = num-target;
+					} 
+						doMove(oLi[j],'top',speed,num,30)
+						num = num+target;
+				}
+				for(var y=inedx;y<oLi.length;y++){
+						spees = spees+dir;
+					if(inedx==0 && y==oLi.length-1){
+						spees = spees-dir;
+						nus = nus-target;
+					} 
+						doMove(oLi[y],'top',spees,nus,30)
+						nus = nus+target;
+				}
+			};
+
+			function getfamily(index,dir){
+				var speed = 0;
+				var spees = 0;
+				for(var j=index;j>=0;j--){
+					speed = speed+dir;
+					doMove(oLi[j],'top',speed,0,25)
+				}
+				for(var y=index;y<oLi.length;y++){
+					spees = spees+dir;
+					doMove(oLi[y],'top',spees,0,25)
+				}
+			};
+
+		};
+		</script>
+	</head>
+	<body>
+		<div>
+	    	<ul id="list" style="position:absolute;left:0px;">
+	        	<li><img src="./img/1-1.png"></li>
+	            
+	        	<li><img src="./img/2-2.png"></li>
+	            
+	        	<li><img src="./img/3-3.png"></li>
+	            
+	        	<li><img src="./img/4-4.png"></li>
+	            
+	        	<li><img src="./img/5-5.png"></li>
+	            
+	        	<li><img src="./img/6-6.png"></li>
+	            
+	        	<li><img src="./img/7-7.png"></li>
+	        </ul>
+	    </div>    
+	</body>
+</html>

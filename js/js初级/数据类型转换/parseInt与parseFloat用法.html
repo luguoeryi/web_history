@@ -1,0 +1,24 @@
+﻿<html>
+	<head>
+		<title>parseInt()与parseFloat()用法</title>
+		<script>
+			window.onload = function(){
+			var a = '300px';
+			//alert(parseInt(a,10)); 300   认识符号前  默认转换为十进制 可以改6,12.8等
+			var b = '12.56';
+			//alert(parseInt(b));  12  不认小数点
+			};
+			var c = '12.56.56px';
+			//alert([parseFloat(c)]);  12.56 认识一个小数点
+			var num = '200.45px';
+			if(parseInt(num)==parseFloat(num)){
+			alert('这是整数');
+			} else {
+			alert('这是小数');
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

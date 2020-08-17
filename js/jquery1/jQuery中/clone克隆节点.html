@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>clone节点</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+			
+			  $('p').click(function(){
+          alert(123)
+        })
+       // $('p').appendTo($('span'))   剪切
+        $('p').clone(true).appendTo($('span'))   //克隆节点，连同事件 true
+
+			})
+			
+		</script>
+    </head>
+    <body class="box">
+       <p>p</p>
+       <span>span</span>
+    </body>
+</html>

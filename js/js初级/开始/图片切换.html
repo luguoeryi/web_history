@@ -1,0 +1,110 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>图片切换</title>
+		<style>
+		body,a,p,span,img{
+		margin:0;padding:0;
+		}
+		body{
+		background:#E5E5E5;
+		}
+		#content{
+		width:500px;height:500px;
+		background:#EAEAEA;
+		margin:80px auto 0;
+		border:10px solid #ccc;
+		position:relative;
+		}
+		.yang{
+		text-decoration:none;
+		width:30px;height:30px;
+		color:#fff;background:#000;
+		border:5px solid #fff;
+		position:absolute;
+		top:230px;
+		text-align:center;
+		font-size:42px;
+		line-height:23px;
+		font-weight:bold;
+		opacity:0.4;
+		filter:alpha(opacity=40);
+		}
+		.yang:hover{
+		opacity:0.8;
+		filter:alpha(opacity=80);
+		}
+		#next{
+		position:absolute;
+		top:230px;
+		right:0px;
+		}
+		#text1{
+		border-bottom:5px solid #434040;
+		position:absolute;
+		bottom:0px;
+		}
+		#shu{
+		border-top:5px solid #434040;
+		position:absolute;
+		top:0px;
+		}
+		#text1,#shu{
+		width:500px;height:21px;
+		text-align:center;
+		background:#000;color:yellow;
+		opacity:0.7;
+		filter:alpha(opacity=70);
+		}
+		#img1{
+		width:500px;height:500px;
+		}
+		</style>
+	    <script>
+		window.onload = function () {
+			
+			var Prev = document.getElementById('prev');
+			var Next = document.getElementById('next');
+			var Shu = document.getElementById('shu');
+			var Text = document.getElementById('text1');
+			var Img = document.getElementById('img1');
+			var Btu = ['images/l5.jpg','images/l6.jpg','images/l7.jpg','images/l8.jpg','images/l9.jpg']
+			var Btext = ['这是第一','这是第er','这是第sav','这是第si','这是第wu']
+			var twm = 0;
+			
+			function onde () {
+				Shu.innerHTML = twm + 1 +'/'+Btu.length;
+				Text.innerHTML = Btext[twm];
+				Img.src = Btu[twm];
+			};
+			onde();
+			
+			Prev.onclick = function () {
+			twm--;
+				if (twm == -1) {
+					twm = Btu.length-1;
+				};
+		    onde();
+			};
+			
+			Next.onclick = function () {
+			twm++;
+				if (twm == Btu.length) {
+					twm = 0;
+				};
+		    onde();
+			};
+		
+		};
+		</script>
+	</head>
+	<body>
+		<div id="content">
+			<a id="prev" class="yang" href="#">&lt;</a>
+			<a id="next" class="yang" href="#">&gt;</a>
+			<span id="shu">数量正在统计中...</span>
+			<p id="text1">图片正在加载中...</p>
+			<img id="img1" src="" />
+		</div>
+	</body>
+</html>

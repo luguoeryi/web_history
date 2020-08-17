@@ -1,0 +1,99 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>定时器应用</title>
+		<style>
+		body,ing,ul,li,p{
+		margin:0;padding:0;
+		}
+		li{list-style:none;}
+		body{
+		background:#4B4B48;
+		}
+		#Odiv{
+		background:#ccc;
+		width:391px;height:479px;
+		position:relative;
+		margin:30px auto;
+		}
+		span,p{
+		position:absolute;left:0px;width:100%;height:20px;background:#000;color:#fff;text-align:center;line-height:20px;
+		}
+		span{
+		top:0px;
+		}
+		p{
+		bottom:0px;
+		}
+		ul{
+		position:absolute;
+		left:396px;top:0;
+		}
+		ul li{
+		width:40px;height:40px;background:#ccc;margin-bottom:5px;
+		}
+		.active{
+		background:#000;
+		}
+		</style>
+		<script>
+		window.onload = function (){
+			var oUl = document.getElementsByTagName('ul')[0];
+			for(var i=0;i<4;i++){
+			oUl.innerHTML +='<li></li>';
+			}
+			var Img = document.getElementsByTagName('img')[0];
+			var Span = document.getElementsByTagName('span')[0];
+			var P1 = document.getElementsByTagName('p')[0];
+			var Oli = document.getElementsByTagName('li');
+			var arr = ['images/1.png','images/2.png','images/3.png','images/4.png'];
+			var att = ['雄鹰展翅','白发魔女','精灵美女','黑暗超人'];
+			var num =0;
+				function taby(){
+					Img.src = arr[num];
+					Span.innerHTML = 1+num+'/'+arr.length;
+					P1.innerHTML = att[num];
+					for (var i=0;i<Oli.length;i++){
+						  Oli[i].className = '';
+					  }
+				    Oli[num].className = 'active';
+				}
+				
+				  taby();
+				for(var i=0;i<Oli.length;i++){
+					Oli[i].index = i;
+					Oli[i].onclick = function(){
+					num=this.index;
+					taby();}
+				}
+				
+				var timer = null;
+				function val(){
+					timer = setInterval(function(){
+						num++;
+						num%=arr.length;
+						taby();
+					},1000);
+				}
+					setTimeout(val,2000);
+				Img.onmouseover = function(){
+					clearInterval(timer);
+				}
+				Img.onmouseout = val; //事件调用不需要加括号！
+			/* 2. 清除上一个： var abc= null;       				  onclick =funvtion(){
+																		var abc = Oli[unm]
+				                                                        abc.className='';
+																		abc=this;
+																		this.className='active';} */
+		};
+		</script>
+	</head>
+	<body>
+		<div id="Odiv">
+			<span>图片数量正在计算中...</span>
+			<img style="width:391px;height:479px;" src="images/lo.gif" title="雄鹰" alt="雄鹰" />
+			<p>图片正在加载中...</p>
+			<ul></ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<title>练习</title>
+		<style type="text/css">
+		body,ul,li,a{
+		margin:0;padding:0;
+		}
+		img{
+		float:left;border:none;
+		}
+		ul{
+		list-style:none;
+		}
+		a{
+		text-decoration:none;
+		}
+		#box{
+		width:150px;
+		font-size:22px;
+		line-height:60px;
+		text-align:center;
+		margin:0 auto;
+		border:2px solid green;
+		}
+		#box ul{
+		display:none;
+		}
+		#box a{
+		display:block;
+		color:green;
+		background:yellow;
+		}
+		</style>
+		<script>
+		window,onload = function (){
+		var dli = document.getElementById('ones');
+		var xul = document.getElementById('onef');
+		var a1 = document.getElementById('ses1');
+		var a2 = document.getElementById('ses2');
+		var a3 = document.getElementById('ses3');
+		var a4 = document.getElementById('ses4');
+		dli.onmouseover = function () {
+		xul.style.display = 'block';
+		a1.style.background = 'pink';
+		};
+		dli.onmouseout = function () {
+		xul.style.display = 'none';
+		a1.style.background = 'yellow';
+		};
+		
+		a2.onmouseover =function () {
+		a2.style.background = '#7ECE23';
+		};
+		a3.onmouseover =function () {
+		a3.style.background = '#7ECE23';
+		};
+		a4.onmouseover =function () {
+		a4.style.background = '#7ECE23';
+		};
+		a2.onmouseout =function () {
+		a2.style.background = 'yellow';
+		};
+		a3.onmouseout =function () {
+		a3.style.background = 'yellow';
+		};
+		a4.onmouseout =function () {
+		a4.style.background = 'yellow';
+		};
+		
+		/* 有的相同的可以命个名function show() {
+		a4.style.background = 'yellow';
+		}; */
+		};
+		
+		</script>
+	
+	</head>
+	<body>
+		<ul id="box">
+			<li id="ones">
+			<a href="#" id="ses1">微博</a>
+			<ul id="onef">
+			<li><a href="#" id="ses2">私信</a></li>
+			<li><a href="#" id="ses3">评论</a></li>
+			<li><a href="#" id="ses4">@我</a></li>
+			</ul>
+			</li>
+		</ul>
+		</body>
+</html>

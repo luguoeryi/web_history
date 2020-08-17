@@ -1,0 +1,31 @@
+<!DOCTPY HTML>
+<html>
+<head>
+<title>通关游戏</title>
+<script>
+window.onload = function () {
+var Bin1 = document.getElementById('bin1');
+var Bin2 = document.getElementById('bin2');
+Bin2.onclick = function () {
+  if (Bin1.value == '') {
+  alert('帅哥，您什么也没留下哦！');
+  } else if (Bin1.value == 'HTML') {
+  alert('恭喜您，您输入的是' + Bin1.value + '成功通关！！！');
+  } else if (Bin1.value == 'CSS') {
+  alert('恭喜您，您输入的是' + Bin1.value + '成功通关！！！');
+  } else if (Bin1.value == 'JAVASCRIPT') {
+  alert('恭喜您，您输入的是' + Bin1.value + '成功通关！！！');
+  } else {
+  alert('您输入的是：' + Bin1.value + '继续努力哦！');
+  }
+  };  
+ 
+};
+</script>
+</head>
+<body>
+通关游戏：
+<input id="bin1" type="text" />
+<input id="bin2" type="button" value="开始" />
+</body>
+</html>

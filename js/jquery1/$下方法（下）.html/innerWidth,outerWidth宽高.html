@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>jquery编写选项卡</title>
+        <meta charset="utf-8">
+        <style>
+			div{ width:100px; height:100px; padding:10px; border:solid #000 5px; margin:2px; background: red;}
+		</style>
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+        <script>
+			$(function(){
+				alert($('div').width())  //100  净宽
+				alert($('div').innerWidth()); //120 宽 + padding
+				alert($('div').outerWidth()); //130 宽 + padding + 边框
+				alert($('div').outerWidth(true))  // outerWidth(true) 宽 + padding + 边框 + margin 
+			})
+		</script>
+    </head>
+    <body>	
+   		<div>div</div>
+    </body>
+</html>

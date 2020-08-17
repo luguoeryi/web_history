@@ -1,0 +1,34 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>冒泡事件</title>
+		<meta charset="utf-8" />
+		<style>
+		*{margin:0;padding:0;}
+		div{padding:20px;}
+		#div1{background:red;}
+		#div2{background:green;}
+		#div3{background:gray;position:absolute;left:200px;top:300px;}
+		</style>
+		<script>
+		window.onload = function(){
+		var oDiv1 = document.getElementById('div1');
+		var oDiv2 = document.getElementById('div2');
+		var oDiv3 = document.getElementById('div3');
+			function fn1(){
+				alert(this.id);
+			}
+			oDiv1.onclick = fn1;
+			oDiv2.onclick = fn1;
+			oDiv3.onclick = fn1;
+		};
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+		</div>
+	</body>
+</html>

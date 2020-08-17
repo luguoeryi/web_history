@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>像素动画显字</title>
+		<meta charset="utf-8">
+		<style>
+			body{ background:#000; color:#fff; font-size:30px;}
+			#c1{ background:#fff;}
+			ul{ float:left; }
+		</style>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+				var oLi = document.getElementsByTagName('li');
+
+				for(var i=0;i<oLi.length;i++){
+					oLi[i].onclick = function(){
+						var Val = this.innerHTML ;
+
+						var h = 180;
+						oGC.font = h+'px impact' ;
+						oGC.textBaseline = 'top';
+						oGC.fillStyle = 'red';
+						var w = oGC.measureText(Val).width ;
+
+						oGC.clearRect(0,0,oC.width,oC.height);
+						oGC.fillText(Val,(oC.width - w)/2,(oC.height - h)/2);
+
+						var oImg = oGC.getImageData((oC.width - w)/2,(oC.height - h)/2,w,h);
+						oGC.clearRect(0,0,oC.width,oC.height);
+
+						var arr = randomArr(w*h,w*h/100);
+
+						var newImg = oGC.createImageData(w,h);
+
+						var timer = null;
+						var iNow = 0;
+						clearInterval(timer);
+
+						timer = setInterval(function(){
+							for(var i=0;i<arr[iNow].length;i++){
+								newImg.data[4*arr[iNow][i]] = oImg.data[4*arr[iNow][i]];
+								newImg.data[4*arr[iNow][i]+1] = oImg.data[4*arr[iNow][i]+1];
+								newImg.data[4*arr[iNow][i]+2] = oImg.data[4*arr[iNow][i]+2];
+								newImg.data[4*arr[iNow][i]+3] = oImg.data[4*arr[iNow][i]+3];
+							}
+
+							oGC.putImageData(newImg,(oC.width - w)/2,(oC.height - h)/2);
+
+							iNow++;
+							if(iNow == 100){
+								clearInterval(timer);
+							}
+						},10);
+
+						
+					};
+
+					function randomArr(iAll,iNow){
+						var arr = [];
+						var allArr = [];
+
+						for(var i=0;i<iAll;i++){
+							arr.push(i);
+						}
+
+						for(var j=0;j<iAll/iNow;j++){
+							var newArr = [];
+							for(var i=0;i<iNow;i++){
+								newArr.push( arr.splice( Math.floor(Math.random()*arr.length) ,1));
+							}
+							allArr.push(newArr);
+						}
+						return allArr;
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="400" height="400">
+			<span></span>
+		</canvas>
+		<ul >
+			<li>妙</li>
+			<li>味</li>
+			<li>课</li>
+			<li>堂</li>
+		</ul>
+	</body>
+</html>

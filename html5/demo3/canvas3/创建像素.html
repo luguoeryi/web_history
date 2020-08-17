@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>创建像素</title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+
+				var aImg = oGC.createImageData(100,100);
+
+				
+
+
+				for(var i=0;i<aImg.width*aImg.height;i++){
+					aImg.data[4*i] = 255;
+					aImg.data[4*i+1] = 0;
+					aImg.data[4*i+2] = 0;
+					aImg.data[4*i+3] = 150;
+				}
+				oGC.putImageData(aImg,100,100);
+
+			};
+		</script>
+	</head>
+	<body style="background:#000;">
+		<canvas id="c1" width="400" height="400" style="background:#fff;">
+			<span style="color:#fff;"></span>
+		</canvas>
+	</body>
+</html>

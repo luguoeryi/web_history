@@ -1,0 +1,21 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>作用域1</title>
+		<script> 
+		alert(a);    //函数                  js解析器 <script>先 1预解析：找到 变量 和函数 ：所有变量在执行之前都是空的，所有的函数都是函数快!
+		var a =1;                                   // 然后 2逐行解读代码   函数属于局部变量，遇到函数解析器会再次对函数本身预解析！
+		alert(a);  //1
+		function a(){alert(2);}
+		alert(a);   //1
+		var a = 3;
+		alert(a);   //3
+		function a(){alert(4);}
+		alert(a);     //3
+		// 最终 a = 3;    a()；会报错
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

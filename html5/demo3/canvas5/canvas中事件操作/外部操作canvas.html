@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>外部操作canvas</title>
+		<style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+		<script type="text/javascript" src="jCanvaScript.1.5.18.min.js"></script>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+				var aBtn = document.getElementById('btn');
+
+				jc.start('c1',true);
+					jc.arc(100,100,50,0,360,'#ff0000',false,true).id('co');
+				jc.start();
+
+				aBtn.onclick = function(){
+					jc('#co').animate({x:200,y:200,radius:5,color:'#00ff00'},500,function(){
+						jc('#co').animate({x:100,y:100,radius:50,color:'#ff0000'},500)
+					});
+					setInterval(function(){
+							jc('#co').animate({x:200,y:200,radius:5,color:'#00ff00'},500,function(){
+						jc('#co').animate({x:100,y:100,radius:50,color:'#ff0000'},500)
+					});
+						},1000);
+				};
+
+			};
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="400" height="400">
+			<span>您的浏览器不支持canvas</span>
+		</canvas>
+		<input id="btn" type="bottom" value="确定" />
+	</body>
+</html>

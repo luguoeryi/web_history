@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>获取隐藏元素</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			$(function(){
+				$('div').click(function(){
+					alert(123)
+				})
+				
+				
+				/*var oDiv = $('div').remove()     //remove 删除节点 返回值是自身  删除之后事件不在
+				
+				$('body').append(oDiv)   */
+				
+				var oDiv = $('div').detach();   // detach 删除元素后 事件还在
+				
+				$('body').append(oDiv);
+				
+			})
+		</script>
+    </head>
+    <body>
+        <div>div3</div>
+    </body>
+</html>

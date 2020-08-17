@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>模拟滚动条</title>
+		<meta charset="utf-8" />
+		<style>
+			*{margin:0;padding:0;}
+			#div1{width:30px;height:500px;background:#ccc;position:absolute;left:10px;top:10px;}
+			#div2{width:30px;height:30px;background:pink;position:absolute;left:0px;top:0px;}
+			#div3{width:500px;height:0px;background:green;position:absolute;left:50px;top:10px;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv1 = document.getElementById('div1');
+				var oDiv2 = document.getElementById('div2');
+				var oDiv3 = document.getElementById('div3');
+					oDiv2.onmousedown = function(ev){
+						var ev = ev || event;
+						var disy = ev.clientY - this.offsetTop; //鼠标至div顶部的距离
+						var imaxTop = oDiv1.offsetHeight - oDiv2.offsetHeight ; // 最大距离470
+						if(oDiv2.setCapture){
+							oDiv2.setCapture();
+						}
+						document.onmousemove = function(ev){
+							var ev = ev || event;
+							var T = ev.clientY - disy;
+							if(T < 0){
+								T = 0 ; 
+							} else if(T > imaxTop){
+								T = imaxTop ; 
+							}
+							oDiv2.style.top = T + 'px';
+							var iScale =  T / imaxTop                    //公式为 T / 最大距离imaxTop   *500
+							oDiv3.style.height = 500* iScale + 'px';
+						};
+						document.onmouseup = function(){
+							document.onmouseup = document.onmousemove = null;
+							if(oDiv2.releaseCapture){
+								oDiv2.releaseCapture();
+							}
+						};
+						return false;
+					};
+			};
+		</script>
+	<head>
+	<body>
+		<div id="div1">
+			<div id="div2"></div>
+		</div>
+		<div id="div3"></div>
+	</body>
+</html>

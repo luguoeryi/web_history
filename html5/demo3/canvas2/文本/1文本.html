@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+				oGC.font = '60px impact'; //大小 样式
+
+				//oGC.textAlign = 'start';  //左右对齐方式 相对于画布左边
+				oGC.textBaseline = 'top';	//上下对齐方式 相对于画布上边
+
+				oGC.fillStyle = 'pink';
+				oGC.fillText('妙味课堂',0,0);	//文字填充
+
+				oGC.strokeStyle = 'green';
+				oGC.strokeText('妙味课堂',0,200);	//文字边框
+
+			};
+		</script>
+	</head>
+	<body style="background:#000;">
+		<canvas id="c1" width="400" height="400" style="background:#fff;">
+			<span style="color:#fff;">您的浏览器不支持canvas</span>
+		</canvas>
+	</body>
+</html>

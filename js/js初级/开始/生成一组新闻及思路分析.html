@@ -1,0 +1,46 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>for循环应用</title>
+		<style>
+		
+		</style>
+		<script>
+		window.onload = function () {
+			
+			var Bin = document.getElementById('bin');
+			var List = document.getElementById('list');
+			var Xin = [
+			'习近平访英将乘金马车 下榻威廉王子婚房',
+			'李克强近期常务会点出哪些稳增长压舱石',
+			'共青团：不改革就有丧失组织存在价值风险',
+			'联合国拟大幅增加中国会费 中方:不接受',
+			'湖南官员赌博被免1月后复出 举报人被抓走'
+			];
+			var Xinw = Xin.length;
+			var one = true;
+			
+			Bin.onclick = function () {
+		    //Bin.disabled = true;  不能点
+			//Bin.style.display = 'none'; 隐藏
+			//List.innerHTML = '';  清空 损性能；
+			if(one){
+				for (var i=0;i<Xinw;i++){
+						List.innerHTML +='<li>'+Xin[i]+'</li>';
+					}
+						one = false;
+			}
+				
+				
+			}; 
+			
+			
+			
+		};
+		</script>
+	</head>
+	<body>
+		<input id="bin"type="button" value="新闻列表" />
+		<ul id="list"></ul>
+	</body>
+</html>

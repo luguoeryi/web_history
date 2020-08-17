@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				/* 
+					message :当窗口接收到通过postMessage发送过来的数据时触发
+				*/
+				window.addEventListener('message',function(ev){
+					//alert( 'b.com下接收到了内容,是'+ev.data );
+					if( ev.data == '1' ){
+						document.body.style.background = 'red';
+					}
+				});
+
+			};
+		</script>
+	</head>
+	<body>
+		接收的域
+	</body>
+</html>

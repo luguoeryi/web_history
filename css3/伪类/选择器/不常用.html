@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p{ height: 30px; border: 1px solid #ccc; }
+			p:empty{ background: red; } /* 表示当前元素没有子节点 */
+			span{ display: block; width: 10px; height: 10px; }
+			span:only-of-type{ background: blue; } /* 表示当前元素只有一个子节点且是span*/
+		</style>
+	</head>
+	<body>
+		<p></p>
+		<p>1</p>
+		<p>1</p>
+		<p><span></span></p>
+	</body>
+</html>

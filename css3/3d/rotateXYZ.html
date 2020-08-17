@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{ width: 100px; height: 100px; padding: 100px; border: 5px solid #FFD700; margin: 200px auto; -webkit-transform-style: preserve-3d; -webkit-perspective: 100px; /*-webkit-perspective-origin:10px 10px; 景深基点 */ }
+			.box{ width: 100px; height: 100px; background: red; transition: 0.3s; }
+			/*.wrap:hover .box{ transform: rotateX(100deg); } 加3d空间和景深 */
+			/*.wrap:hover .box{ transform: rotateZ(100deg); }*/
+			.wrap:hover .box{ transform: rotateY(100deg); }
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="box"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>鼠标绘画</title>
+        <meta charset="utf-8">
+        <style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				
+				var oGC = oC.getContext('2d');
+				
+				oC.onmousedown = function(ev){
+					var ev = ev || event;
+					oGC.moveTo(ev.clientX-oC.offsetLeft,ev.clientY-oC.offsetTop);
+					document.onmousemove = function(ev){
+						var ev = ev || event;
+						oGC.lineTo(ev.clientX-oC.offsetLeft,ev.clientY-oC.offsetTop);
+						oGC.stroke();
+						oGC.strokeStyle = 'green';
+					};
+					document.onmouseup = function(){
+						document.onmousedown = document.onmousemove = null ;	
+					}
+				};
+				
+			};
+		</script>
+    </head>
+    <body>
+    	<canvas id="c1" width="400" height="400">
+        	<span>此浏览器不支持canvas</span>
+        </canvas>
+    </body>
+</html>

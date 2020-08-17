@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>getAttrbute</title>
+		<script>
+			window.onload = function(){
+				var oText = document.getElementsByTagName('input')[0];
+				var oimg = document.getElementsByTagName('img')[0];
+				//alert(oText._name_)  不支持自定义属性
+				//alert(oText['_name_'])  不支持自定义属性
+				//alert(oText.getAttribute('_name_'))   好处：可获得自定义属性
+				//alert(oimg.getAttribute('src'))   出ie7不支持 其他浏览器支持相对路径
+				//oText.setAttribute('value','不好')  修改属性值
+				//oimg.removeAttribute('src')    removeAttribute 移除元素属性
+			};
+		</script>
+	</head>
+	<body>
+		<input type="text" value="你好" _name_="wojiao">
+		<img src="03.jpg" />
+	</body>
+</html>

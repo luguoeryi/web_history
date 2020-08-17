@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{ margin: 0; padding: 0; }
+			div{ height: 30px; background:　#ccc; position: relative; }
+			span{ display: block; width: 30px; height: 5px; background: yellow; left: 30px; position: absolute; z-index: 100;}
+			div input{ float: left; width: 30px; height: 30px ; margin-left: 30px; background: red; }
+			div input:nth-child(1):checked~span{ background: blue; }
+			/*div a:nth-child(2):visited~span{ background: black; }
+			div a:nth-child(3):visited~span{ background: green; }
+			div a:nth-child(4):visited~span{ background: pink; }*/
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="radio" href="javascript:;" />
+			<input type="radio" href="javascript:;" />
+			<input type="radio" href="javascript:;" />
+			<input type="radio" href="javascript:;" />
+			<span>12</span>
+		</div>
+	</body>
+</html>

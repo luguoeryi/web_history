@@ -1,0 +1,35 @@
+<!DOCTPY html>
+<html>
+	<head>
+		<title>取消绑定事件</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var onOff = true;
+			var timer = null;
+			document.onkeydown = function(ev){
+				var ev = ev || event;
+				if(!onOff) return;
+				onOff = false;
+					timer = setInterval(function(){
+						switch(ev.keyCode){
+							case 37 : oDiv.style.left = oDiv.offsetLeft - 10 + 'px'; break;
+							case 38 : oDiv.style.top = oDiv.offsetTop - 10 + 'px'; break;
+							case 39 : oDiv.style.left = oDiv.offsetLeft + 10 + 'px'; break;
+							case 40 : oDiv.style.top = oDiv.offsetTop + 10 + 'px'; break;
+						}
+					},60);
+			};
+			document.onkeyup = function(){
+				clearInterval(timer);
+				onOff = true;
+			};
+		
+		};
+		</script>
+	</head>
+	<body>
+		<div id="div1" style="width:100px;height:100px;background:red;position:absolute;left:0px;top:0px;"></div>
+	</body>
+</html>

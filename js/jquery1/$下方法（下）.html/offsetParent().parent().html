@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>offsetParent,val()</title>
+        <meta charset="utf-8">
+        <style>
+            *{margin:0; padding:0;} 
+            #div1{ width:150px; height:150px; margin:20px; border: 1px solid yellow; background:#ccc; position:absolute; overflow:hidden;}
+            #div2{ width:30px; height:30px; margin:25px; border:1px solid red; }
+        </style>
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+         <script>
+             $(function(){
+                // $('#div2').parent().css({'background':'green'});  父级
+                $('#div2').offsetParent().css({'background':'red'})  //offsetParent 有定位的父级
+                alert($('input').val()) //val() = value 里面加参数则是设置
+                $('input').val(456)
+             })  
+         </script>
+    </head>
+    <body>
+        <div id="div1">
+            <div id="div2">2</div>
+        </div>
+        <input type="button" value="123" />
+    </body>
+</html>

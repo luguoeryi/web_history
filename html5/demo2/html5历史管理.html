@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>随机选彩票</title>
+        <meta charset="utf-8">
+        <script>
+			window.onload = function(){
+				var oDiv = document.getElementById('div1');
+				var oInp = document.getElementById('btn1');
+				
+				oInp.onclick = function(){
+					var str = getNum(35,7);
+					history.pushState(str,'',str);	//三参为地址栏 在服务器环境
+					oDiv.innerHTML = str;
+				};
+				
+				window.onpopstate = function(ev){
+					oDiv.innerHTML = ev.state || '';
+				};
+				
+				
+				function getNum(allNum,nowNum){
+					
+					var newarr = [];
+					
+					
+					for(var i=0;i<nowNum;i++){
+						newarr.push(Math.round(Math.random()*28+7));
+					}
+					
+					return newarr;
+					
+				};
+				
+				
+			};
+		</script>
+    </head>
+    <body>
+        <input type="button" value="随机选彩票" id="btn1" />
+    	<div id="div1"></div>
+    </body>
+</html>

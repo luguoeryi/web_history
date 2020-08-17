@@ -1,0 +1,26 @@
+postMessage对象
+	接收消息的窗口对象.postMessage()
+	一参：发送的数据，二参：接收的域
+	交互方式
+		iframe:父页面：contentWindow、子页面：window.top
+		窗口页：父页面：window.open、子页面：window.opener
+	接收事件
+		-message
+		-ev.origin:发送数据来源的域
+		-ev.data:发送的数据
+
+
+XMLHttpRequest Level 2
+	XMLHttpRequest 改进版
+		-请求页面与数据页面必须属性不同域
+		-服务器要设置相应头信息
+		-Origin值展现
+		-IE:XDomainRequest
+		-新的事件：omload等
+		-http://www.w3.org/TR/XMLHttpRequest2
+		-http://m.sdn.microsoft.com/en-us/library/cc288060(v5.85).aspk
+	进度事件
+		-upload.onprogress:上传
+		-FormData对象
+		-ev.total(已发送的总量)、ev.loaded(待发送的总量)
+		-onprogress:下载

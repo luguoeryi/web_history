@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+    	<title></title>
+        <meta charset="utf-8">
+        <script>
+			window.onload = function(){
+				var oInp = document.getElementById('btn');
+				
+				oInp.onclick = function(){
+					var xhr = null;
+					if(window.XMLHttpRequest){
+						xhr = new XMLHttpRequest();
+					}else{
+						xhr = ActiveXObject('Microsoft.XMLHTTP');
+					}
+					xhr.open('get','getList.php?username='+encodeURI('刘伟')+'&age=30&'+new Date().getTime(),true);
+					xhr.send();
+					
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							if(xhr.status == 200){
+								alert(typeof xhr.responseText);
+							}else{
+								alert('出错了,Err:'+xhr.status)
+							}
+						}	
+					};	
+				};	
+			};
+		</script>
+    </head>
+    <body>
+    	<input type="button" value="确定" id="btn" />
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTPY HTML>
+<html>
+<head>
+<title>字体缩放</title>
+<script>
+window.onload = function () {
+var obin1 = document.getElementById('bin1');
+var obin2 = document.getElementById('bin2');
+var op1 = document.getElementById('p1');
+var sun = 16;
+
+obin2.onclick = function () {
+sun++;/* sun = sun+1; sun+=1; */
+op1.style.fontSize = sun + 'px';
+};
+obin1.onclick = function () {
+sun--;/* sun = sun-1; sun-=1; */
+op1.style.fontSize = sun + 'px';
+};
+
+};
+</script>
+</head>
+<body>
+<input id="bin1" type="button" value="-">
+<input id="bin2" type="button" value="+">
+<p id="p1">导语：9月22日至28日，习近平主席对美国进行国事访问，并出席联合国成立70周年系列峰会。访问期间，
+中美双方达成共识，以“加强农业创新，促进粮食安全，推动可持续发展”为主题，就粮食安全、农业生物技术、大数据
+与农业信息技术创新、环境管理与可持续发展、农业支持以及双边合作等议题进行了对话。双方将进一步加强合作，促进
+两国乃至世界农业创新发展。中方公布的过万字的“习近平主席对美国进行国事访问中方成果清单”显示，中美在政治、经贸、
+农业等领域达成49项重要共识。</p>
+</body>
+</html>

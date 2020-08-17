@@ -1,0 +1,150 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>知识点集合</title>
+		<style>
+			body,a,p,span,img,input{
+			margin:0;padding:0;
+			}
+			body{
+			background:#E5E5E5;
+			}
+			#content{
+			width:500px;height:500px;
+			background:#EAEAEA;
+			margin:0 auto;
+			border:10px solid #ccc;
+			position:relative;
+			}
+			#content1{
+			width:500px;
+			overflow:hidden;
+			margin:5px auto 10px;
+			text-align:center;
+			}
+			.yang{
+			text-decoration:none;
+			width:30px;height:30px;
+			color:#fff;background:#000;
+			border:5px solid #fff;
+			position:absolute;
+			top:230px;
+			text-align:center;
+			font-size:42px;
+			line-height:23px;
+			font-weight:bold;
+			opacity:0.4;
+			filter:alpha(opacity=40);
+			}
+			.yang:hover{
+			opacity:0.8;
+			filter:alpha(opacity=80);
+			}
+			#next{
+			position:absolute;
+			top:230px;
+			right:0px;
+			}
+			#text1{
+			border-bottom:5px solid #434040;
+			position:absolute;
+			bottom:0px;
+			}
+			#shu{
+			border-top:5px solid #434040;
+			position:absolute;
+			top:0px;
+			}
+			#text1,#shu{
+			width:500px;height:21px;
+			text-align:center;
+			background:#000;color:yellow;
+			opacity:0.7;
+			filter:alpha(opacity=70);
+			}
+			#img1{
+			width:500px;height:500px;
+			}
+		</style>
+		<script>
+		window.onload = function () {
+			var Prev = document.getElementById('prev');
+			var Next = document.getElementById('next');
+			var Text = document.getElementById('text1');
+			var Shu = document.getElementById('shu');
+			var Img = document.getElementById('img1');
+			var Btu = ['images/o1.jpg','images/o2.jpg','images/o3.jpg','images/o4.jpg','images/o5.jpg'];
+			var Bshuo = ['你好，你妈好，你全家好！','我叫净空','怎么？帅不？','咋样？','性感mm'];
+			var nor = 0;
+			
+			var BBjie = ['图片可从第一张跳转到最后一张循环切换','图片只能跳转到第一张或最后一张'];
+			var Xhuan = document.getElementById('xhuan');
+			var Sxu = document.getElementById('sxu');
+			var Bjie = document.getElementById('bjie');
+			var yee = 0;
+			//初始化
+			function onde () {
+			Shu.innerHTML = nor+1 +'/' + Btu.length;
+			Img.src = Btu[nor];
+			Text.innerHTML = Bshuo[nor];
+			};
+			
+			Xhuan.onclick = function () {
+			yee = 0;
+			document.getElementById('bjie').style.color = '#5D8F02';
+			document.getElementById('bjie').style.fontSize = '19px';
+			Bjie.innerHTML = BBjie[0];
+			};
+			Sxu.onclick = function () {
+			yee = 1;
+			document.getElementById('bjie').style.color = '#D34B25';
+			document.getElementById('bjie').style.fontSize = '19px';
+			Bjie.innerHTML = BBjie[1];
+			};
+			
+			onde();
+			
+			Prev.onclick = function () {
+					nor--;
+					if ( nor == -1 ) {
+					    if (yee == 1) {
+						alert('已经是第一张，不能再点了 ~ ~');
+						nor = 0;
+						} else {
+						nor = Btu.length-1;
+						}
+					}
+					onde();
+			};
+			Next.onclick = function () {
+					nor++;
+					if ( nor == Btu.length ) {
+					    if (yee == 1) {
+						alert('这是最后一张了 ~ ~');
+						nor = Btu.length-1;
+						} else {
+						nor = 0;
+						}	
+					}
+					onde();
+			};
+		
+		};
+		
+		</script>
+	</head>
+	<body>
+	    <div id="content1">
+		    <input id="xhuan" type="button" value="循环切换" />
+			<input id="sxu" type="button" value="顺序切换" />
+			<span id="bjie" style="display:block;margin-top:10px;">图片可从第一张跳转到最后一张循环切换</span>
+		</div>
+		<div id="content">
+			<a id="prev" class="yang" href="#">&lt;</a>
+			<a id="next" class="yang" href="#">&gt;</a>
+			<span id="shu">数量正在统计中...</span>
+			<p id="text1">图片正在加载中...</p>
+			<img id="img1" src="" />
+		</div>
+	</body>
+</html>

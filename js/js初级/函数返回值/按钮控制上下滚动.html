@@ -1,0 +1,66 @@
+﻿<html>
+	<head>
+		<title></title>
+		<style>
+			*{margin:0;padding:0;} li{list-style:none;} 
+			#cont{width:166px;margin:100px auto;} #cont div{width:164px;border:5px solid #E7EFEF;}
+			#con_1{height:48px;background:url(img/lis1.gif) center 0 no-repeat;cursor:pointer;} #con_2{height:380px;overflow:hidden;}
+			#con_3{height:22px;background:url(img/lis2.gif) center 0 no-repeat;cursor:pointer;}
+			img{margin-top:0px;width:164px;}
+		</style>
+		<script>
+		window.onload=function(){
+			var oCon = document.getElementById('cont');
+			var oDiv = oCon.getElementsByTagName('div');
+			var oImg = oCon.getElementsByTagName('img')[0];
+				oDiv[0].onmousedown = val;
+				oDiv[0].onmouseup = function(){
+					clearInterval(timer)
+				}	
+				oDiv[2].onmousedown = vat;
+				oDiv[2].onmouseup = function(){
+					clearInterval(time)
+				}	
+				
+				
+			var timer = null;
+			var time = null;
+			var num = 0;
+				function val(){
+					 timer = setInterval(function(){
+					 num++;
+						if(num>=62){
+							num=62;
+						}
+					 oImg.style.marginTop = -5*num+'px'; 
+					},50);
+				}
+				function vat(){
+					 time = setInterval(function(){
+					 num--;
+						if(num<=0){
+							num=0;
+						}
+					 oImg.style.marginTop = -5*num+'px'; 
+					},50);
+				}
+			};
+			
+		
+		
+			/* if(oImg.currentStyle){
+					alert(oImg.currentStyle.marginBottom);
+				}else{
+					alert(getComputedStyle(oImg).marginBottom)
+			} */
+			
+		</script>
+	</head>
+	<body>
+		<div id="cont">
+			<div id="con_1"></div>
+			<div id="con_2"><img src="img/lis.png" /></div>
+			<div id="con_3"></div>
+		</div>
+	</body>
+</html>

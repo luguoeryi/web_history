@@ -1,0 +1,7 @@
+sin = a/c   ╤т╠ъ/п╠╠ъ
+
+cos = b/c   аз╠ъ/п╠╠ъ
+
+tan = a/c   ╤т╠ъ/аз╠ъ
+
+window.location.reload();

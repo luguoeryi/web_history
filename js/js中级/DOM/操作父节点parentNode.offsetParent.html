@@ -1,0 +1,40 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>parentNode与offsetParet</title>
+		<meta charset="utf-8" />
+		<style>
+			div{padding:40px 50px;}
+			#div1{background:green;} <!-- position:absolute;  -->
+			#div2{background:orange;zoom:1;}
+			#div3{background:gray;}
+		</style>
+		<script>
+		window.onload = function(){
+			var oA = document.getElementsByTagName('a');
+				for(var i=0;i<oA.length;i++){            
+					oA[i].onclick = function(){
+					this.parentNode.style.display = 'none';             //可直接使用当前元素的父节点 无兼容性问题
+					};
+				}
+				var oDiv = document.getElementsByTagName('div');
+				//alert(oDiv[2].parentNode.id)
+				alert(oDiv[2].offsetParent.id)              //注：标准下 offsetParent代表有点位的父节点  如父级没有定位则是BODY ie7以下：如自身使用定位则为HTML 如父级促发laout属性则以这个父级为准
+		};
+		</script>
+	</head>
+	<body id="body1">
+		<ul id="ul1" style="border:1px solid green;">
+			<li class="onsi"><a href="#">1111</a></li>
+			<li><a href="#">222</a></li>
+			<li><a href="#">333</a></li>
+			<li><a href="#">444</a></li>
+			<li><a href="#">555</a></li>
+		</ul>
+		<div id="div1">
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+		</div>
+	</body>
+</html>

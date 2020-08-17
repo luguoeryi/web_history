@@ -1,0 +1,131 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<style>
+		*{margin:0;padding:0;} li{list-style:none;float:left;}
+		#cont{width:702px;overflow:hidden;border:1px solid #73BDEF;background:#fff;position:absolute;left:50%;top:50%;margin:-175px 0 0 -350px;} #header{width:702px;height:44px;background:url(img/1.5.png);}
+		#header p{float:left;width:100px;height:28px;margin-top:14px;} #header p:hover{cursor:pointer;}
+		.cont{width:692px;height:182px;padding:10px 0 25px 10px;display:none;} .cont p{float:left;}
+		.con_r{width:495px;height:198px;position:relative;overflow:hidden;float:left;}
+		.con_r .oul{width:1485px;height:169px;position:absolute;left:0px;top:0px;} .con_r .oul li{width:495px;}
+		.smallt{position:absolute;left:50%;bottom:0px;margin-left:-49px;width:98px;height:19px;} .smallt p{float:left;width:19px;height:19px;} .smallt ul{margin:0 10px 0;float:left;height:19px;width:40px;}
+		.smallt ul li{margin-top:3px;float:left;width:12px;height:12px;margin-left:2px;background:url(img/2.1.png);}
+		</style>
+		<script src="zuanshu.js"></script>
+		<script>
+		window.onload = function(){
+		var Op = $('header').getElementsByTagName('p');
+			Op[0].onclick = function(){
+				$('header').style.background = 'url(img/1.5.png)';
+				$('ons2').style.display = 'none'; $('ons1').style.display = 'block';
+				fn1($('ons1'));
+			};
+			Op[1].onclick = function(){
+				$('header').style.background = 'url(img/1.6.png)';
+				$('ons1').style.display = 'none'; $('ons2').style.display = 'block';
+				fn1($('ons2'));
+			};
+		fn1($('ons1'));
+		};
+			function fn1(attr){
+				var oUl = attr.getElementsByTagName('ul')   
+				var oLi = oUl[0].getElementsByTagName('li');     //切换li
+				var Ohuan = attr.getElementsByTagName('p');    //切换选项卡 p
+				var oLis = oUl[1].getElementsByTagName('li');   //圆点
+				var num = 0; 
+				var nus = 0;
+				var ons = 0;
+				var onOff=true;
+				Ohuan[1].onclick = fns;
+				Ohuan[2].onclick = fnd;
+				var str = oLi[0].offsetWidth;
+				function fns(){
+					if(!onOff) return;
+					onOff=false;
+					num++; nus++; 
+					document.title=num;
+					if(nus==3){
+						nus=0;
+						oLi[0].style.position = 'relative';
+						oLi[0].style.left = str*oLi.length +'px';
+					}
+					doMove(oUl[0],'left',20,-495*num,30,function(){
+					onOff = true;  if(nus==0){
+										num=0;
+										oLi[0].style.position = '';
+										oUl[0].style.left = 0+'px';
+									} 
+										ons--; if(ons==-1){ ons=2;}for(var i=0;i<oLis.length;i++){ oLis[i].style.background = 'url(img/2.1.png)'; oLis[ons].style.background = 'url(img/2.2.png)'; }
+					});
+				}
+				function fnd(){
+				if(!onOff) return;
+				onOff=false;
+					num--; nus--;
+					document.title=num;
+				 	if(nus==-1){
+						nus=2;
+						oLi[2].style.position = 'relative';
+						oLi[2].style.left = -str*oLi.length+'px';
+					} 
+					doMove(oUl[0],'left',20,-495*num,30,function(){
+					onOff = true;  if(nus==2){ 
+										num=2;
+										oLi[2].style.position = '';
+										oUl[0].style.left= -str*(oLi.length-1) +'px';
+									} 
+										ons++; if(ons==3){ons=0;} for(var i=0;i<oLis.length;i++){ oLis[i].style.background = 'url(img/2.1.png)'; oLis[ons].style.background = 'url(img/2.2.png)';}
+					});
+				}
+			}
+		</script>
+	</head>
+	<body style="background:#131313;">
+		<div id="cont">
+			<div id="header">
+				<p style="margin:14px 0 0 150px;"></p>
+				<p></p>
+			</div>
+			<div id="ons1" class="cont" style="display:block;">
+				<p><img src="img/1.1.png" /></p>
+				<div class="con_r">
+					<ul class="oul">
+						<li><img src="img/0.1.png" /></li>
+						<li><img src="img/0.2.png" /></li>
+						<li><img src="img/0.3.png" /></li>
+					</ul>
+					<div class="smallt">
+						<p style="background:url(img/1.3.png);"></p>
+						<ul>
+							<li style="margin-left:0px;background:url(img/2.2.png);"></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<p style="background:url(img/1.4.png);"></p>
+					</div>
+				</div>
+			</div>
+			<div id="ons2" class="cont">
+				<p><img src="img/1.2.png" /></p>
+				<div class="con_r">
+					<ul class="oul">
+						<li><img src="img/0.3.png" /></li>
+						<li><img src="img/0.2.png" /></li>
+						<li><img src="img/0.1.png" /></li>
+					</ul>
+					<div class="smallt">
+						<p style="background:url(img/1.3.png);"></p>
+						<ul>
+							<li style="margin-left:0px;background:url(img/2.2.png);"></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<p style="background:url(img/1.4.png);"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

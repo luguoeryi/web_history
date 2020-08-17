@@ -1,0 +1,41 @@
+﻿	<!DOCTPY HTML>
+<html>
+	<head>
+		<title>你好年后你好</title>
+		<script type="text/javascript" src="zuanshu.js"></script>
+		<script>
+		window.onload = function(){
+			var str = '';
+			var len = 20;
+			var oDiv = document.getElementsByTagName('div');
+			var onOff = true; 
+			var flag = true;
+			var num=0;
+			var time = null;
+			for(var i=0;i<len;i++){
+				str += '<div style="width:50px;height:50px;background:red;position:absolute;left:'+(80+i*60)+'px;top:0px;"></div>';
+			}
+			document.body.innerHTML =str;
+			document.onclick = function(){
+				if(!flag) return;  //如果为假，则返回空
+				clearInterval(time);
+					time = setInterval(function(){
+						doMove(oDiv[num],'top',25,onOff?500:0,50,num==len-1 ? function(){
+							flag=!flag;
+						}:null)
+						num++;
+						if(num===len){
+							num=0;
+							onOff=!onOff;
+							clearInterval(time);
+						}
+					},100)
+					flag=!flag;
+		
+			};
+		};
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

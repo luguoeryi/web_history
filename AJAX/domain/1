@@ -1,0 +1,3 @@
+miaov({q:"y",p:false,s:["优酷","yy","一拳超人","音乐","游民星空","圆通","英雄联盟","亚马逊","yy直播","妖精的尾巴"]});
+
+http://api.douban.com/book/subjects?q=javascript&alt=xd&callback=fn1

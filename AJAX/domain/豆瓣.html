@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>模仿百度搜索</title>
+        <meta charset="utf-8">
+        <style>
+			*{ margin:0; padding:0; }
+			#q{ width:290px; height:30px; background:white; border:1px solid #FC0; padding:0 5px; line-height:30px; font-size:17px; font-weight:900; color:#09C; outline:none; float:left;  }
+			#btn{ float:left; width:50px; height:32px; outline:none; border:1px solid #FC0; background:#F60; }
+			form{ width:360px; overflow:hidden; margin:50px auto 0; }
+			#msg{ width:300px; margin:0 auto; }
+			dl{ border:1px dotted #000; }
+			dt{ font-weight:bold; }
+		</style>
+        <script>
+			window.onload = function(){
+				var oQ = document.getElementById('q');
+				var oBtn = document.getElementById('btn');
+				
+				btn.onclick = function(){
+					if(oQ.value != ''){
+						var aScript = document.createElement('script');
+						aScript.src = 'http://api.douban.com/book/subjects?q='+oQ.value+'&alt=xd&callback=fn1';	
+						document.body.appendChild(aScript);
+					}
+					
+				};
+				//http://api.douban.com/book/subjects?q='+oQ.value+'&alt=xd&callback=fn1&start-index=(当前页*每页显示的条数)&max-results=10(每页显示的
+			};
+			function fn1(data){
+				if(data){
+					var oMsg = document.getElementById('msg');
+					var oList = document.getElementById('list');
+						oMsg.innerHTML = data['title']['$t']+' '+data['opensearch:totalResults']['$t']+'条';
+					var aEntry = data['entry'] ;
+					var html = '';
+					for(var i=0;i<aEntry.length;i++){
+						html += '<dl><dt>'+aEntry[i]['title']['$t']+'</dt><dd><img src="'+aEntry[i]['link']['2']['@href']+'" /></dd></dl>';
+					}
+					oList.innerHTML = html ;
+				}
+				
+			};
+		</script>
+    </head>
+    <body>
+    	<form>
+            <input type="text" id="q" />
+            <input type="button" value="搜索" id="btn" />
+        </form>
+        <p id="msg"></p>
+        <hr />
+        <div id="list">
+            <!--<dl>
+                <dt>标题</dt>
+                <dd><img src="" /></dd>
+            </dl>-->
+        </div>
+    </body>
+</html>

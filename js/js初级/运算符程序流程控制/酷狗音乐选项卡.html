@@ -1,0 +1,170 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>酷狗音乐选项卡</title>
+		<style>
+		*{margin:0;padding:0;}
+		ul{font-size:14px;list-style:none;width:300px; margin:10 auto; overfliw:hidden;background:#fff;border-bottom:2px solid #000;} ul li{height:30px;line-height:30px;border-bottom:1px solid #fff;} input{ float:left;margin:10px 0 0 15px;} p{float:left;}
+		.con_p{width:162px;padding-left:8px;} ul span{float:left;padding-left:8px;} .ul_p p{width:67px;height:27px;float:right;margin:2px 7px 0 0;cursor:pointer;}
+		</style>
+		<script>
+		window.onload = function(){
+			var cols = ['#F7FFFF','#ffffff',];
+			var oLi = document.getElementsByTagName('li');
+			var oInput = document.getElementsByTagName('input');
+			var oLis = oLi.length;
+			var oing = oInput.length;
+			var oP = oLi[oLis-1].getElementsByTagName('p');
+			var oImg = ['images/10.1.png','images/10.2.png','images/10.3.png'];
+			var oImg2 = ['images/11.1.png','images/11.2.png','images/11.3.png'];
+			var str = '';
+			var bi = false;
+			var pf = false;
+			for(var i=0;i<oLis-1;i++){
+				oLi[i].index = i;
+				oLi[i].style.background = cols[i%2];
+				oLi[0].style.background = '#EFEFEF';
+				oLi[i].onmouseover = function(){
+					str=this.index;
+					this.style.background = '#EFEFEF';
+				};
+				oLi[i].onclick = function(){
+					bi = false;
+					pf = false;
+					oInput[str].checked = !oInput[str].checked;
+					if(oInput[str].checked){
+						this.style.background = '#EFEFEF';
+						for(var i=0;i<oP.length;i++){
+						    if(oInput[str].checked) {
+							 oP[i].style.background = 'url('+oImg2[i]+')';
+							}
+						}
+						fn1();
+					} else{
+						this.style.background = cols[str%cols.length];
+						for(var j=0;j<oing-1;j++){
+							if(oInput[j].checked){
+								bi = true;
+							}
+						}
+						if(bi==false){
+							for(var y=0;y<oP.length;y++){
+								oP[y].style.background = 'url('+oImg[y]+')';
+							} 
+						}
+						fn1();
+					}
+					
+				};
+				oLi[i].onmouseout = function(){
+					if(oInput[str].checked){
+						this.style.background = '#EFEFEF';
+					} else{
+						this.style.background = cols[str%cols.length];
+					}
+				};
+			
+			}
+			for(var i=0;i<oing-1;i++){       //单选Input
+				oInput[i].index = i;
+				oInput[i].onclick = function(){
+					this.checked = !oInput[this.index].checked;
+				};
+			}
+			oInput[oing-1].onclick = function(){
+			    if(oInput[oing-1].checked) {
+					for(var i=0;i<oing-1;i++){
+						oInput[i].checked = true;
+					}
+					for(var j=0;j<oLis-1;j++){
+						oLi[j].style.background = '#EFEFEF';
+					}
+					fn2(oImg2);	
+				} else {
+					for(var i=0;i<oing-1;i++){
+					  oInput[i].checked = false;
+					 }
+					 for(var j=0;j<oLis-1;j++){
+						oLi[j].style.background = cols[j%2];
+					}
+					fn2(oImg);					
+				}
+			};
+			var bLok = '';
+			oP[2].onclick = function(){
+				for(var j=0;j<oing-1;j++){
+					if(oInput[j].checked){
+						oLi[j].style.display = 'none';
+						bLok=oLi[j];
+					}
+				}
+			};
+			oP[1].onclick = function(){
+				for(var i=0;i<oLis-1;i++){
+					if(oLi[i].style.display=='none'){
+						oLi[i].style.display = 'block';
+					}
+				}
+			};
+				function fn1(){
+					for(var j=0;j<oing-1;j++){
+						if(!oInput[j].checked){
+							oInput[oing-1].checked = false;
+							pf = true;
+						}
+					}
+					if(pf==false){
+						oInput[oing-1].checked = 'checked';
+					}
+				}
+				function fn2(b){
+					for(var y=0;y<oP.length;y++){
+						oP[y].style.background = 'url('+b[y]+')';
+					} 	
+				}
+		};
+		
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<input type="checkbox" checked />
+				<p class="con_p">私奔</p>
+				<p>梁博</p>
+			</li>
+			<li>
+				<input type="checkbox" />
+				<p class="con_p">北京北京</p>
+				<p>梁博，黄勇</p>
+			</li>
+			<li>
+				<input type="checkbox" />
+				<p class="con_p">我爱你中国</p>
+				<p>梁博</p>
+			</li>
+			<li>
+				<input type="checkbox" />
+				<p class="con_p">花火</p>
+				<p>梁博</p>
+			</li>
+			<li>
+				<input type="checkbox" />
+				<p class="con_p">回来</p>
+				<p>梁博</p>
+			</li>
+			<li style="border-bottom:1px solid #ccc;">
+				<input type="checkbox" />
+				<p class="con_p">爱要有你才完美</p>
+				<p>梁博，那英</p>
+			</li>
+			<li class="ul_p">
+				<input type="checkbox" />
+				<span>全选</span>
+				<p style="background:url(images/11.1.png);"></p>
+				<p style="background:url(images/11.2.png);"></p>
+				<p style="background:url(images/11.3.png);"></p>
+			</li>
+		</ul>
+	</body>
+</html>

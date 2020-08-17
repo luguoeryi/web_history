@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title></title>
+        <meta charset="utf-8">
+        <script>
+        	function fn(data){
+				alert(data);
+			}
+        </script>
+        <script>
+			window.onload = function(){
+				var oInp = document.getElementById('btn');
+				oInp.onclick = function(){
+					var aSc = document.createElement('script');
+					aSc.src = '1.txt';
+					document.body.appendChild(aSc);	
+				};	
+			};
+		</script>
+    </head>
+    <body>
+    	<input type="button" value="按钮" id="btn" />
+    </body>
+</html>

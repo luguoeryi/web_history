@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>getAttrbute</title>
+		<script>
+			window.onload = function(){
+				var oForm = document.getElementById('form1');
+				//alert(oForm.texs.value)  在表单中 name属性比id重要
+				oForm.texs.onchange = function(){   //onchange 鼠标离开时值改变触发
+					alert(this.value);
+				};
+				oForm.sex[0].onchange = function(){
+					alert(oForm.sex[0].value)
+				};
+				oForm.sity.onchange = function(){
+					alert(this.value);
+				};
+				oForm.btn.onclick = function(){
+					for(var i=0;i<oForm.sex.length;i++){
+						if(oForm.sex[i].checked){
+							alert(oForm.sex[i].value+'被选中')
+						} else{
+							alert(oForm.sex[i].value+'没选中')
+						}
+					}
+					for(var i=0;i<oForm.a.length;i++){
+						if(oForm.a[i].checked){
+							alert(oForm.a[i].value+'被选中')
+						} else{
+							alert(oForm.a[i].value+'没选中');
+						}
+					}
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<form id="form1">
+			<input type="text" name="texs" value="你好" id="tei" />
+			<input type="radio" name="sex" value="男" />男<input type="radio" name="sex" value="女" checked />女
+			<input type="checkbox" name="a" value="html" checked />html<input type="checkbox" name="a" value="css" />css<input type="checkbox" name="a" value="javascript" />javascript
+			<select name="sity">
+				<option value="上海">上海</option>
+				<option value="北京">北京</option>
+				<option value="程度">程度</option>
+				<option value="深圳" selected >深圳</option>
+				<input type="button" value="按钮" name="btn" />
+			</select>
+		</form>
+	</body>
+</html>

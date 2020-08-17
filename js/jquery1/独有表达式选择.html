@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>独有表达式选择</title>
+        <meta charset="utf-8">
+        <script src="jQuery/jquery-1.11.3.min.js"></script>
+    </head>
+    <body>
+    	<ul>
+        	<li>fd</li>
+        	<li class="box">fd</li>
+        	<li class="box">fd</li>
+        	<li title="hello">fd</li>
+        	<li class="box">fd</li>
+        </ul>
+    </body>
+    <script>
+		//$('li:first').css('background','red');
+		//$('li:last').css('background','red');
+		
+		//$('li:eq(2)').css('background','red');   //后面加eq()为下标
+		//$('.box:eq(2)').css('background','red');
+		
+		//$('li:even').css('background','red');   奇数行  even
+		//$('li:odd').css('background','red');   偶数行odd
+		
+		//$('li').filter('.box').css('background','green');   //filter 为筛选
+		$('li').filter('[title=hello]').css('background','red');   //支持筛选自定义属性
+	</script>
+</html>

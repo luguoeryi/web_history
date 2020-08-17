@@ -1,0 +1,98 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>随机图片滚动</title>
+		<meta charset="utf-8" />
+		<style>
+			*{margin:0px;padding:0px;} li{list-style:none;float:left;}
+			ul{width:410px;overflow:hidden;margin:50px auto;padding:0 10px 10px 0;border:1px solid #000;background:#fff;}
+			ul li{width:195px;height:84px;overflow:hidden;position:relative;margin:10px 0 0 10px;} ul li div{width:195px;overflow:hidden;position:absolute;left:0px;top:0px;}
+		</style>
+		<script src="zuanshu.js"></script>
+		<script>
+		window.onload = function(){
+			var oLi = document.getElementsByTagName('li');
+			var times = null;
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].onmouseover = function(){
+					clearInterval(this.timer);
+				}
+			}
+			window.onfocus = function(){
+				times = setInterval(function(){
+					var n = Math.round(Math.random()*(oLi.length-1));
+					fn1(oLi[n])
+					
+				},300)
+			};
+			window.onblur = function(){
+				clearInterval(times);
+				for(var i=0;i<oLi.length;i++){
+					clearInterval(oLi[i].timer);
+			   }
+			};
+		}
+			function fn1(obj){
+				var oDiv = obj.getElementsByTagName('div')[0];
+				var oImg = oDiv.getElementsByTagName('img');
+				obj.num = 0;
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+						obj.num++;
+						doMove(oDiv,'top',10,-84*obj.num,50,function(){
+							if(obj.num==oImg.length-1){ 
+								clearInterval(obj.timer);
+								setTimeout(function(){
+									doMove(oDiv,'top',10,0,50)
+								},500)
+							}
+						});
+					},1000);
+			}
+		</script>
+	</head>
+	<body bgcolor="#EAB793">
+		<ul>
+			<li>
+				<div>
+					<img src="img/rec1.jpg" /> <img src="img/rec2.jpg" /> <img src="img/rec3.jpg" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/rec4.jpg" /> <img src="img/rec5.jpg" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/rec6.jpg" /> <img src="img/rec7.jpg" /> <img src="img/rec8.jpg" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/rec9.jpg" /> <img src="img/rec10.jpg" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/rec11.jpg" /> <img src="img/rec12.jpg" /> <img src="img/rec13.jpg" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/rec14.jpg" /> <img src="img/rec15.jpg" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/rec16.jpg" /> <img src="img/rec17.jpg" />
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/rec18.jpg" /> <img src="img/rec1.jpg" /> <img src="img/rec6.jpg" />
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>

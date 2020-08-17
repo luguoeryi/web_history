@@ -1,0 +1,1 @@
+define(function(a,b,c){function d(){this.cfg={id:"",action:"",callback:null}}a("jquery"),d.prototype={init:function(a){var b=this;b.cfg=$.extend(b.cfg,a),$(b.cfg.id).off("mouseenter").on("mouseenter",function(){$(b.cfg.action).show()}).off("mouseleave").on("mouseleave",function(){$(b.cfg.action).hide()})}},c.exports=d});

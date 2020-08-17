@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{ width: 0; height: 0; overflow: hidden; color: #fff; border: 1px solid #000; display: none; }
+		</style>
+		<script src="sea/sea.js" type="text/javascript"></script>
+		<script src="js/configAlias.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<a href="javascript:;" data-hash="home">首页</a>
+		<a href="javascript:;" data-hash="student">学员</a>
+		<a href="javascript:;" data-hash="message">信息</a>
+		<div style="background: gold;" data-hash="home">home</div>
+		<div style="background: red;" data-hash="student">student</div>
+		<div style="background: blue;" data-hash="message">message</div>
+	</body>
+	<script>
+		seajs.use('main');
+	</script>
+</html>

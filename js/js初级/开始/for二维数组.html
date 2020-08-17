@@ -1,0 +1,53 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>for循环应用</title>
+		<script>
+		window.onload = function () {
+		
+	/* 	var one = [[1,2,3],[4,5,6],[7,8,9]];
+			
+			for(var i=0;i<one.length;i++){
+				for(var y=0;y<one[i].length;y++){
+				alert(one[i][y]);
+				}
+			} */
+			
+		var one = document.getElementById('list');
+		var yts = one.getElementsByTagName('ul');
+		var nir = yts.length;
+		var str = null; //空
+		for (var i=0;i<nir;i++){
+			str = yts[i].getElementsByTagName('li');
+				for(var y=0;y<str.length;y++){
+					str[y].style.background = 'gray';
+					str[y].style.marginBottom = 10+'px';
+				}
+			}
+
+			
+			
+		};
+		</script>
+	</head>
+	<body>
+     <ul id="list">
+		 <li>
+			 <h2>我的好友</h2>
+			 <ul>
+				 <li>杨周斌</li>
+				 <li>聂江涛</li>
+				 <li>杨立峰</li>
+			 </ul>
+		 </li>
+		  <li>
+			 <h2>我的坏友</h2>
+			 <ul>
+				 <li>杨藏红</li>
+				 <li>聂套</li>
+				 <li>杨绯红</li>
+			 </ul>
+		 </li>
+	 </ul>
+	</body>
+</html>

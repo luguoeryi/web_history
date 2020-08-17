@@ -1,0 +1,36 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>for循环应用</title>
+		<style>
+		
+		</style>
+		<script>
+		//window.alert(this);
+		
+		  function one (){
+		  alert(this); 
+		  }
+		  
+		  
+		  
+		 // 笔记：1 one(); this=> window
+		   //     2  oDiv.onclick = one;  this=> oDiv
+			/*	  3   oDiv.onclick = function (){
+				         one();    one()里的this=>window
+				       }  */
+			// 4  <div onclick="this  one();">	</div>   one();里的this指的是window 
+		</script>
+	</head>
+	<body>
+	<input id="list" type="button" value="按钮" />
+	<input id="Bin" type="button" onclick="alert(this)" value="你好" /> 
+	<script>
+	var two = document.getElementById('list');
+	//two.onclick = one;
+	two.onclick = function (){
+	one();
+	};
+	</script>
+	</body>
+</html>

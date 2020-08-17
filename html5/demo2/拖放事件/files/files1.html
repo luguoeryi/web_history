@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>files</title>
+        <meta charset="utf-8">
+        <style>
+			#div1{ width:200px; height:200px; margin:200px; background:pink; }
+		</style>
+    </head>
+    <body>
+    	<div id="div1" draggable="true">将文件拖放到此区域</div>
+        <script>
+		
+			var oDiv = document.getElementById('div1');
+			
+			oDiv.ondragenter = function(){
+				this.innerHTML = '可以释放鼠标啦！';	
+			};
+			
+			oDiv.ondragover = function(ev){
+				var ev = ev || event;
+				ev.preventDefault();
+			};
+			
+			
+			oDiv.ondragleave = function(){
+				this.innerHTML = '将文件拖放到此区域！';
+			};
+			
+			oDiv.ondrop = function(){
+				var ev = ev || event;
+				ev.preventDefault();
+				
+				var Files = ev.dataTransfer.files;	//获取外部拖拽的文件,返回列表 length type
+				
+				var fd = new FileReader();  //读取文件信息   1 创建对象
+				
+				fd.readAsDataURL(Files[0]);	//参数为要读取的文件信息  读取为dataurl
+				
+				fd.onload = function(){	//读取文件成功触发onload事件
+					alert(this.result);		//this。result 获取文件读取的数据
+				};
+			};
+			
+		</script>
+    </body>
+</html>

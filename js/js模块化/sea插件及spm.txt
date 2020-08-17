@@ -1,0 +1,6 @@
+npm install spm -g
+npm install spm-build -g
+
+½øÈë
+cd foo-nodule
+spm build

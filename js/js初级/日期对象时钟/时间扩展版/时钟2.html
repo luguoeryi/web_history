@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    #time {
+        height: 172px;
+        overflow: hidden;
+        width: 1000px;
+        margin: 30px auto;
+    }
+    #time li {
+        width: 122px;
+        height: 344px;
+        position: relative;
+        float: left;
+        overflow: hidden;
+    }
+    #time li div {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+</style>
+
+<body>
+    <ul id='time'>
+
+        <li>
+            <div>
+                <img src='./img/0.JPG'>
+                <img src='./img/0.jpg'>
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src='./img/0.JPG'>
+                <img src='./img/0.jpg'>
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src='./img/colon.JPG'>
+                <img src='./img/colon.JPG'>
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src='./img/0.jpg'>
+                <img src='./img/0.jpg'>
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src='./img/0.JPG'>
+                <img src='./img/0.JPG'>
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src='./img/colon.JPG'>
+                <img src='./img/colon.JPG'>
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src='./img/0.jpg'>
+                <img src='./img/0.jpg'>
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src='./img/0.jpg'>
+                <img src='./img/0.jpg'>
+            </div>
+        </li>
+    </ul>
+</body>
+<script>
+    function two(num) {
+        if (num < 10) {
+            return ("0" + num);
+        } else {
+            return (String(num));
+        }
+    }
+
+    function getStyle(obj, attr) {
+        return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+    }
+
+    function doMove(obj, attr, dir, target, endFn) {
+
+        dir = parseInt(getStyle(obj, attr)) < target ? dir : -dir;
+
+        clearInterval(obj.timer);
+
+        obj.timer = setInterval(function() {
+
+            var speed = parseInt(getStyle(obj, attr)) + dir; // 步长
+
+            if (speed > target && dir > 0 || speed < target && dir < 0) {
+                speed = target;
+            }
+
+            obj.style[attr] = speed + 'px';
+
+            if (speed == target) {
+                clearInterval(obj.timer);
+
+                /*
+			if ( endFn ) {
+				endFn();
+			}
+			*/
+                endFn && endFn();
+
+            }
+
+        }, 40);
+    }
+
+
+    var oldtime = new Date();;
+    var oldhour = oldtime.getHours();
+    var oldmin = oldtime.getMinutes();
+    var oldsecond = oldtime.getSeconds();
+    var Time = document.getElementById('time');
+    var oLi = Time.getElementsByTagName('li');
+    var strOLd = two(oldhour) + ":" + two(oldmin) + ":" + two(oldsecond); //旧的时间拼接成字符串为了做比较
+    for (var k = 0; k < strOLd.length; k++) {
+
+        var oldstrb = parseInt(strOLd.charAt(k));
+        var divb = oLi[k].getElementsByTagName('div')[0];
+        if (isNaN(oldstrb)) { //:转换成数字返回值为NaN，isNaN判断数字返回false
+            divb.getElementsByTagName('img')[0].src = './img/colon.jpg';
+
+        } else { //改变默认值为当前时间
+            divb.getElementsByTagName('img')[0].src = './img/' + oldstrb + '.jpg';
+            divb.getElementsByTagName('img')[1].src = './img/' + oldstrb + '.jpg';
+        }
+    }
+    setInterval(clock, 1000)
+
+    function clock() {
+        var newTime = new Date();
+        var newhour = newTime.getHours();
+        var newmin = newTime.getMinutes();
+        var newsecond = newTime.getSeconds();
+        var newStr = two(newhour) + ":" + two(newmin) + ":" + two(newsecond); //将时间拼接成字符串 在一个一个取出
+
+        for (var i = 0; i < newStr.length; i++) {
+            var oldstr = parseInt(strOLd.charAt(i));
+            var str = parseInt(newStr.charAt(i));
+            var div = oLi[i].getElementsByTagName('div')[0];
+            if (isNaN(str)) { //:转换成数字返回值为NaN，isNaN判断数字返回false
+                div.getElementsByTagName('img')[0].src = './img/colon1.jpg';
+
+            } else { //改变默认值为当前时间
+                para = document.createElement("img");
+                div.removeChild(div.getElementsByTagName('img')[0]);
+                div.appendChild(para);
+                div.getElementsByTagName('img')[1].src = './img/' + str + '.jpg';
+            }
+            oLi[i].getElementsByTagName('div')[0].style.top = '0'; //下次动画发生前还原top值，放在这里为了解决突然的替换
+        }
+        // alert(strOLd.charAt(7) + ':' + newStr.charAt(7))
+        for (var j = 0; j < newStr.length; j++) {
+            var diva = oLi[j].getElementsByTagName('div')[0];
+            if (strOLd.charAt(j) != newStr.charAt(j)) { //动画发生判断
+                doMove(oLi[j].getElementsByTagName('div')[0], "top", 10, -172, function() {
+                    for (var m = 0; m < newStr.length; m++) { //循环取出
+                        para1 = document.createElement("img"); //创建元素
+                        // oLi[i].getElementsByTagName('div')[0].style.top = '0';//放在这里会出现交替
+                        diva.appendChild(para1); //追加元素img
+                        diva.getElementsByTagName('img')[2].src = './img/' + str + '.jpg'; //为添加的元素添加图片地址，appendChild 不可以直接添加元素的属性，可以用innerhtml代替
+                        diva.removeChild(div.getElementsByTagName('img')[0]); //添加一个就要移除一个保持个数一致
+                    }
+                })
+            }
+
+
+        }
+        setTimeout(function() { //这里:闪动         
+            oLi[2].getElementsByTagName('div')[0].getElementsByTagName('img')[0].src = "./img/colon.jpg";
+            oLi[5].getElementsByTagName('div')[0].getElementsByTagName('img')[0].src = "./img/colon.jpg";
+        }, 500)
+        strOLd = newStr; //时间更新
+    }
+</script>
+
+</html>

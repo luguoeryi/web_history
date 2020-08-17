@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{ height: 30px; border: 1px solid #000; }
+			div[miaov]{ background: red; }  /* 纯属性选择器  */
+			div[miaov=leo]{ background: blue; }
+			div[miaov~=old]{ font-weight: bold; color: gold; }  /* 词列表 */
+			div[miaov^=x]{ color: #fff; background: #000; } /* 开头 */
+			
+			li[yang$=s]{ background: yellow; }  /* s结束 */
+			li[yang*=m]{ border: 2px solid red; }  /* 包含m */
+			li[you|=le]{ color: red; font-weight: bold; }  /* le- 开头 或单独 le */
+		</style>
+	</head>
+	<body>
+		<div miaov="leo">1</div>
+		<div miaov="dpl old">2</div>
+		<div miaov="zm">3</div>
+		<div miaov="xm">4</div>
+		
+		<ul>
+			<LI yang="amd">5</LI>
+			<LI yang="ams">6</LI>
+			<LI yang="amc">7</LI>
+			<LI yang="ama">8</LI>
+			
+			<li you="le-s-a">fd</li>
+			<li you="le">df</li>
+			<li you="ds-le">df</li>
+			<li you="le">df</li>
+		</ul>
+	</body>
+</html>

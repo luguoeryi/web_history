@@ -1,0 +1,23 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title></title>
+		<script>
+			var arr = ['杨','张','李'];
+			//arr.splice(1,1)  从第零个开始删除一个   删除
+			//arr.splice(1,2,'你好')   从第一个开始替换两个字，替换
+			//arr.splice(1,2,'你好','是的') 从第一个开始替换两个字， 替换
+			//arr.splice(1,0,'你好','你全家好')  添加
+			var orr = ['1','2','2','4','2'];
+			for(var i=0;i<orr.length;i++){
+				for(var j=i+1;j<orr.length;j++){
+					if(orr[i]==orr[j]){
+						orr.splice(j,1)
+						j--;
+					}
+				}
+			}
+			alert(orr)
+		</script>
+	</head`>
+</html`>

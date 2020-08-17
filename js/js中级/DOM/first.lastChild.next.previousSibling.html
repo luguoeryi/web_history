@@ -1,0 +1,31 @@
+﻿<!doctpy html>
+<html>
+	<head>
+		<title>first.lastChild.next.previousSibling</title>
+		<script>
+			window.onload = function(){
+				var oUl = document.getElementById('ul1');
+				//oUl.firstElementChild.style.background  = 'red';
+				var oFirst = oUl.firstElementChild || oUl.firstChild;      //第一个子节点 first
+					oFirst.style.background = 'red';
+				var oLast = oUl.lastElementChild || oUl.lastChild;			//最后一个子节点 last
+					oLast.style.background = 'yellow';
+				var oNext = oFirst.nextElementSibling || oFirst.nextSibling;	//下一个兄弟节点
+					oNext.style.background = 'blue';
+				var oPrev = oLast.previousElementSibling || oLast.previousSibling;	//上一个兄弟节点
+					oPrev.style.background = 'orange';
+					oUl.children[2].style.background = '#000'; //一般推荐使用 children 
+			};
+		
+		</script>
+	<head>
+	<body>
+		<ul id="ul1" style="border:1px solid green;">
+			<li class="onsi"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>

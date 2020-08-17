@@ -1,0 +1,24 @@
+﻿<html>
+	<head>
+		<title>窗口尺寸与大小</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+		//alert(document.documentElement.clientWidth)  可视区的宽，document.documentElemenr.clientHeight 高，随浏览器窗口变化
+			
+				/* document.onclick = function(){
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;   滚动条的滚动距离scrollTop 火狐需做判断
+					document.title = scrollTop;
+				}; */
+				//alert(document.getElementById('div1').scrollWidth);    //scroll除去边框外的内容宽高；
+				//alert(document.documentElement.offsetHeight) alert(document.body.offsetHeight) 一样推荐 文档宽高=body清零后
+}
+		 alert(document.documentElement.clientWidth)//我的屏幕宽
+		</script>
+	</head>
+	<body style="height:2000px;margin:0;">
+		<div id="div1" style="width:100px;height:100px;padding:10px;border:1px solid red;overflow:hidden;">
+			<div style="width:100px;height:200px;background:blue;"></dvi>
+		</div>
+	</body>
+</html>

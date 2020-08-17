@@ -1,0 +1,30 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>作用域1</title>
+		<script> 
+		/* 1. var str = '';
+		function fn1(){
+			var a = '大鸡腿'     //要获取局部数据可巧妙利用‘局部可以修改全局’
+			str = a;
+		}
+		fn1();             //需先让其内部执行
+		alert(str);  */  
+
+		//2    在函数内调用函数 ，加传参
+		function fn2(){
+			var a = '我是一颗小小的石头';
+			fn3(a);
+		}
+		
+		fn2();
+		                                  // 注 在火狐中作用域被包着则无法解析 如：被for if
+		function fn3(b){
+			alert(b);
+		}
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

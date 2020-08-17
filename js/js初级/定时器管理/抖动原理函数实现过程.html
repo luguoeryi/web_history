@@ -1,0 +1,27 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>你好年后你好</title>
+		<style>
+		img{width:180px;position:absolute;left:550px;top:150px;}
+		#img1{left:300px;}
+		</style>
+		<script type="text/javascript" src="zuanshu.js"></script>
+		<script>
+		window.onload = function(){
+			var oImg = document.getElementsByTagName('img');
+			oImg[0].onclick = fnShake;
+			oImg[1].onclick  = fnShake;
+			
+		}
+		function fnShake(){
+			var _this = this;
+			shake(_this,'left',20,50,function(){shake(_this,'top',20,50)});  //对象 方向 幅度 时间 回调函数
+		}
+		</script>
+	</head>
+	<body>
+	<img src="img/1.jpg" />
+	<img id="img1" src="img/3.png" />
+	</body>
+</html>

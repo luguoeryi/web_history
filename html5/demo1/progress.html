@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+	<head>	
+    	<title>进度条</title>
+        <meta charset="utf-8">
+        <script>
+			window.onload = function(){
+				var oPr = document.getElementsByTagName('progress')[0];
+				var sPan = 	oPr.getElementsByTagName('span')[0];
+				
+				var num = 0;
+				
+				var timer = null;
+				
+				timer = setInterval(function(){
+					num++;
+					
+					oPr.value = num ;
+					sPan.innerHTML = num;
+					if(num == oPr['max']){
+						clearInterval(timer);
+						alert(1);
+					}
+				},30);
+			}
+		</script>
+    </head>
+    <body>
+    	<progress max="100" value="76" style="width:300px;">
+        	<span>76</span>%
+        </progress>
+    </body>
+</html>

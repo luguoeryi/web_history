@@ -1,0 +1,46 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>函数返回值</title>
+		<script>
+		/* alert(fn1(7));    //1234567
+		alert(fn1(10));		//12345678910
+		function fn1(n){
+			var arr = [];
+			for(var i=1;i<=n;i++){
+				arr.push(i)
+			}
+			return arr
+		} */
+		
+		/* alert(fn1(2,6));          //2~6
+		function fn1(a,b){
+			var arr = [];
+			for(var i=a;i<=b;i++){
+				arr.push(i)
+			}
+			return arr;
+		} */
+		
+		alert(fn1(6,2));      //2~6
+		alert(fn1(2,10));
+		function fn1(a,b){
+			if(a>b){
+			c=b;
+			d=a;
+			} else{
+				c=a;
+				d=b;
+			}
+			var arr = [];
+			for(var i=c;i<=d;i++){
+				arr.push(i)
+			}
+			return arr;
+		}
+		</script>
+	</head>
+	<body>
+		<input id="btn1" type="button" value="按钮" />
+	</body>
+</html>

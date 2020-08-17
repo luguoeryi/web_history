@@ -1,0 +1,138 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>时间</title>
+		<meta charset="utf-8" />
+		<link href="reset.css" rel="stylesheet" type="text/css" />
+		<style>
+		*{margin:0;padding:0;} 
+		li{list-style:none;float:left;} 
+		#cont{margin:82px auto;border:5px solid #fff;width:640px;overflow:hidden;}
+		#cont .list{width:80px;height:102px;float:left;position:relative;overflow:hidden;} 
+		.list div{width:80px;height:204px; position:absolute;left:0px;top:0px;} 
+		img{width:80px;height:102px;}
+		</style>
+		<script src="zuanshu.js"></script>
+		<script>
+		window.onload = function(){
+			var oLi = document.getElementsByTagName('li');
+			var oDiv = document.getElementsByTagName('div');
+			var img1 = [];      //第一张图片 ！2 5
+			var img2 = []; 		//第二张图片 ！2 5
+			var oDivp = [];		//div ！2 5
+			var img25= [];		//第一张图片 2 5
+			for(var i=0;i<oDiv.length;i++){
+				if(i==2 || i==5){
+					img25.push(oDiv[i].getElementsByTagName('img')[0]);
+				} else{
+					img1.push(oDiv[i].getElementsByTagName('img')[0]);
+				}
+			}
+			for(var i=0;i<oDiv.length;i++){
+				if(i==2 || i==5) continue;
+				img2.push(oDiv[i].getElementsByTagName('img')[1]);
+			}
+			for(var i=0;i<oDiv.length;i++){
+				if(i==2 || i==5) continue;
+				oDivp.push(oDiv[i]);
+			}
+			var myTime = new Date();
+			var iHours = myTime.getHours();
+			var iMinu = myTime.getMinutes();
+			var iSec = myTime.getSeconds();
+			var str = num(iHours)+num(iMinu)+num(iSec);
+			for(var i=0;i<str.length;i++){
+				img1[i].src = 'img/'+str.charAt(i)+'.JPG';
+			}
+				setInterval(function(){
+					var myTi = new Date();
+					var iHou = myTi.getHours();
+					var iMi = myTi.getMinutes();
+					var iSe = myTi.getSeconds();
+					var sor = num(iHou)+num(iMi)+num(iSe);
+					var arr = [];
+					for(var i=0;i<sor.length;i++){
+						if(sor.charAt(i)!==str.charAt(i)){
+							arr.push(i);
+						}
+					}
+					str = sor;
+					for(var i=0;i<arr.length;i++){
+						fn1(arr[i])
+					}
+					function fn1(indes){
+						img2[indes].src = 'img/'+sor.charAt(indes)+'.JPG';
+						doMove(oDivp[indes],'top',15,-102,80,function(){
+						img1[indes].src = 'img/'+sor.charAt(indes)+'.JPG';
+						oDivp[indes].style.top = 0+'px';
+						})
+					}
+				},1000);
+				// 闪点
+				var onOff = true;
+				setInterval(function(){
+					onOff = !onOff;
+					for(var i=0;i<img25.length;i++){
+					onOff ? img25[i].src = 'img/colon1.JPG' : img25[i].src = 'img/colon.JPG'
+				} 
+				},500);
+		};	
+	
+		function num(v){
+			return v<10 ? '0'+v : ''+v;
+		}
+		</script>
+	</head>
+	<body bgcolor="#000">
+		<ul id="cont">
+			<li class="list">
+				<div>
+					<img src="img/0.JPG" />
+					<img src="img/0.JPG" />
+				</div>
+			</li>
+			<li class="list">
+				<div>
+					<img src="img/0.JPG" />
+					<img src="img/0.JPG" />
+				</div>
+			</li>
+			<li class="list">
+				<div>
+					<img src="img/colon.JPG" />
+					<img src="img/colon1.JPG" />
+				</div>
+			</li>
+			<li class="list">
+				<div>
+					<img src="img/0.JPG" />
+					<img src="img/0.JPG" />
+				</div>
+			</li>
+			<li class="list">
+				<div>
+					<img src="img/0.JPG" />
+					<img src="img/0.JPG" />
+				</div>
+			</li>
+			<li class="list">
+				<div>
+					<img src="img/colon.JPG" />
+					<img src="img/colon1.JPG" />
+				</div>
+			</li>
+			<li class="list">
+				<div>
+					<img src="img/0.JPG" />
+					<img src="img/0.JPG" />
+				</div>
+			</li>
+			<li class="list">
+				<div>
+					<img src="img/0.JPG" />
+					<img src="img/0.JPG" />
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>offsetParent,val()</title>
+        <meta charset="utf-8">
+        <style>
+            div {width: 100px; height: 100px; background: red; position: absolute;}
+        </style>
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+         <script>
+             $(function(){
+                    var disX = 0 ;
+                    var disY = 0 ;
+                $('div').mousedown(function(ev){
+                    disX = ev.pageX - $(this).offset().left ;
+                    disY = ev.pageY - $(this).offset().top ;
+                    $(document).mousemove(function(ev){
+                        var L = ev.pageX - disX ;
+                        var T = ev.pageY - disY ;
+                        if(L<=50){
+                            L = 0;
+                        } else if(T<=50){
+                            T = 0;
+                        }
+                        $('div').css({'left':L,'top':T})
+                    })
+                    $(document).mouseup(function(){
+                        $(document).off();
+                    })
+                    return false;
+                })
+
+             })  
+         </script>
+    </head>
+    <body>
+    1212112
+       <div></div>
+    </body>
+</html>

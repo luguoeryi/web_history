@@ -1,0 +1,30 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>for in 操作对象</title>
+		<script>
+		window.onload = function(){
+			str = '';
+		var num = 0;
+		for(var i in document){
+			str+= num +' '+ [i]+' : '+document[i] +'<br />';
+			num++
+		}
+		 document.body.innerHTML = str;
+		};
+	/* 	var lis = {
+		'name':['a','b','c'],
+		'age':['d','e','f']
+		}
+		for(var y in lis){
+			for(var i=0;i<lis[y].length;i++){
+				alert(lis[y][i])
+			}
+		} */
+	
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title></title>
+        <meta charset="utf-8">
+        <script>
+			window.onload = function(){
+				var oInp = document.getElementById('btn');
+				
+				oInp.onclick = function(){
+					var xhr = null ;                    //打开浏览器  --创建ajax对象
+					if(window.XMLHttpRequest){
+						xhr = new XMLHttpRequest();
+					}else{
+						xhr = ActiveXObject('Microsoft.XMLHTTP');      //兼容ie6 ;
+					}
+						xhr.open('post','12.txt',true);  // 将地址输入地址栏
+						xhr.send();    // 提交
+						//alert(xhr.readyState)  1               
+						xhr.onreadystatechange = function(){   //等待服务器返回数据
+							if(xhr.readyState == 4){
+								if(xhr.status == 200){
+									alert(xhr.responseText);
+								}else{
+									alert('出错了,Err:'+xhr.status);
+								}
+							}	
+						};	
+				};	
+			};
+			
+			/*responseText:ajax请求返回的内容存放在这个属性下。
+			readyState:ajax工作作态。
+			onreadystatechange :当readyState改变时触发。
+			status:服务器状态。*/
+		</script>
+    </head>
+    <body>
+    	<input type="button" value="确定" id="btn" />
+    </body>
+</html>

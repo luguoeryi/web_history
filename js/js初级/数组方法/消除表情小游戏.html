@@ -1,0 +1,107 @@
+<!DOCTPY html>
+<html>
+	<head>
+    	<title>消除表情游戏</title>
+        <meta charset="utf-8" />
+        <style>
+		*{margin:0;padding:0;} li{list-style:none;}
+		#lis{width:800px;height:450px;border:5px solid #00FFFF;background:#FFCC99;margin:10px auto;position:relative;}
+		#cont{width:200px;height:80px;border:5px solid #00FFFF;position:absolute;left:-205px;top:-5px;background:#009999;} #cont li{height:40px;line-height:40px;color:#00FF00;font-size:20px;font-weight:bold;}
+       span{position:absolute;top:0px;left:0px;display:none;padding:15px;cursor:pointer;background:url(img/1.png)center no-repeat;}
+	    </style>
+        <script src="zuanshu.js"></script>
+        <script>
+		window.onload = function(){
+			var oInp = document.getElementsByTagName('input')[0];
+			var ospun = document.getElementsByTagName('span')[0];
+			var oLi = document.getElementsByTagName('li');
+			var oCon = document.getElementById('lis');
+			var oSpan = document.getElementsByTagName('li');
+			var oImg = oCon.getElementsByTagName('img')[0];
+			var onSff = true;
+				oInp.onclick = function(){
+					if(!onSff) return;
+					onSff = false;
+					oLi[0].innerHTML = '得分:'+0+'分';
+					oLi[1].innerHTML = '失分:'+0+'分';
+					var timer=null;
+					var onOff = true;
+					var num = 0;//d
+					var onm = 0; //点击
+					var shi = 0; //shiba
+					var time = 130;
+					var ununs = true;
+					oInp.value='游戏进行中';
+					opacity(oInp,100,5,30)
+					timer = setInterval(function(){
+					if(!onOff) return;
+					onOff = false;
+					num++;
+					ospun.style.background = 'url(img/'+Math.ceil(Math.random()*11)+'.png) center no-repeat';
+					ospun.style.top = 0+'px';
+					ospun.style.display = 'block';
+					ospun.style.left = Math.round(Math.random()*750+20)+'px';
+					doMove(ospun,'top',10,425,time,function(){
+						ospun.style.display = 'none';
+						shake(oCon,'top',20,25,function(){
+							shi++;
+							oLi[1].innerHTML = '失分:'+shi*5+'分';
+							if(num==20){
+								clearInterval(timer)
+								fn1();
+								oInp.value='开始游戏';
+								opacity(oInp,49,5,30)
+								onSff = true;							
+							}
+							onOff = true;
+						});
+					});
+					ospun.onclick = function(){
+						if(!ununs) return;
+						ununs = false;
+						ospun.style.background = 'url(img/qq.png) center no-repeat';
+						doMove(ospun,'top',6,ospun.offsetTop,100);
+						shake(ospun,'left',16,25,function(){
+							ospun.style.display = 'none';
+							time = time-6;
+							onm++;
+							oLi[0].innerHTML = '得分:'+(num*5-shi*5)+'分';
+							if(num==20){
+								if(onm==20){
+									alert('恭喜您顺利通过成为王牌冠军GO~ ~！');
+								} else{
+									fn1();
+								}
+								clearInterval(timer)
+								oInp.value='开始游戏';
+								opacity(oInp,49,5,30)
+								onSff = true;		
+							}
+							onOff = true;
+							ununs = true;
+						})
+					}
+						function fn1(){
+							if(onm<=14) alert('游戏已经结束哦，您的得分是'+onm*5+'分，属于初级选手，再接再厉哦');
+							if(onm>14 && onm<=17) alert('游戏已经结束哦，您的得分是'+onm*5+'分，属于中级选手，再接再厉哦');
+							if(onm>17 && onm<20) alert('游戏已经结束哦，您的得分是'+onm*5+'分，属于高级选手，再接再厉哦');
+							if(onm==20) alert('游戏已经结束哦，您的得分是'+onm*5+'分，属于王牌选手，GOOD~ ~');
+						}
+					},100);
+				};
+		};
+		</script>
+    </head>
+    <body style="text-align:center;background:#666666;">
+    	<h1 style="color:#CCCCCC;margin:30px 0 10px 0;">你的鼠标有多快百分游戏</h1>
+        <input  type="button" value="开始游戏" />
+        <div id="lis">
+        	<span></span>
+			<ul id="cont" style="border-right:none;">
+            	<li>得分:0分</li>
+                <li>失分:0分</li>
+			</ul>
+        </div>
+      
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>绘制圆</title>
+        <meta charset="utf-8">
+        <style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>	
+        <script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				
+				var oGC = oC.getContext('2d');
+				
+				oGC.moveTo(200,200);
+				oGC.arc(200,200,150,0,90*Math.PI/180,false); 
+				//x,y,半径，起始弧度，结束弧度，旋转方向
+				oGC.stroke();	
+			};
+		</script>	
+    </head>
+    <body>
+    	<canvas id="c1" width="400" height="400">
+        	<span>您的浏览器不支持canvas</span>
+        </canvas>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>事件默认行为</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+			/* document.onkeydown = function(){
+				return false;  阻止按钮动作
+			}  */
+			document.oncontextmenu = function(){
+				return false;            // 阻止系统默认右键菜单              
+			};
+
+		};
+		</script>
+	</head>
+	<body style="height:2000px;">
+	</body>
+</html>

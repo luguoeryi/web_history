@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			input{ width: 100px; height: 30px; margin-top: 20px; }
+			input:enabled{ color: green; } /* 可编辑状态 */
+			input:disabled{ color: #ccc; } /* 不可编辑 */
+		
+			p~h1{ background: red; } /* 找到p后面的兄弟标签 */
+		</style>
+	</head>
+	<body>
+		<input type="text" value="请输入内容"/>
+		<br />
+		<input type="text" value="已经选中" disabled />
+		
+		<br />
+		<br />
+		<br />
+		
+		<div>
+			<h1>h1</h1>
+			<h1>h1</h1>
+			<p>p</p>	
+			<h1>h1</h1>
+			<h2>h2</h2>
+			<h1>h1</h1>
+		</div>
+	</body>
+</html>

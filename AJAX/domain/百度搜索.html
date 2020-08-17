@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>模仿百度搜索</title>
+        <meta charset="utf-8">
+        <style>
+			*{ margin:0; padding:0; }
+			#q{ width:290px; height:30px; display:block; background:white; border:1px solid #FC0; margin:50px auto 0; padding:0 5px; line-height:30px; font-size:17px; font-weight:900; color:#09C; outline:none; }
+			#ul1{ width:300px; border:1px solid #FC0; margin:0 auto; display:none; overflow:hidden; }
+			#ul1 li{ list-style:none;  }
+			#ul1 li a{ display:block; font-size:15px; height:30px; line-height:30px; text-decoration:none; padding:0 5px;  }
+			#ul1 li a:hover{ background:#FC0; color:white; }
+		</style>
+        <script>
+			window.onload = function(){
+				var oQ = document.getElementById('q');
+				var oUl = document.getElementById('ul1');
+				
+				oQ.onkeyup = function(){
+					if(this.value != ''){
+						var aSc = document.createElement('script');
+						aSc.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+this.value+'&cb=miaov';
+						document.body.appendChild(aSc);
+					}else{
+						oUl.style.display = 'none';
+					}
+						
+				};
+			};
+			function miaov(data){
+				var oUl = document.getElementById('ul1');
+				if(data.s.length){
+					oUl.style.display = 'block';
+					var str = '';
+					for(var i=0;i<data.s.length;i++){
+						str += '<li><a target="_blank" href="https://www.baidu.com/s?wd='+data.s[i]+'">'+data.s[i]+'</a></li>';
+					}
+					oUl.innerHTML = str;
+				}else{
+					oUl.style.display = 'none';
+				}
+			}
+		</script>
+    </head>
+    <body>
+    	<input type="text" id="q" />
+        <ul id="ul1">
+        </ul>
+    </body>
+</html>

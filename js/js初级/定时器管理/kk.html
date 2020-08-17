@@ -1,0 +1,63 @@
+﻿<html>
+<head>
+    <title>作业4-图片自动切换</title>
+    <style>
+        #div1{width: 500px; height: 300px;background-color: red; margin: 50px auto; overflow: hidden; position: relative;}
+        ul{list-style: none;width: 2500px;z-index: 8; position: absolute; top: 0;left: 0;}
+        *{margin: 0;padding: 0;}
+        img{width: 500px; height: 300px;}
+        #ul1 li{width:500px; height: 300px; float: left; display: block; background-color: #000000;}
+        #span1{width: 500px; height:70px; z-index: 9; position: absolute;background-color: yellow;opacity: 0.5; top: 230px;left: 0; text-align: center;line-height: 70px;}
+    </style>
+    <script src="zuanshu.js"></script>
+    <script>
+        window.onload=function(){
+            var oUl=document.getElementById('ul1');
+            var oSpan=document.getElementById('span1');
+            var atext=['我是第一个图','我是第2个图','我是第3个图','我是第4个图','我是第5个图'];
+
+            var num=1;
+            var Direction_down=true;
+            fnTop();
+            var timer=setInterval(fnTop,7800);
+        function fnLeft(){
+            if(num==atext.length){
+                oSpan.innerHTML=atext[0];
+                oUl.style.left=0+'px';
+                oSpan.style.top=230+'px';
+                num=1;
+                Direction_down=true;
+                onOff=true;
+                return;
+            }
+            doMove(oUl,'left',50,-500*num,30,fnTop);
+                num++;
+        }
+            function fnTop(){
+                    if(Direction_down){
+                        oSpan.innerHTML=atext[num-1];
+                        doMove(oSpan,'top',13,300,30,fnLeft);
+                        Direction_down=false;
+                    }else{
+                        doMove(oSpan,'top',25,230,30,fnTop);
+                        Direction_down=true;
+                    }
+            }
+    }
+    </script>
+
+</head>
+    <body>
+        <div id="div1">
+            <ul id="ul1">
+                <li><img src="img/0.1.jpg"/></li>
+                <li><img src="img/0.2.jpg"/></li>
+                <li><img src="img/0.3.jpg"/></li>
+                <li><img src="img/0.4.jpg"/></li>
+                <li><img src="img/0.5.jpg"/></li>
+
+            </ul>
+            <span id="span1">我是第一个图</span>
+        </div>
+    </body>
+</html>

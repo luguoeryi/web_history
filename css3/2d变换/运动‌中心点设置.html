@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{ margin: 0; height: 300px; border: 1px solid #000; }
+			.box{ width: 100px; height: 100px; margin: 100px auto; background: red; transition: 1s; 
+				/*-webkit-transform-origin: right top;*/
+				-webkit-transform-origin: 200px 200px;
+			}
+			body:hover .box{ transform: rotate(360deg) scale(0.5); }
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

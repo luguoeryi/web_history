@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>html5钟表绘制</title>
+		<meta charset="utf-8">
+        <style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+        <script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				
+				var oGC = oC.getContext('2d');
+				
+				var x = 200;
+				var y = 200;
+				var r = 150;	
+				
+				toDraw();
+				
+				setInterval(function(){
+					toDraw();
+				},1000);
+				function toDraw(){
+					var Time = new Date();
+					var iHours = Time.getHours();
+					var iMinutes = Time.getMinutes();
+					var iSeconds = Time.getSeconds();
+					
+					var iHouvalue = (iHours*30-90+iMinutes/2)*Math.PI/180 ;
+					var iMinvalue = (iMinutes*6-90)*Math.PI/180 ;
+					var iSecvalue = (iSeconds*6-90)*Math.PI/180 ;
+					
+					oGC.clearRect(0,0,oC.width,oC.height);
+				
+					Mshow('blue',60,6); //60刻度
+					hidden(r*19/20,'#fff');	//60刻度遮罩
+					
+					Mshow('false',12,30,3); //12刻度
+					hidden(r*18/20,'#fff');	//12刻度遮罩
+					
+					
+					
+					hidden(r*1.5/20,'#ccc');	//圆心遮罩
+					
+					//时分秒针
+					Tshow(iHouvalue,r*10/20,5,'green');
+					Tshow(iHouvalue + 180*Math.PI/180,r*2/20,5,'green');
+					
+					Tshow(iMinvalue,r*15/20,3,'yellow');
+					Tshow(iMinvalue + 180*Math.PI/180,r*3/20,5,'yellow');
+					
+					Tshow(iSecvalue,r*18/20,1,'red');
+					Tshow(iSecvalue + 180*Math.PI/180,r*4/20,1,'red');
+					
+					function Mshow(scolor,num,deg,w){	//刻度
+						oGC.beginPath();	
+						if(scolor != 'false'){
+							oGC.strokeStyle = scolor;
+						}
+						for(var i=0;i<num;i++){
+							oGC.moveTo(x,y);
+							oGC.arc(x,y,r,i*deg*Math.PI/180,(i+1)*deg*Math.PI/180,false);
+						}
+						if(w){
+							oGC.lineWidth = w;
+						}
+						oGC.closePath();
+						oGC.stroke();
+					}
+					function hidden(l,color){ //遮罩
+						oGC.beginPath();	
+						oGC.arc(x,y,l,0,360*Math.PI/180,false);
+						oGC.closePath();
+						oGC.fillStyle = color;
+						oGC.fill();
+					}
+					function Tshow(go,l,W,color){	//时分秒针
+						oGC.beginPath();
+						oGC.moveTo(x,y);
+						oGC.arc(x,y,l,go,go,false);
+						oGC.closePath();
+						oGC.lineWidth = W;
+						oGC.strokeStyle = color;
+						oGC.stroke();
+					}
+				}
+				
+				
+			};
+		</script>
+    </head>
+    <body>
+    	<canvas id="c1" width="400" height="400">
+        	<span>您的浏览器不支持canvas</span>
+        </canvas>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>insertBefore</title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var oH2 = document.getElementsByTagName('h2')[0];
+				var oDiv = document.getElementsByTagName('div')[0];
+				var oH1 = document.getElementsByTagName('h1')[0];
+				var oP = document.getElementsByTagName('P')[0];
+				var oH3 = document.getElementsByTagName('h3')[0];
+
+				var oInp = document.getElementsByTagName('input')[0];
+
+				oInp.onclick = function(){
+
+					oDiv.insertBefore(oH2,oP);   被插入的父级.insertBefore(新，被)
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" value="确定" />
+		<h2>h2</h2>
+		<div>
+			<p>p1</p>
+			<h1>h1</h1>
+		</div>
+		<h3>h3</h3>
+	</body>
+</html>

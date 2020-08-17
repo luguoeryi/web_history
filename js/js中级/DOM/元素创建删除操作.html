@@ -1,0 +1,39 @@
+﻿<html>
+	<head>
+		<title>appendChild.insertBefore.removeChild</title>
+		<script>
+			window.onload = function(){
+				var oText = document.getElementsByTagName('input')[0];
+				var oBtn = document.getElementsByTagName('input')[1];
+				var oUl = document.getElementsByTagName('ul')[0];
+				/* oBtn.onclick = function(){                //创建元素 默认在后面节点
+					var oLi = document.createElement('li');
+					oLi.innerHTML = oText.value;
+					oUl.appendChild(oLi);
+				} */
+				/* oBtn.onclick = function(){              // insertBefore 在指定元素的前面创建元素
+					var oLi = document.createElement('li');
+					oLi.innerHTML = oText.value;
+					oUl.children[0] ? oUl.insertBefore(oLi,oUl.children[0]) : oUl.appendChild(oLi);  //ie7以下
+				} */
+				oBtn.onclick = function(){
+					var oLi = document.createElement('li');  //removeChild 删除指定元素
+					oLi.innerHTML = oText.value;
+					oUl.appendChild(oLi);
+					var oA = document.createElement('a');       
+					oA.innerHTML = '删除'; oA.href = '#';
+					oLi.appendChild(oA);
+					oA.onclick = function(){
+						oUl.removeChild(this.parentNode);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" /><input type="button" value="创建" />
+		<ul>
+		
+		</ul>
+	</body>
+</html>

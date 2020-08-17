@@ -1,0 +1,25 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>获取自身数字及数组匹配</title>
+	</head>
+	<body>
+		<input type="button" value="1" />
+		<input type="button" value="1" />
+		<input type="button" value="1" />
+			<script>
+			var arr = ['A','B','C'];
+			var Bin = document.getElementsByTagName('input');
+			for(var i=0;i<Bin.length;i++){
+					Bin[i].bac = 0;
+					Bin[i].onclick = function (){
+						this.value = arr[this.bac];
+						this.bac++;
+						if(this.bac===arr.length){
+						this.bac = 0;
+						}
+						};
+					};
+		</script>
+	</body>
+</html>

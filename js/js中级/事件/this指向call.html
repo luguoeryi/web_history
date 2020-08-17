@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title></title>
+		<script>
+		window.onload = function(){
+			function fn1(){
+				alert( this );    //ie 6 7 8 9 10指向window
+			}
+			//fn1.call(document,10,20);  如果第一个参数为null;则为默认指向  第二个开始才是原函数参数列表
+			 bind(document,'click',fn1)
+		};
+		function bind(obj,evname,fn){
+			if(obj.addEventListener){
+				obj.addEventListener(evname,fn);
+			} else{
+				obj.attachEvent('on'+evname,function(){
+					fn.call(obj);
+				});
+			}
+		}
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

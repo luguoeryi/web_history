@@ -1,0 +1,18 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>作用域1</title>
+		<script> 
+		var a = 1;
+		function fn1(a){   //参数
+			alert(a);     //传参进来后预解析找到 a= ...  想当于 var
+			 a = 2;       //修改本身 a=2
+		}
+		fn1();
+		alert(a);   //1
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

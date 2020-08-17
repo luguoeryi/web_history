@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>阻止,停止操作</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+			   
+         $('div').eq(0).click(function(){  //delay() 延迟
+                $(this).animate({width:300},2000).delay(1000).animate({height:300},1000)
+         })     
+
+         $('div').eq(1).click(function(){
+                //$('div').eq(0).stop() 默认阻止当前运动
+                //$('div').eq(0).stop(true)   true 阻止所有事件
+                //$('div').eq(0).stop(true,true) 两个true 则是 当前事件直接到目标点
+                 $('div').eq(0).finish()  //当前对象 所有运动停止到目标点
+
+         })                                        
+
+			})
+			
+		</script>
+    </head>
+    <body>
+      <div style="width:100px; height:100px; background:red;;"></div>
+      <div style="width:100px; height:100px; background:green;margin-top:20px;">123</div>
+    </body>
+</html>

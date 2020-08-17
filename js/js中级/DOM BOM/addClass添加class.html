@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>addClassName</title>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementsByTagName('div');
+				addClassName(oDiv[0],'box1');
+				removeClassName(oDiv[1],'tex11');
+			};
+			function addClassName(obj,className){
+				if(obj.className==''){
+					obj.className = className;
+				} else{
+					var arrClassName = obj.className.split(' ');
+					var _indexof = arrIndexof(arrClassName,className);
+					if(_indexof==-1){
+						obj.className += ' '+className;
+					}
+				}
+			}
+			function removeClassName(obj,className){
+				if(obj.className !=''){
+					var arrClassName = obj.className.split(' ');
+					var _indexof = arrIndexof(arrClassName,className);
+					if(_indexof!=-1){
+						arrClassName.splice(_indexof,1)
+						obj.className = arrClassName.join(' ');
+					}
+				}
+			}
+			function arrIndexof(arr,v){
+				for(var i=0;i<arr.length;i++){
+					if(arr[i]==v){
+						return i;
+					}
+				}
+				return -1;
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box1">div1</div>
+		<div class="tex1">div2</div>
+	</body>
+</html>

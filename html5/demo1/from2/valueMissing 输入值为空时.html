@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>validity对象</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<form>
+        	<input id="text" type="text" placeholder="请输入内容" required/>
+            <input type="submit" value="提交" />
+        </form>
+        <script>
+			oText = document.getElementById('text');
+			oText.addEventListener('invalid',fn,false);
+			
+			function fn(ev){
+				alert(this.validity.valueMissing);	  // valueMissing required 使用 当值为空时true
+				ev.preventDefault();
+			}
+		</script>	
+    </body>
+</html>

@@ -1,0 +1,23 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>函数返回值</title>
+		<style>
+		div{width:100px;height:120px;background:red;}
+		</style>
+		<script type="text/javascript" src="zuanshu.js"></script>
+		<script>
+			$(function(){
+				$('btn1').onclick = function(){
+					alert(getStyle($('div1'),'width'));
+					alert(getStyle($('div1'),'height'));
+					alert(getStyle($('div1'),'backgroundColor'));
+				};
+			})
+		</script>
+	</head>
+	<body>
+		<input id="btn1" type="button" value="按钮" />
+		<div id="div1" style="width:200px;"></div>
+	</body>
+</html>

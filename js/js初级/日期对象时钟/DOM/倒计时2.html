@@ -1,0 +1,46 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>你好DOM</title>
+		<meta charset="utf-8">
+		<script>
+		window.onload = function(){
+		/* 时间戳 1970年1月1日到现在的时间 var t = Math.floor(new Date().getTime()/1000)
+		alert(Math.floor(t/86400)+'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+Math.floor(t%60)+'秒') */
+			var now = null;
+			var naw = null;
+			var t = '';
+			var str = '';
+			var timer = null;
+			var Input = document.getElementsByTagName('input');
+			Input[2].onclick = function(){
+				clearInterval(timer)
+				 naw = new Date(Input[0].value);
+				 timer = setInterval(function(){
+				 now = new Date();
+				 t = Math.floor((naw - now)/1000)
+				 if(t>=0){
+					 str = Math.floor(t/86400)+'天'+ Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+Math.floor(t%60)+'秒';
+					 Input[1].value = str;
+				 }else{
+					clearInterval(timer);
+				 }
+				 
+				 },1000)
+				 
+			};
+			
+		};
+		</script>
+		<style>
+		*{margin:0px;padding:0px;}
+		.lo{width:400px;}
+		</style>
+	</head>
+	<body>
+		距离：<input class="lo" type="text" value="November 14,2015 24:0:0" /><br />
+		还剩：<input class="lo" type="text" /><br />
+		<input type="button" value="开始倒计时" />
+		
+	</body>
+</html>

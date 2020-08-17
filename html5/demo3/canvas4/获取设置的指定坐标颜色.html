@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>获取设置的指定坐标值</title>
+		<meta charset="utf-8">
+		<style>
+			body{ background:#000; color:#fff; font-size:30px;}
+			#c1{ background:#fff;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+				oGC.fillRect(0,0,100,100);
+
+				var aImg = oGC.getImageData(0,0,100,100);
+
+				//alert(getXY(aImg,3,5)); 获得指定坐标的像素值
+
+
+				//setXY(aImg,3,5,[255,0,0,255]);	设置制定坐标的像素值
+
+				for(var i=0;i<aImg.width;i++){
+					setXY(aImg,i,5,[255,0,0,255]);
+				}
+
+				oGC.putImageData(aImg,100,100);
+
+				function getXY(obj,x,y){
+					var w = obj.width ;
+					var h = obj.height ;
+					var d = obj.data ;
+
+					var color = [];
+
+					color[0] = obj.data[4*(y*w+x)] ;
+					color[1] = obj.data[4*(y*w+x)+1] ;
+					color[2] = obj.data[4*(y*w+x)+2] ;
+					color[3] = obj.data[4*(y*w+x)+3] ;
+
+					return color ;
+				}
+
+				function setXY(obj,x,y,color){
+					var w = obj.width ;
+					var h = obj.height ;
+					var d = obj.data ;
+
+					obj.data[4*(y*w+x)] = color[0];
+					obj.data[4*(y*w+x)+1] = color[1];
+					obj.data[4*(y*w+x)+2] = color[2];
+					obj.data[4*(y*w+x)+3] = color[3];
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="400" height="400">
+			<span></span>
+		</canvas>
+	</body>
+</html>

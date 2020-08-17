@@ -1,0 +1,33 @@
+﻿<html>
+	<head>
+		<title></title>
+		<style>
+		#qq{width:200px;height:400px;background:gold;margin-left:10px;}
+		#title{width:240px;height:180px;background:pink;position:absolute;left:230px;top:10px;display:none;}
+		</style>
+		<script>
+			window.onload = function(){
+			var qq = document.getElementById('qq');
+			var title = document.getElementById('title');
+			var timer = null;
+			qq.onmouseover = show;
+			qq.onmouseout = hide;
+			title.onmouseover = show;
+			title.onmouseout = hide;
+				function show(){
+					clearInterval(timer)
+					title.style.display = 'block';
+				}
+				function hide(){
+					timer = setTimeout(function(){
+						title.style.display = 'none';
+					},200)
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="qq"></div>
+		<div id="title"></div>
+	</body>
+</html>

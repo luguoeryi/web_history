@@ -1,0 +1,13 @@
+11 17 0
+曲线58
+合成
+	全局阿尔法值
+		-globlAlpha
+	覆盖合成
+		-源：新的图形
+		-目标：已经绘制过的图形
+		-globalCompositeOperation属性
+			》soure-over  destination-over  source-atop
+			》destination-atop  source-in  destination-in
+			》soure-out  destination-out  lighter
+			》copy xor

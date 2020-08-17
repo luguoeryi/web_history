@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title></title>
+        <meta charset="utf-8">
+        <script src="JSON.js"></script>
+        <script src="ajax.js"></script>
+        <script>
+			window.onload = function(){
+				var oInp = document.getElementById('btn');
+				
+				oInp.onclick = function(){
+					//ajax('post' ,'getNews.php' ,'' , fn1);
+					ajax({
+						'url':'getNews.php',
+						'success':fn1	
+					});
+					setInterval(function(){
+						ajax({
+							'url':'getNews.php',
+							'success':fn1	
+						});
+					},1000);
+				};
+				function fn1(date){
+					var dates = JSON.parse(date);
+					var html = '';
+					for(var i=0;i<dates.length;i++){
+						html += '<li><a href="">'+dates[i]['title']+'</a>&nbsp;[<span>'+dates[i]['Date']+'</span>]</li>';
+					}
+					var oUl = document.getElementById('ul1');
+					oUl.innerHTML = html;
+				}
+			};
+		</script>
+    </head>
+    <body>
+    	<input type="button" value="提交" id="btn" />
+        <ul id="ul1"></ul>
+    </body>
+</html>

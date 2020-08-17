@@ -1,0 +1,39 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title> 随机生成100个0~1000不重复的整数</title>
+		<script>
+			var str = [];
+			for(var onOFF = true;onOFF;){
+			str.push(Math.round(Math.random()*1000));
+			 	for(var j=0;j<str.length;j++){
+					for(var y=j+1;y<str.length;y++){
+						if(str[j]==str[y]){
+							str.splice(y,1);
+							y--;
+							if(str.length>=100){
+							str.length=100
+								onOFF = false;
+							}
+						}
+					}
+				} 
+			}
+			
+
+		for(var i=0;i<str.length;i++){
+					for(var y=i+1;y<str.length;y++){
+						if(str[i]==str[y]){
+							str.splice(y,1);
+							y--;
+							if(str.length>=100){
+							str.length=100
+								onOFF = false;
+							}
+						}
+					}
+				} 
+			alert(str.length);  //待解决
+		</script>
+	</head>
+</html>

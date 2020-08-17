@@ -1,0 +1,102 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>自定义字体形状</title>
+		<meta charset="utf-8" />
+		<style>
+			*{margin:0;padding:0;} li{list-style:none;} 
+			#cont{font-family:微软雅黑;width:539px;height:514px;background:url(images/0.01.png);margin:0 auto;position:relative;}
+			#Op1{width:390px;height:267px;position:absolute;left:0px;top:88px;overflow:auto;}  #Op2{position:absolute;top:210px;left:1px;display:none;}
+			#Op3{width:100px;position:absolute;left:0px;top:360px;} #Op4{width:390px;height:95px;position:absolute;left:0px;top:386px;}
+			#Op2 li{width:120px;height:24px;cursor:pointer;}#Op3 li{float:left;}
+			#Op5{width:75px;height:20px;position:absolute;left:310px;top:485px;cursor:pointer;}
+			.cls{overflow:hidden;} .cl{margin-left:4px;letter-spacing:8px;}
+			.fl{float:left;width:24px;text-align:center;}
+		</style>
+		<script>
+			window.onload = function(){
+				var arr = ['images/0.1.png','images/0.2.png','images/0.3.png','images/0.4.png','images/0.5.png'];
+				var att = ['足球字体','永远爱你','我大大靠','爱属于你','我剁死你'];
+				var Op = document.getElementsByTagName('p');
+				var oUl0 = document.getElementById('Op2')
+				var oUl1 = document.getElementById('Op3')
+				var oLi = oUl0.getElementsByTagName('li'); //背景图片
+				var oBio = oUl1.getElementsByTagName('li'); //选择表情
+				var otext = document.getElementById('Op4'); //文本输入框
+				var ons = null;
+				var onOff = false;
+				for(var i=0;i<oLi.length;i++){
+						oLi[i].index = i;
+					oLi[i].style.background = 'url('+arr[i]+')';
+					oLi[i].onmouseover = function(){
+						onOff = false;
+						ons = this.index;
+						for(var i=0;i<oLi.length;i++){
+							oLi[i].style.border = 'none';
+						}
+						oLi[ons].style.border = '1px solid green';
+						oBio[1].innerHTML = att[ons];
+					};
+					oLi[i].onclick = function(){
+						onOff = true;
+						oUl0.style.display = 'none';
+					};
+					oLi[i].onmouseout = function(){
+						this.style.border = 'none';
+						if(onOff){
+							oBio[1].innerHTML = att[ons];
+						} else{
+							oBio[1].innerHTML = '默认字体';
+						}
+					};
+				}
+				oBio[0].onclick = function(){
+				if(oUl0.style.display == 'block'){
+					oUl0.style.display = 'none';
+				} else{
+					oUl0.style.display = 'block';
+				}
+					
+				};
+				oUl0.onmouseout = function(){oUl0.style.display = 'none';};
+				oUl0.onmouseover = function(){oUl0.style.display = 'block';};
+				Op[1].onclick = function(){
+					var lis = [];
+					if(!otext.value){ alert('输入您想说的~ ~'); } 
+					if(onOff){
+						for(var i=0;i<otext.value.length;i++){
+							lis.push('<li class="fl">'+otext.value[i]+'<img src="'+arr[ons]+'" /></li>');
+						} 
+						Op[0].innerHTML +='<ul class="cls">'+lis.join('')+'</ul>';
+					} else{
+						for(var i=0;i<otext.value.length;i++){
+							lis.push( otext.value[i] );
+						} 
+						Op[0].innerHTML +='<p class="cl">'+lis.join('')+'</p>';
+					}
+					otext.value = '';
+				};
+			};
+		</script>
+	</head>
+	<body bgcolor="#EAB793">
+		<div id="cont">
+			<div id="Op1">
+				<p style="width:100%;"></p>
+			</div>
+			<ul id="Op2">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul id="Op3">
+				<li style="width:25px;height:23px;cursor:pointer;"></li>
+				<li style="color:#2E6FC4;font-size:15px;font-weight:bold;margin-top:4px;">默认字体</li>
+			</ul>
+			<textarea id="Op4" style="text-align:justify;display:block;font-family:微软雅黑;font-size:15px;line-height:22px;"></textarea>
+			<p id="Op5"></p>
+		</div>
+	</body>
+</html>

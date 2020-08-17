@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{ background: #000;  text-align: center; }
+			h1{ font: bold 100px/200px "微软雅黑"; display: inline-block; color: rgba(255,255,255,0.3);
+				background: -webkit-linear-gradient(-35deg, rgba(255,255,255,0) 50px, rgba(255,255,255,0.8) 70px, rgba(255,255,255,1) 100px, rgba(255,255,255,0.8) 130px, rgba(255,255,255,0) 150px) no-repeat -300px 0;
+				-webkit-background-clip: text; 
+				/*transition: 4s ease;*/
+			}
+			h1:hover{
+				background-position: 1000px 0;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				var h1 = document.getElementsByTagName('h1')[0];
+				var iLeft = -300;
+				var timer = null;
+				toMove();
+				function toMove(){
+					timer = setInterval(function(){
+						iLeft+=20;
+						if(iLeft >= 1000){
+							iLeft = -300;
+							clearInterval(timer);
+							setTimeout(toMove,2000);
+						}
+						h1.style.backgroundPosition = iLeft+'px 0px';
+					},30);
+					
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<h1>miaov妙味课堂</h1>
+	</body>
+</html>

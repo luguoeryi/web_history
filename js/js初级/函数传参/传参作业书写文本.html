@@ -1,0 +1,77 @@
+﻿<!DOTPY HTML>
+<html>
+	<head>
+		<title>书写文本</title>
+		<style>
+			body,ul,li,h2{margin:0;padding:0;} li{list-style:none;} body{background:#222;}
+			#list{width:600px;overflow:hidden;margin:100px auto;background:#fff;}
+			#list h2{width:100%;height:30px;line-height:28px;font-size:15px;background:green;color:#fff;text-indent:20px;}
+			#list li{width:100%;height:40px;border-bottom:1px solid #BDDEDE;font-size:15px;}
+			li .l_do{width:300px;height:100%;line-height:40px;padding-left:20px;} li .l_do span{float:left} li .l_do em{float:left;margin-top:7px;cursor:pointer;} 
+			li .l_dt .green{color:green;border:none;background:#fff;cursor:pointer;height:25px;} .l_dt input{height:28px;margin-top:4px;}
+			li .l_dt .green:hover{background:#74B743;color:#fff;}li .l_dt{display:none;padding-left:20px;}
+			li .l_dt .yellow:hover{border-color:#EFC67B;}
+		</style>
+		<script>
+		window.onload = function(){
+		var oLi = document.getElementsByTagName('li');
+			
+		fn1(oLi[0],'妙味实体课程');
+		fn1(oLi[1],'妙味远程课程');
+		};
+		
+		function fn1(Li,sun){
+		var oDiv = Li.getElementsByTagName('div');
+		var sPan = oDiv[0].getElementsByTagName('span')[0];
+		var oEm = oDiv[0].getElementsByTagName('em')[0];
+		var bin = oDiv[1].getElementsByTagName('input');
+		
+		oEm.onclick = function(){
+			oDiv[0].style.display = 'none';
+			oDiv[1].style.display = 'block';
+		};
+		
+		bin[1].onclick = function(){
+			oDiv[0].style.display = 'block';
+			oDiv[1].style.display = 'none';
+			sPan.innerHTML= bin[0].value;
+		}
+		
+		bin[2].onclick = function(){
+			oDiv[0].style.display = 'block';
+			oDiv[1].style.display = 'none';
+			sPan.innerHTML= sun;
+		};
+		
+		}
+		
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<h2>分类名称</h2>
+			<li>
+				<div class="l_do">
+					<span>妙味实体课程</span>
+					<em><img src="images/104800.png" /></em>
+				</div>
+				<div class="l_dt" >
+					<input class="yellow" type="text" value="妙味实体课程" />
+					<input class="green" type="button" value="保存" />
+					<input class="green" type="button" value="取消" />
+				</div>
+			</li>
+			<li>
+				<div class="l_do">
+					<span>妙味远程课程</span>
+					<em><img src="images/104800.png" /></em>
+				</div>
+				<div class="l_dt" >
+					<input class="yellow" type="text" value="妙味远程课程" />
+					<input class="green" type="button" value="保存" />
+					<input class="green" type="button" value="取消" />
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>

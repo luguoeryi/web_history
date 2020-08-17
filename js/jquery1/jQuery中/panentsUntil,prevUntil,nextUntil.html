@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title></title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+			
+			   //$('span').nextUntil('p').css('background','red')   //下面元素至p之前截止
+
+         //$('span').prevUntil('div').css('background','green')   到选中的元素之前截止
+         $('.ul1').parentsUntil('div').css('background','yellow')  //上面的祖先及到div之前截止
+         
+
+          $('.ul1').parents('div').css('background','yellow')  ////到div
+			})
+			
+		</script>
+    </head>
+    <body class="box">
+       <p>p</p>
+       <div>div</div>
+       <p>
+       p
+          <div>
+            <h2>
+                <ul class="ul1">
+                  <li>li</li>
+                  <li>li</li>
+                  <li>li</li>
+                </ul>
+            </h2>
+          </div>
+       </p>
+       <span>span</span>
+       <h2>h2</h2>
+       <h2>h2</h2>
+       <p>p</p>
+    </body>
+</html>

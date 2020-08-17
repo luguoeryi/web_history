@@ -1,0 +1,45 @@
+<div id="web">
+	<div id="con">
+		<ul>
+			<li></li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+	<div class="nav" style="width:72;height:12px;">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+</div>
+<script type="text/javascript">
+var i=0; //存放导航条下标
+var time=0;//存放定时函数
+function junmper(){
+	i++;
+	if(i==3)
+	    i=0;
+	$(".nav ul li").eq(i).css("background","blue")
+				.siblings().css("background","#fff");
+				
+	$(".con ul li").eq(i).fadeIn(400)
+					.siblings().hideOut(400);
+}
+time = setInterval("junmper()",3000);
+	$(".nav ul li").hover(function(){
+		clearInterval(time);
+		i = $(this).index();
+		$(".nav ul li").eq(i).css("background","blue")
+				.siblings().css("background","#fff");
+		$(".con ul li").eq(i).fadeIn(400)
+					.siblings().hideOut(400);
+	},function(){
+	time = setInterval("junmper()",3000);
+	})
+ 
+
+
+</script>

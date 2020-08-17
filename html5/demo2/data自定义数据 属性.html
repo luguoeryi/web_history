@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>data自定义数据</title>
+        <meta charset="utf-8">
+        <script>
+			window.onload = function(){
+				var oDiv = document.getElementById('list');
+				
+				//alert(oDiv.getAttribute('title'));
+				alert(oDiv.dataset.titleOn);
+			};
+		</script>
+    </head>
+    <body>
+    	<div id="list" class="box1 box2 box3" data-title-on="hello">div</div><!-- 自定义属性前加 data-  -->
+    </body>
+</html>

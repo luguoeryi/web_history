@@ -1,0 +1,55 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>for循环应用</title>
+		<style>
+		.stl{
+		width:150px;height:150px;
+		background:pink;
+		color:#fff;
+		text-align:center;
+		line-height:150px;
+		position:absolute;
+		left:0px;
+		top:0px;
+		}
+		</style>
+		<script>
+		window.onload = function () {
+		
+		/* var one = document.getElementsByTagName('div');
+		var col = ['blue','yellow','red','green','gray','pink','blue','black','orange','gold']
+			for (var i=0;i<10;i++) {
+			document.body.innerHTML += '<div>'+ i +'</div>';
+			}
+			for (var i=0;i<one.length;i++) {
+			one[i].style.top = i*160 + 'px';
+			one[i].style.width = i*10 + 'px';
+			one[i].style.background = col[i]
+			} */
+			
+			/* var Box = document.getElementsByTagName('div');
+			
+			for (var i=0;i<20;i++) {
+				document.body.innerHTML +='<div style="left:'+(i%5)*160+'px; top:'+parseInt(i/5)*160+'px;">'+i+'</div>';
+			} */
+			
+			var one = document.getElementsByTagName('div');
+			
+			for (var i=1;i<22;i++) {
+				document.body.innerHTML += '<div class="stl">'+i+'</div>';
+			}
+			for(var i=0;i<21;i++) {
+			one[i].style.left = i*150+'px';
+		    one[i].style.top = i*150+'px';
+			}
+		
+		
+			
+		};
+		</script>
+	</head>
+	<body>
+     
+	</body>
+</html>

@@ -1,0 +1,88 @@
+﻿<html>
+	<head>
+		<title></title>
+		<style>
+			*{margin:0;padding:0;} li{list-style:none;} body{font-size:12px;color:#6E7983;background:#6E7983;}
+			#cont{width:286px;overflow:hidden;margin:150px auto;border:1px solid #FFADAD;background:#fff;padding:2px 5px 5px;}
+			ul{width:48px;float:left;} ul li{text-align:center;cursor:pointer;line-height:26px;height:26px;border:1px solid #FFADAD;background:url(img/k.1.png);margin-top:3px;}
+			p{width:190px;height:209px;float:left;margin-top:5px;}
+		</style>
+		<script>
+		window.onload=function(){
+		
+		var oDiv = document.getElementById('cont');
+		var oLi = oDiv.getElementsByTagName('li');
+		var oimg = oDiv.getElementsByTagName('img')[0];
+		var num = 0;
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].index = i;
+				oLi[i].onmouseover = function(){
+					clearInterval(timer);
+					num = this.index;
+					fn1();
+				}
+				oLi[i].onmouseout = val;
+			}
+				oimg.onmouseover = function(){
+					clearInterval(timer);
+				}
+				oimg.onmouseout = function(){
+					val();
+				}
+			function fn1(){
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].style.background = 'url(img/k.1.png)';
+				oLi[i].style.color = '#6E7983';
+			}
+				oLi[num].style.background = 'url(img/k.2.png)';
+				oLi[num].style.color = '#fff';
+				oimg.src = 'img/0.'+(num+1)+'.png';
+			}
+			
+		var timer = null;
+		var ons = true;
+			function val(){
+				timer = setInterval(function(){
+					if(ons){
+						num++;
+						if(num==13){
+							ons=false;
+						}
+					} else{
+						num--;
+						if(num==0){
+							ons=true;
+						}
+					}
+					fn1();
+				},800)
+			}
+			val();
+	
+		};
+		</script>
+	</head>
+	<body>
+		<div id="cont">
+			<ul>
+				<li style="background:url(img/k.2.png);color:#fff;">连衣裙</li>
+				<li>雪纺</li>
+				<li>T恤</li>
+				<li>铅笔裤</li>
+				<li>婚纱</li>
+				<li>外套</li>
+				<li>连体裤</li>
+			</ul>
+			<p><img src="img/0.1.png" /></p>
+			<ul>
+				<li>包包</li>
+				<li>凉鞋</li>
+				<li>单鞋</li>
+				<li>太阳镜</li>
+				<li>丝袜</li>
+				<li>帆布鞋</li>
+				<li>情侣装</li>
+			</ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title></title>
+        <meta charset="utf-8">
+        <style>
+			body{ background:#000; }
+			#c1{ background:white; }
+			span{ color:white; }
+		</style>
+        <script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				
+				var oGC = oC.getContext('2d'); //创建2d空间
+				
+				oGC.fillStyle = 'red';   //填充颜色
+				oGC.fillRect(50,50,100,100);	//L T W H 绘制坐标及大小
+				
+				
+				oGC.lineWidth = 10;	//边框大小
+				oGC.strokeStyle = 'blue';	//边框颜色
+				oGC.lineJoin = 'bevel';		//边界样式
+				oGC.strokeRect(50.5,50.5,100,100);	//边框坐标及大小
+				
+				
+				
+			};
+		</script>
+    </head>
+    <body>
+    	<canvas id="c1" width="400" height="400">
+        	<span>不支持canvas的浏览器</span>
+        </canvas>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>attr用法</title>
+        <meta charset="utf-8">
+        <script src="jQuery/jquery-1.11.3.min.js"></script>
+        <script>
+			$(function(){
+	
+				// $('div').filter('.box').css('background','red');  //filter 过滤 
+				
+				$('div').not('.box').css('background','red');   // 与filter相反  不是。。。的干嘛
+				
+			})
+		</script>
+    </head>
+    <body>
+    	<div class="box">fdf</div>
+    	<div>dfd</div>
+    	<div>dfd</div>
+    </body>
+</html>

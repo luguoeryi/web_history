@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>jquery编写选项卡</title>
+        <meta charset="utf-8">
+        <style>
+			*{margin:0; padding:0;} 
+			#div1 div{width:100px; height:100px; border:1px solid red; display:none;} 
+			.active{ background:red;}
+		</style>
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+        <script>
+/*			window.onload = function(){
+				var oDiv = document.getElementById('div1');
+				var oInp = oDiv.getElementsByTagName('input');
+				var aDiv = oDiv.getElementsByTagName('div');
+					
+					for(var i=0;i<oInp.length;i++){
+						oInp[i].index = i;
+						oInp[i].onclick = function(){
+							for(var i=0;i<oInp.length;i++){
+								oInp[i].className = '';
+								aDiv[i].style.display = 'none';
+							}
+							this.className = 'active';
+							aDiv[this.index].style.display = 'block';
+						};
+					}
+				
+			};*/
+			
+		$(function(){
+			$('#div1').find('input').click(function(){
+				$('#div1').find('input').attr('class','');
+				$(this).attr('class','active');
+				$('#div1').find('div').css('display','none');
+				$('#div1').find('div').eq($(this).index()).css('display','block');
+			});
+			
+		})
+		</script>
+    </head>
+    <body>
+    	<div id="div1">
+        	<input class="active" type="button" value="确定" />
+        	<input type="button" value="确定" />
+        	<input type="button" value="确定" />
+            <div style="display:block;">div1</div>
+            <div>div2</div>
+            <div>div3</div>
+        </div>
+    </body>
+</html>

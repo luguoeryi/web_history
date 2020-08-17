@@ -1,0 +1,21 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>透明度封装</title>
+		<meta charset="utf-8" />
+		<style>
+			div{width:100px;height:100px;background:red;position:absolute;left:50%;top:50%;margin-top:-50px;margin-left:-50px;}
+		</style>
+		<script src="zuanshu.js"></script>
+		<script>
+		window.onload = function(){
+			$('div1').onclick = function(){
+				opacity($('div1'),30);
+			};
+		};
+		</script>
+	</head>
+	<body>
+		<div id="div1"></div>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>children获取子节点</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul1');   //一般使用chlidren 来获取元素子节点
+			//alert(oUl.children[0].nodeType)
+			for(var i=0;i<oUl.children.length;i++){
+				oUl.children[i].style.background = 'green';
+			}
+		}
+		</script>
+	<head>
+	<body>
+		<ul id="ul1" style="border:1px solid green;">
+			<li class="onsi"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>

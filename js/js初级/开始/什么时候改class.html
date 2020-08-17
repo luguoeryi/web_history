@@ -1,0 +1,56 @@
+<!DOCTPY HTML>
+<html>
+<head>
+<title>字体缩放</title>
+<script>
+window.onload = function () {
+var obin1 = document.getElementById('bin1');
+var obin2 = document.getElementById('bin2');
+var op1 = document.getElementById('p1');
+var obin3 = document.getElementById('bin3');
+var obin4 = document.getElementById('bin4');
+var sun = 16;
+
+obin2.onclick = function () {
+sun++;/* sun = sun+1; sun+=1; */
+op1.style.fontSize = sun + 'px';
+};
+obin1.onclick = function () {
+sun--;/* sun = sun-1; sun-=1; */
+op1.style.fontSize = sun + 'px';
+};
+obin3.onclick = function () {
+op1.className = 'red';
+};
+obin4.onclick = function () {
+op1.className = 'yellow';
+};
+
+};
+</script>
+<style>
+.red{
+width:400px;
+color:yellow;
+background:red;
+border:1px solid green;
+padding:10px;
+}
+.yellow{
+width:500px;
+color:#ccc;
+background:pink;
+border:5px solid green;
+padding:50px 20px ;
+}
+</style>
+</head>
+<body>
+<input id="bin1" type="button" value="-">
+<input id="bin2" type="button" value="+">
+<input id="bin3" type="button" value="红">
+<input id="bin4" type="button" value="黄">
+<p id="p1">导语：9月22日至28日，习近平主席对美国进行国事访问，并出席联合国成立70周年系列峰会。访问期间，
+中美双方达成共识，以“加强农业创新，促进粮食安全，推动可持续发展”为主题，</p>
+</body>
+</html>

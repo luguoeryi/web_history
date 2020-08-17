@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>getPos·â×°</title>
+		<meta charset="utf-8" />
+		<style>
+			div{padding:20px 40px;}
+			#div1{background:red;position:relative;} #div2{background:green;position:relative;} #div3{background:pink;position:relative;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementsByTagName('div');
+				var iTop = 0;
+				var obj = oDiv[2];
+					while (obj){
+						iTop+=obj.offsetTop;
+						obj = obj.offsetParent;
+					}
+					alert(iTop)
+				var p = getPos(oDiv[2]);
+				alert(p.left)
+			};
+			function getPos(obj){
+				var Pos = {left:0,top:0};
+				while(obj){
+					Pos.left += obj.offsetLeft;
+					Pos.top += obj.offsetTop;
+					obj = obj.offsetParent;
+				}
+					return Pos;
+			};
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				<div id="div3"></div>
+			</div>
+		</div>
+	</body>
+</html>

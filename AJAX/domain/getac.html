@@ -1,0 +1,70 @@
+<html>
+	<head>
+    	<title></title>
+        <meta charset="utf-8">
+        <script>
+			function fn1(data){
+				var oUl = document.getElementById('ul1');
+				var str = '';
+				for(var i=0;i<data.length;i++){
+					var aLi = document.createElement('li');
+					str += '<li>'+data[i]+'</li>' ;
+				}
+				oUl.innerHTML = str ;
+				
+			};
+			function fn2(data){
+				var oUl = document.getElementById('ul2');
+				var str = '';
+				for(var i=0;i<data.length;i++){
+					var aLi = document.createElement('li');
+					str += '<li>'+data[i]+'</li>' ;
+				}
+				oUl.innerHTML = str ;
+				
+			};
+			function fn3(data){
+				var oUl = document.getElementById('ul3');
+				var str = '';
+				for(var i=0;i<data.length;i++){
+					var aLi = document.createElement('li');
+					str += '<li>'+data[i]+'</li>' ;
+				}
+				oUl.innerHTML = str ;
+				
+			};
+		</script>
+        <script>
+			window.onload = function(){
+				var oInp = document.getElementById('btn1');
+				var oInp2 = document.getElementById('btn2');
+				var oInp3 = document.getElementById('btn3');
+				
+				oInp.onclick = function(){
+					var aSc = document.createElement('script');
+					aSc.src = 'getxc.php?callback=fn1';
+					document.body.appendChild(aSc);	
+				};	
+				
+				oInp2.onclick = function(){
+					var aSc = document.createElement('script');
+					aSc.src = 'getxc.php?t=str&callback=fn2';
+					document.body.appendChild(aSc);	
+				};
+				oInp3.onclick = function(){
+					var aSc = document.createElement('script');
+					aSc.src = 'getxc.php?t=str&callback=fn3';
+					document.body.appendChild(aSc);	
+				};
+			};
+		</script>
+    </head>
+    <body>
+    	<input type="button" value="返回数字" id="btn1" />
+        <ul id="ul1"></ul>
+    	<input type="button" value="返回字母" id="btn2" />
+        <ul id="ul2"></ul>
+    	<input type="button" value="返回字母" id="btn3" />
+        <ul id="ul3"></ul>
+    </body>
+</html>

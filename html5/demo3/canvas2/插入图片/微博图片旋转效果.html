@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById('div1');
+				var bTn = document.getElementsByTagName('input');
+				
+
+				var yImg = new Image();
+				yImg.src = oDiv.children[0].src ;
+
+				yImg.onload = function(){
+					show(this);
+				};
+
+				function show(obj){
+					var oC = document.createElement('canvas');
+					var oGC = oC.getContext('2d');
+
+					oC.height = obj.height ;
+					oC.width =  obj.width ;
+					oGC.drawImage(obj,0,0,obj.width,obj.height);
+					oDiv.replaceChild(oC,oDiv.children[0]);
+
+					var iNow = 0;
+
+					for(var i=0;i<bTn.length;i++){
+						(function(i){
+							bTn[i].onclick = function(){
+								i > 0 ? iNow++ : iNow-- ;
+								if(iNow==4){
+									iNow = 0 ;
+								}else if(iNow == -1){
+									iNow = 3 ;
+								}
+								
+								tochange(iNow);
+							};
+						})(i);
+					}
+					
+
+					function tochange(iNow){
+						switch(iNow){
+							case 1:
+								oC.height = obj.width ;
+								oC.width =  obj.height ;
+								oGC.rotate(90*Math.PI/180);
+								oGC.drawImage(obj,0,-obj.height);
+							break;
+							case 2:
+								oC.height = obj.height ;
+								oC.width =  obj.width ;
+								oGC.rotate(180*Math.PI/180);
+								oGC.drawImage(obj,-obj.width,-obj.height);
+							break;
+							case 3:
+								oC.height = obj.width ;
+								oC.width =  obj.height ;
+								oGC.rotate(270*Math.PI/180);
+								oGC.drawImage(obj,-obj.width,0);
+							break;
+							case 0:
+								oC.height = obj.height ;
+								oC.width =  obj.width ;
+								oGC.rotate(360*Math.PI/180);
+								oGC.drawImage(obj,0,0);
+							break;
+						}
+					}
+				};
+				
+
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" value="←" />
+		<input type="button" value="→" />
+		<div id="div1">
+			<img src="2.png" />
+		</div>
+	</body>
+</html>

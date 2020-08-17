@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>html5钟表绘制</title>
+		<meta charset="utf-8">
+        <style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+        <script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				
+				var oGC = oC.getContext('2d');
+				
+				var x = 200;
+				var y = 200;
+				var r = 150;	
+				
+				
+				
+				toDraw();
+				
+				setInterval(function(){
+					toDraw();
+				},1000);
+				function toDraw(){
+					var Time = new Date();
+					var iHours = Time.getHours();
+					var iMinutes = Time.getMinutes();
+					var iSeconds = Time.getSeconds();
+					
+					var iHouvalue = (iHours*30-90+iMinutes/2)*Math.PI/180 ;
+					var iMinvalue = (iMinutes*6-90)*Math.PI/180 ;
+					var iSecvalue = (iSeconds*6-90)*Math.PI/180 ;
+					
+					oGC.clearRect(0,0,oC.width,oC.height);
+				
+					
+					oGC.beginPath();	//60刻度
+					oGC.strokeStyle = 'blue';
+					for(var i=0;i<60;i++){
+						oGC.moveTo(x,y);
+						oGC.arc(x,y,r,i*6*Math.PI/180,(i+1)*6*Math.PI/180,false);
+						
+					}
+					oGC.closePath();
+					oGC.stroke();
+					
+					
+					oGC.beginPath();	//60刻度遮罩
+					oGC.arc(x,y,r*19/20,0,360*Math.PI/180,false);
+					oGC.closePath();
+					oGC.fillStyle = '#fff';
+					oGC.fill();
+					
+					
+					oGC.beginPath();	//12刻度
+					for(var i=0;i<12;i++){
+						oGC.moveTo(x,y);
+						oGC.arc(x,y,r,i*30*Math.PI/180,(i+1)*30*Math.PI/180,false);
+					}
+					oGC.lineWidth = '3';
+					oGC.closePath();
+					oGC.stroke();
+					
+					oGC.beginPath();	//12刻度遮罩
+					oGC.arc(x,y,r*18/20,0,360*Math.PI/180,false);
+					oGC.closePath();
+					oGC.fillStyle = '#fff';
+					oGC.fill();
+					
+					
+					//时针
+					oGC.beginPath();
+					oGC.moveTo(x,y);
+					oGC.arc(x,y,r*10/20,iHouvalue,iHouvalue,false);
+					oGC.closePath();
+					oGC.lineWidth = '5';
+					oGC.strokeStyle = 'green';
+					oGC.stroke();
+					
+					//分针
+					oGC.beginPath();
+					oGC.moveTo(x,y);
+					oGC.arc(x,y,r*15/20,iMinvalue,iMinvalue,false);
+					oGC.closePath();
+					oGC.lineWidth = '3';
+					oGC.strokeStyle = 'yellow';
+					oGC.stroke();
+					
+					//秒针
+					oGC.beginPath();
+					oGC.moveTo(x,y);
+					oGC.arc(x,y,r*18/20,iSecvalue,iSecvalue,false);
+					oGC.closePath();
+					oGC.lineWidth = '1';
+					oGC.strokeStyle = 'red';
+					oGC.stroke();
+				
+				}
+				
+				
+			};
+		</script>
+    </head>
+    <body>
+    	<canvas id="c1" width="400" height="400">
+        	<span>您的浏览器不支持canvas</span>
+        </canvas>
+    </body>
+</html>

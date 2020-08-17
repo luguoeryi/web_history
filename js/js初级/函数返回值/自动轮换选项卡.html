@@ -1,0 +1,115 @@
+﻿<html>
+	<head>
+    	<title></title>
+        <style>
+		*{margin:0px;padding:0px;} li{list-style:none;}
+		#cont{width:288px;overflow:hidden;margin:200px auto;background:#fff;padding:10px;border:1px solid #000;} #ulo{width:162px;} #ulo li{line-height:35px;text-align:center;width:80px;float:left;height:35px;background:#000;color:#FFF;}
+		.list{width:300px;overflow:hidden;display:none;} .list p{float:left;width:202px;height:91px;}  .list ul{width:85px;float:left;} .list ul li{height:30px;line-height:30px;background:#99CCFF;text-align:center;}
+		li:hover{cursor:pointer;}
+		</style>
+		<script>
+		window.onload = function(){
+		var oCon = document.getElementById('ulo');
+		var oDli = oCon.getElementsByTagName('li');   //菜单[]
+		var oDan = document.getElementById('cont');
+		var oDiv = oDan.getElementsByTagName('div');	//更换[]
+		var num = 0;
+			for(var i=0;i<oDli.length;i++){
+				oDli[i].index = i;
+				oDli[i].onclick = function(){
+					num=this.index;
+					fn3();
+				};
+			}
+			function fn3(){
+				for(var i=0;i<oDiv.length;i++){
+					oDiv[i].style.display = 'none';
+					oDli[i].style.background = '#000';
+				}
+				oDiv[num].style.display = 'block';
+				oDli[num].style.background = '#CCFFCC';
+			}
+	
+			fn1(oDiv[1],['images/1.4.png','images/1.5.png','images/1.6.png']);
+			fn1(oDiv[0],['images/1.1.png','images/1.2.png','images/1.3.png']);
+			
+		var time = null;
+		function vat(){
+			time = setInterval(function(){
+				num++;
+				num%=oDiv.length;
+				fn3();
+			},1500);
+		}
+		vat();
+		
+		
+		function fn1(Div,arr){
+			var nus = 0;
+			var oLi = Div.getElementsByTagName('li');
+			var Img = Div.getElementsByTagName('img')[0];
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].index = i;
+				oLi[i].onmouseover = function(){
+					nus=this.index;
+					fn2();
+				};
+			}
+			Img.onmouseover = function(){
+				clearInterval(timer);
+				clearInterval(time);
+			}
+			Img.onmouseout = function(){
+				val();
+				vat();
+			}
+			function fn2(){
+			for(var i=0;i<oLi.length;i++){
+					oLi[i].style.background = '#99CCFF';
+					oLi[i].style.color = '#000';
+				}
+				oLi[nus].style.background = '#99FFFF';
+				oLi[nus].style.color = '#fff';
+				Img.src = arr[nus];
+			}
+		var timer = null;
+		function val(){
+			timer = setInterval(function(){
+				nus++;
+				nus%=oLi.length;
+				fn2();
+			},500);
+		}
+		val();
+		}
+		
+	
+		
+		};
+		</script>
+    </head>
+    <body bgcolor="#ccc">
+    	<div id="cont">
+        	<ul id="ulo">
+            	<li style="background:#CCFFCC;">菜单一</li>
+                <li style="margin-left:2px;">菜单二</li>
+            </ul>
+            <div class="list" style="display:block">
+            	<p><img src="images/1.1.png" /></p>
+                <ul>
+                	<li style="background:#99FFFF;color:#fff;">图片一</li>
+                    <li>图片二</li>
+                    <li>图片三</li>
+                </ul>
+            </div>
+			<div class="list">
+            	<p><img src="images/1.4.png" /></p>
+                <ul>
+                	<li style="background:#99FFFF;color:#fff;">图片三</li>
+                    <li>图片四</li>
+                    <li>图片五</li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>改变宽高</title>
+		<meta charset="utf-8" />
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementsByTagName('div')[0];
+			
+					oDiv.onmousemove = function(ev){
+						var ev = ev || event;
+						var thiW = this.offsetWidth ;
+						var thiL = this.offsetLeft ; 
+						if(ev.clientX > thiL + thiW - 10 || ev.clientX < thiL + 10){
+							oDiv.style.cursor = 'w-resize';
+						} else{
+							oDiv.style.cursor = 'auto';
+						}
+					};
+				oDiv.onmousedown = function(ev){
+					var ev = ev || event;
+					var thiW = this.offsetWidth ;
+					var thiL = this.offsetLeft ; 
+					
+					var thiclX = ev.clientX ; 
+					var b = '';
+						if(thiclX > thiL + thiW - 10){
+							b= 'right';
+						} else if(thiclX < thiL + 10){
+							b= 'left';
+						}
+					document.onmousemove = function(ev){
+						var ev =  ev || event;
+						switch(b){
+							case 'right' :
+							oDiv.style.width = thiW + (ev.clientX - thiclX) + 'px';
+							break;
+							
+							case 'left' :
+							oDiv.style.width = thiW - (ev.clientX - thiclX) + 'px';
+							oDiv.style.left = thiL + (ev.clientX - thiclX) + 'px';
+							//oDiv.style.left = ev.clientX - (thiclX - thiL) + 'px';
+							break;
+						}
+					};
+					document.onmouseup = function(){
+						document.onmouseup = document.onmousemove = null;
+						oDiv.style.cursor = 'auto';
+					};
+					return false;
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div style="width:200px;height:100px;background:red;position:absolute;left:400px;top:300px;"></div>
+	</body>
+</html>

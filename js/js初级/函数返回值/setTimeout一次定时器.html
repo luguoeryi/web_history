@@ -1,0 +1,27 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>my name is setTimeout</title>
+		<style>
+		body{background:url(images/sina.jpg)no-repeat center 0;text-align:center;}
+		img{display:none;}
+		</style>
+		<script>
+		window.onload = function(){
+		var miaov = document.getElementById('miaov');
+			setTimeout(Block,2000);
+			
+		}
+		function Block(){
+			miaov.style.display = 'inline-block';
+			setTimeout(None,3000);
+		}
+		function None(){
+			miaov.style.display = 'none';
+		}
+		</script>
+	</head>
+	<body>
+		<img id="miaov" src="images/miaov.jpg" />
+	</body>
+</html>

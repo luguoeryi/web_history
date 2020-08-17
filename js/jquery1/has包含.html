@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>has用法</title>
+        <meta charset="utf-8">
+        <script src="jQuery/jquery-1.11.3.min.js"></script>
+        <script>
+			$(function(){
+				
+				//$('div').has('span').css('background','red');  //has包含 立面的内容 与filter不同
+				
+				// 选择不到 has为包含的东西$('div').has('.box').css('backgrund','red')
+				
+			})
+		</script>
+    </head>
+    <body>
+    	<div class="box">fdf</div>
+    	<div><span>123</span></div>
+    	<div>dfd</div>
+    </body>
+</html>

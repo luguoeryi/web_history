@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+				oGC.font = '60px impact';
+				oGC.textBaseline = 'top';
+
+				var  w = oGC.measureText('妙味课堂').width;   //获得文字的宽 只有这个方法  高则是字体大小
+
+				oGC.fillText('妙味课堂',(oC.width-w)/2,(oC.height-60)/2);//文字居中
+
+
+
+			};
+		</script>
+	</head>
+	<body style="background:#000;">
+		<canvas id="c1" width="400" height="400" style="background:#fff;">
+			<span style="color:#fff;">您的浏览器不支持canvas</span>
+		</canvas>
+	</body>
+</html>

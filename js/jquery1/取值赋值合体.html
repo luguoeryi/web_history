@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>可共存不可混用</title>
+        <meta charset="utf-8">
+        <script src="jQuery/jquery-1.11.3.min.js"></script>
+        <script>
+			$(function(){
+				/*oDiv.innerHTML = '123';   //赋值    原生
+				alert(oDiv.innerHTML)     //取值*/
+				
+				$('#div1').html('hello')        //jq中取值和赋值写法一样  ，看参数
+				alert($('#div1').html())
+				
+			})
+		</script>
+    </head>
+    <body>
+    	<div id="div1"></div>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+        <style>
+			li{ list-style:none; width:100px; height:30px; background:yellow; margin:10px; }
+			#div1{ width:150px; height:150px; background:red; margin:200px; font:25px/150px Arial; text-align:center; font-size:25px; color:white; }
+		</style>
+		<script>
+		window.onload = function(){
+			var oUl = document.getElementsByTagName('ul')[0];
+			var oLi = oUl.getElementsByTagName('li');
+			var oDiv = document.getElementById('div1');
+			
+			var num = 0;
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].index = i;
+				oLi[i].ondragstart = function(ev){   //ondragstart 为拖拽前触发
+					var ev = ev || event;
+					ev.dataTransfer.setData('name',this.index);
+					this.style.background = 'green';	
+				};
+				oLi[i].ondragend = function(){		//ondragend 为拖拽结束触发
+					this.style.background = 'yellow';
+				};
+				oLi[i].ondrag = function(){		//ondrag 为拖拽前和拖拽结束之间触发
+					document.title = num++;
+					
+				};
+			};
+			
+			
+			
+			
+			oDiv.ondragenter = function(){	//进入目标元素触发 onmouseover
+				oDiv.style.background = 'blue';
+			};
+			oDiv.ondragleave = function(){	//离开目标元素触发 onmouseout
+				oDiv.style.background = 'red';
+			};
+			
+			oDiv.ondragover = function(ev){	//两者之间
+				oDiv.innerHTML = num;
+				ev.preventDefault();   //阻止默认事件，触发drap事件
+			};
+			
+			oDiv.ondrop = function(ev){	//在目标元素上释放鼠标触发
+				oDiv.innerHTML = '';
+				
+				var ev = ev || event;
+				oUl.removeChild(oLi[ev.dataTransfer.getData('name')]);
+				
+				for(var i=0;i<oLi.length;i++){
+					oLi[i].index = i;
+				}
+				
+			};
+
+		};
+			
+		</script>
+	</head>
+	<body>
+		<ul>
+        	<li draggable="true"></li>
+        	<li draggable="true"></li>
+        	<li draggable="true"></li>
+        </ul>
+        <div id="div1"></div>
+	</body>
+</html>

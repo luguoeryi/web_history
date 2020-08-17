@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>混用</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			$(function(){
+				 // 原生 alert(document.getElementsByTagName('div')[0].innerHTML)  
+				 // jquery alert($('div').html())
+				 
+				 // 可通过get() 将jquery转成原生，不写参数则是一组元素 alert($('div').get(0).innerHTML)
+				 
+				/* for(var i=0;i<$('li').size();i++){
+				 	$('li').get(i).style.background = 'red';   混用    size()
+				 }*/
+				 
+				/* for(var i=0;i<$('li').get().length;i++){        get()
+				 	$('li').get(i).style.background = 'green';
+				 }*/
+				 
+				/* for(var i=0;i<$('li').length;i++){                    //jquery 中也有length
+				 	$('li')[i].style.background = 'yellow';         支持  $('li')[i]  
+				 }*/
+				
+			})
+		</script>
+    </head>
+    <body>
+    	<div>123</div>
+        <ul>
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        </ul>
+    </body>
+</html>

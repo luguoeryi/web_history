@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>replaceChild</title>
+		<script>
+			window.onload = function(){
+				var oUl = document.getElementsByTagName('ul');
+				var oLi = getElementsByClassName(document,'li','box');
+					for(var i=0;i<oLi.length;i++){
+						oLi[i].style.background = 'red';
+					}
+				
+			};
+				function getElementsByClassName(parent,tagName,className){
+					var aEls = parent.getElementsByTagName('*');
+					var arr = [];
+					for(var i=0;i<aEls.length;i++){
+						/* if(aEls[i].className==className){
+							arr.push(aEls[i]);
+						} */
+						var aClassName = aEls[i].className.split(' ');
+						for(var j=0;j<aClassName.length;j++){
+							if(aClassName[j]==className){
+								arr.push(aEls[i]);
+								break;
+							}
+							
+						}
+					}
+					return arr;
+				}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li class="box"></li>
+			<li></li>
+			<li></li>
+			<li class="box box"></li>
+			<li class="box box1"></li>
+		</ul>
+		<ul>
+			<li class="box"></li>
+			<li></li>
+			<li></li>
+			<li class="box box"></li>
+			<li class="box box1"></li>
+		</ul>
+	</body>
+</html>

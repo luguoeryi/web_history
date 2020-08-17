@@ -1,0 +1,25 @@
+<!DOCTPY HTML>
+<html>
+  <head>
+    <script>
+	 window.onload=function() {
+	   window.onscroll=function(ev) {
+	   var oDiv=document.getElementsByTagName('div')[0];
+	      var oEvent=ev||event;
+		  document.title=document.body.scrollTop
+		  if(document.body.scrollTop>=500) {
+		   oDiv.style.display='block'
+		  } else {
+		   oDiv.style.display='none'
+		  }
+	   }
+	 }
+	</script>
+	<style>
+	div:hover{opacity:0.5;filter:alpha(opacity=50);}
+	</style>
+  </head>
+  <body style="height:2000px">
+    <div style="width:100px; height:100px; background:#000; position:fixed; right:0px; top:0px; display:none;">
+  </body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>函数返回值</title>
+		<script>
+		/* alert(fn1(1,2,5,4,5,10))
+		function fn1(){
+			var n =0;
+			for(var i=0;i<arguments.length;i++){
+				n += arguments[i];
+			}
+			return n;
+		} */
+		alert(fn1(1,2,3,'+'))
+		alert(fn1(10,2,3,2,'-'));
+		function fn1(){
+			var n = 0;
+			var y = 0;
+			var c = 0;
+			if(arguments[arguments.length-1]=='+'){
+				for(var i=0;i<arguments.length-1;i++){
+					n+=arguments[i];
+				}
+				return n;
+			} else if(arguments[arguments.length-1]=='-'){
+				for(var i=0;i<arguments.length-1;i++){
+					y=arguments[0];
+					if(i==0){
+						continue;
+					}
+					n+=arguments[i]
+					c = y-n;
+					
+				}
+				return c;
+			}
+		}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

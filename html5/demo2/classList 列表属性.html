@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>class列表</title>
+        <meta charset="utf-8">
+        <script>
+			window.onload = function(){
+				var oDiv = document.getElementById('list');
+				
+				//alert(oDiv.classList);   box1 box2 box3  //object
+				//alert(oDiv.classList.length);  类数组具有length
+				oDiv.classList.add('box4'); //添加 class
+				oDiv.classList.remove('box3');  //删除class
+				oDiv.classList.toggle('box4');  //toggle 原来有则删除 无则添加
+				oDiv.classList.toggle('box4');
+				
+				alert(oDiv.classList.length);
+				
+				
+				
+			};
+		</script>
+    </head>
+    <body>
+    	<div id="list" class="box1 box2 box3" title="hello">div</div>
+    </body>
+</html>

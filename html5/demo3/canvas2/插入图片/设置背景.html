@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>canvas设置背景</title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+				var yImg = new Image();
+				yImg.src = '2.png';
+				yImg.onload = function(){
+					draw(this);
+				};
+
+				function draw(obj){
+					var bg = oGC.createPattern(obj,'repeat');	//一参图片 二参平铺方式
+					oGC.fillStyle = bg;
+					oGC.fillRect(0,0,300,300);
+				};
+			};
+		</script>
+	</head>
+	<body style="background:#000;">
+		<canvas id="c1" width="400" height="400" style="background:#fff;">
+			<span style="color:#fff;">您的浏览器不支持canvas</span>
+		</canvas>
+	</body>
+</html>

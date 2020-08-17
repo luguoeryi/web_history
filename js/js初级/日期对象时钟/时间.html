@@ -1,0 +1,39 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<script>
+			window.onload = function(){
+				setInterval(times,1000);
+				times()
+			}
+			function times(){
+				var Body = document.body;
+				var myTime = new Date();    //时间
+				var iYear = myTime.getFullYear();    //年
+				var iMonth = myTime.getMonth()+1;		//月
+				var iDate = myTime.getDate();        //日
+				var iDay = myTime.getDay();          //星期
+				var iHours = myTime.getHours();      //时
+				var iMinutes = myTime.getMinutes();    //分
+				var iSeconds = myTime.getSeconds();		//秒
+				if(iDay===0)iDay='星期天';
+				if(iDay===1)iDay='星期一';
+				if(iDay===2)iDay='星期二';
+				if(iDay===3)iDay='星期三';
+				if(iDay===4)iDay='星期四';
+				if(iDay===5)iDay='星期五';
+				if(iDay===6)iDay='星期六';
+				var str = '';
+				str = iYear+'年 '+iMonth+'月 '+iDate+'日 '+iDay+' '+numb(iHours)+':'+numb(iMinutes)+':'+numb(iSeconds);
+				Body.innerHTML = str;
+			}
+			function numb(n){
+			    return	n<10 ? '0'+n : ''+n; 
+			}
+		</script>
+	</head>
+	<body style="font-size:60px;">
+	</body>
+</html>

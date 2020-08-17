@@ -1,0 +1,179 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>微信聊天真实版</title>
+		<style>
+			body,input{
+			margin:0;padding:0;
+			}
+			body{
+			background:#BDCEC6;
+			font-family:方正姚体;
+			}
+			#content{
+			width:289px;height:594px;
+			margin:20px auto 0;
+			background:url(images/3.gif);
+			position:relative;
+			}
+			#c_top{
+			width:237px;height:370px;
+			font-size:15px;
+			overflow:auto;
+			position:absolute;
+			top:87px;left:26px;
+			position:relative;
+			}
+			#c_bottom{
+			width:237px;height:42px;
+			border-top:1px solid #bdcec6;
+			text-align:center;
+			background:#f7f7f7;
+			padding:7px 0 0 0;
+			position:absolute;
+			top:456px;left:26px;
+			}
+			#box{
+			width:30px;height:34px;
+			border:1px solid #ded6e7;
+			margin-left:7px;
+			text-decoration:none;
+			text-align:center;
+			float:left;
+			}
+			#img1{
+			border:none;
+			margin-top:5px;
+			}
+			#bin1{
+			width:139px;height:36px;
+			border:1px solid #ded6e7;
+			text-indent:3px;
+			line-height:36px;
+			font-weight:bold;
+			float:left;
+			}
+			#bin2{
+			width:46px;height:36px;
+			color:#8c8494;
+			font-size:18px;
+			font-weight:bold;
+			background:#f7f7f7;
+			border:none;
+			cursor:pointer;
+			float:left;
+			}
+			#box,#bin1{
+			margin-right:5px;
+			border-radius:6px;
+			}
+			.Red{
+			background:#8DA555;
+			color:#fff;
+			padding:4px 5px;
+			float:right;
+			border-radius:6px;
+			}
+			.YEL{
+			background:#ccc;
+			color:#fff;
+			padding:4px 5px;
+			float:left;
+			border-radius:6px;
+			}
+			.Redd{
+				width:160px;
+				overflow:hidden;
+				float:right;
+			}
+			.YELL{
+				width:160px;
+				overflow:hidden;
+				float:left;
+			}
+			.mar1{
+			margin:auto 3px;
+			float:right;
+			}
+			.mar2{
+			margin:auto 3px;
+			float:left;
+			}
+			.YLKH{
+			overflow:hidden;
+			margin:4px 0;
+			}
+		</style>
+	    <script>
+		window.onload = function () {
+			var Ctop = document.getElementById('c_top');
+			var Img1 = document.getElementById('img1');
+			var Bin1 = document.getElementById('bin1');
+			var Bin2 = document.getElementById('bin2');
+			var Btu = ['images/2.gif','images/1.gif'];
+			var onde = true;
+			//var bi=0;
+			//var yy=0;
+		
+			Img1.onclick = function () {
+			  if (onde == true) {
+			    Img1.src = Btu[1];
+			    onde = false;
+			}    else {
+			        Img1.src = Btu[0];
+					onde = true;
+			}
+			
+			};
+			
+			function cont1() {// +  + '<br />';
+			 Ctop.innerHTML = '<div class="YLKH">  <img class="mar1" src="'+Btu[0]+'"/> <div class="Redd"> <div  class="Red">'+Bin1.value+'</div></div> </div>'+Ctop.innerHTML; 
+			};
+			
+			function cont2() {
+			 Ctop.innerHTML = '<div class="YLKH"><img class="mar2" src="'+Btu[1]+'"/><div class="YELL"><div class="YEL">'+Bin1.value+'</div></div></div>'+Ctop.innerHTML; 
+			};
+			
+			Bin2.onclick = function () {
+			if (Bin1.value == '') {
+			alert('想说说点啥呗，被噎着哦 ~ ~');
+			} else if (onde == true) {
+				cont1();
+											   /* if(getClass(document,'Red')[bi].offsetWidth>180) {
+												
+												}
+											  bi++;		*/		
+			} else {
+			       cont2();
+				                           /*  if(getClass(document,'YEL')[yy].offsetWidth>180) {
+				                                  
+												  }
+                                               yy++;  */
+			}
+			
+			Bin1.value = '';
+			};
+		};
+		/* function getClass(obj,attr) {
+			var oId=document.getElementsByTagName('*');
+			var oArray=[];
+			for(var i=0; i<oId.length; i++) {
+				if(oId[i].className===attr) {
+					oArray.push(oId[i])
+				}
+			};
+			return oArray;
+		}  */
+		</script>
+	</head>
+	<body>
+    <div id="content">
+		<div id="c_top"></div>
+		<div id="c_bottom">
+			<a  href="#" id="box"><img id="img1" src="images/2.gif" /></a>
+			<input id="bin1" type="text" />
+			<input id="bin2" type="button" value="发送" />
+	    </div>
+	</div>
+	</body>
+</html>

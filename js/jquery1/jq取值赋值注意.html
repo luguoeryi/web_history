@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>可共存不可混用</title>
+        <meta charset="utf-8">
+        <script src="jQuery/jquery-1.11.3.min.js"></script>
+        <script>
+			$(function(){
+				// alert($('li').html())   jq中一组元素取值只取第一个
+				
+				$('li').html(123)         //一组元素赋值时，则所有都被赋值
+				
+			})
+		</script>
+    </head>
+    <body>
+    	<ul>
+        	<li>fdf</li>
+        	<li>fdf</li>
+        	<li>fdf</li>
+        	<li>fdf</li>
+        </ul>
+    </body>
+</html>

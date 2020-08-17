@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<style>
+			body{ background:#000; }
+		</style>
+		<script>
+			window.onload = function(){
+				var yImg = new Image();
+				yImg.src = '2.png';
+
+				yImg.onload = function(){
+					show(this);
+				};
+
+
+				var iNow = 0;
+				function show(obj){
+					var Btn = document.getElementsByTagName('input');
+					var oDiv = document.getElementById('div1');
+					var aImg = document.getElementById('img1');
+
+					for(var i=0;i<Btn.length;i++){
+						(function(i){
+							Btn[i].onclick = function(){
+								if(i=0){
+									iNow--
+								}else{
+ 									iNow ++ 
+								}
+
+								var Canvas = document.createElement('canvas');
+								var oGC = Canvas.getContext('2d');
+								Canvas.style.background = '#fff';
+
+								oGC.clearRect(0,0,Canvas.width,Canvas.height);
+
+
+										
+									switch(iNow){
+										case 1 :
+											oGC.save();	
+											Canvas.height = obj.width ;
+											Canvas.width = obj.height ;
+											oGC.translate(obj.height,0);
+											oGC.rotate(90*Math.PI/180);
+											oGC.drawImage(obj,0,0);
+											oGC.restore();
+											oDiv.replaceChild(Canvas,oDiv.children[0]);	
+										break;
+										case 2 :
+											oGC.save();
+											Canvas.height = obj.height ;
+											Canvas.width = obj.width ;
+											oGC.translate(-obj.width,obj.height);
+											oGC.rotate(180*Math.PI/180);
+											oGC.drawImage(obj,0,0);
+											oGC.restore();
+											oDiv.replaceChild(Canvas,oDiv.children[0]);
+										break;
+										case 3 :
+										break;
+									}
+
+							};
+						})(i);
+						
+					}
+				};
+				
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" value="←" />
+		<input type="button" value="→" />
+		<div id="div1">
+			<img src="2.png" id="img1" />
+		</div>
+	</body>
+</html>

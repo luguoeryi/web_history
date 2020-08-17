@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>canvas中的运动</title>
+		<meta charset="utf-8">
+		<style>
+			body{ background:#000; }
+			#c1,#c2{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+		<script type="text/javascript" src="jCanvaScript.1.5.18.min.js"></script>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+
+				   /* jc.start('c1',true); //加true重绘
+			        jc.arc(80,100,60,0,360);  //x y r qi jie color,逆时针，fill/stroke
+			        jc.arc(80,150,30,0,360,'#ff0000',true,true).click(function(){
+			        	alert(123);
+			        });*/
+			        jc.start('c1',true);
+			        jc.arc(80,150,30,0,360,'#ff0000',true,true).draggable();//拖拽
+			        jc.start('c1');
+
+
+ 					jc.start('c1');
+			        jc.rect(150,200,50,100,true);
+			        jc.start('c1');
+
+			        jc.start('c1',true);
+			        jc.arc(280,250,50,0,360,'#00ff00',true,true).id('oc').click(function(){
+			        	jc('#oc').animate({x:200,y:10,radius:25},2000,{type:'inOut', fn:'elastic',n:1.5});
+			        });
+			        jc.start('c1');
+			        //{type:'inOut', fn:'elastic', n:1.5}
+			};
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="400" height="400">
+			<span></span>
+		</canvas>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>像素</title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+
+				oGC.fillRect(0,0,100,100);
+
+				var aImg = oGC.getImageData(0,0,100,100);
+
+				//alert(aImg.height); 一列像素的个数
+				//alert(aImg.width);  一行像素的个数
+
+				//alert(aImg.data);  整体像素的数组集合 length:40000 rgba一像素占4位
+				//alert(aImg.data[0])	//0~255 黑到白区间
+				//alert(aImg.data[1])	//0~255 黑到白区间
+				//alert(aImg.data[2])	//0~255 黑到白区间
+				//alert(aImg.data[3])	//0~255 透明到不透明
+
+
+				for(var i=0;i<aImg.width*aImg.height;i++){
+					aImg.data[4*i] = 255;
+					aImg.data[4*i+1] = 0;
+					aImg.data[4*i+2] = 0;
+					aImg.data[4*i+3] = 150;
+				}
+				oGC.putImageData(aImg,100,100);
+
+			};
+		</script>
+	</head>
+	<body style="background:#000;">
+		<canvas id="c1" width="400" height="400" style="background:#fff;">
+			<span style="color:#fff;"></span>
+		</canvas>
+	</body>
+</html>

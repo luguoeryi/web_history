@@ -1,0 +1,80 @@
+<!DOCTPY html>
+<html>
+	<head>
+    	<title>文字搬运工</title>
+        <meta charset="utf-8">
+        <style>
+			*{margin:0;padding:0;} li{list-style:none;}
+			#list{margin:30px auto;width:1000px;overflow:hidden;border:10px solid #C0C0C0;padding:15px;}
+			#list li{float:left;width:40%;height:250px;border:1px solid #000;}
+			#list li p{height:40px;background:#F76300;font-size:18px;color:#fff;font-weight:bold;font-family:宋体;} #list li p:hover{background:#E35800;cursor:pointer;}
+			#shrre{overflow:hidden;width:100%;backgruond:#ccc;margin:0 auto;padding-left:8px;} #shrre .lis{border:none;float:left;width:13px;height:15px;background:#F76300;margin-left:4px;}
+			#li3{text-align:justify;line-height:22px;padding:10px;font-family:微软雅黑;font-size:15px;}
+		</style>
+		<link href="reset.css" type="text/css" rel="stylesheet" />
+		<script src="zuanshu.js"></script>
+        <script>
+		window.onload = function(){
+			var oInp = document.getElementsByTagName('textarea')[0];
+			var oP = document.getElementsByTagName('p')[0];
+			var oSpan = document.getElementsByTagName('span')[0];
+			var oShe = document.getElementById('shrre')
+			var oLis = oShe.getElementsByTagName('li');
+			var oLid = document.getElementById('li3');
+			opac(oShe,0)
+			var onOff = true;
+			oP.onclick = function(){
+				if(!onOff || oInp.value=='') return;
+				onOff = !onOff;
+				opacity(oP,100,5,100);
+				opacitys(oShe,0,10,100);
+				oLid.innerHTML = '';
+				var num = 0;
+				var	str = '';
+				var sor = oInp.value.length;
+				var timer = null;
+				clearInterval(timer);
+				timer = setInterval(function(){
+					str = oInp.value;
+					oSpan.innerHTML = num + '/' + sor;
+					oLid.innerHTML += str.charAt(0);
+					oInp.value = str.substring(1)
+					for(var i=0;i<oLis.length;i++){
+						oLis[i].style.background = '#F76300';
+					}
+					oLis[num%oLis.length].style.background = '#9003FA';
+					num++;
+					if(str==''){
+					opacity(oP,10,5,100);
+					opacitys(oShe,100,10,100);
+						clearInterval(timer)
+						onOff = !onOff;
+					}
+				},50);
+			};
+			
+		
+		};
+		</script>
+    </head>
+    <body>
+    	<ul id="list">
+        	<li style="overflow:hidden;"><textarea style="text-align:justify;line-height:22px;padding:10px;width:100%;font-family:微软雅黑;font-size:15px;height:250px;border:none;overflow:auto;background:#D3EDD1;">对了，你家老婆长什么样？呃，也不知道你那时候结婚没有，不过一般我们那边到了你那年龄应该早结婚了；你别误会啊，我不是问你老婆长的漂不 对了，你家小孩现在几岁了，几岁大的小孩是比较调皮的，有时候总是会爱哭爱闹的，小孩嘛，天性无知，哭哭闹闹也是正常的；我跟你说，等她长大了，你就很难看她傻傻地哭了。等她长到十八岁，这么大个姑娘了（还不晓得是姑娘家还是臭小子）应该有男朋友了吧，间和时间，记得给她足够的零花钱  </textarea></li>
+            <li style="width:162px;border:none;padding:0 15px;text-align:center;line-height:40px;">
+				<p>把文字右移</p>
+				<span style="font-weight:bold;font-size:15px;">0/0</span>
+				<ul id="shrre">
+					<li class="lis"></li>
+					<li class="lis"></li>
+					<li class="lis"></li>
+					<li class="lis"></li>
+					<li class="lis"></li>
+					<li class="lis"></li>
+					<li class="lis"></li>
+					<li class="lis"></li>
+				</ul>
+			</li>
+            <li id="li3" style="background:#FAED9D;width:380px;height:230px;"></li>
+        </ul>
+    </body>
+</html>

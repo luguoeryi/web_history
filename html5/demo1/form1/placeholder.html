@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>显示完整日期</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<form action="http:www.baidu.com">
+        	<input type="text" placeholder="请输入文字" name="user" autocomplete="on" autofocus />
+            <input type="password" placeholder="请输入密码" name="password" autocomplete="on" required pattern="\d{1,6}" /><!--正则匹配数字 一至六个 -->
+            <input type="submit" value="提交"/><!-- autocomplete 是否提示文本 on/o ff      required不能为空-->
+            <input type="submit" value="保存至草稿箱" formnovalidate formaction="http://www.miaov.com"/><!--formnovalidate关闭验证-->
+        </form>
+    </body>
+</html>

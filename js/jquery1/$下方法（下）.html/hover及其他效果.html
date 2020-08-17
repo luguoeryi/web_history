@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>hover</title>
+        <meta charset="utf-8">
+        <style>
+            #div1 {width: 100px; height: 100px; background: yellow;} 
+            #div2 {width: 100px; height: 100px; background: red;}
+        </style>
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+         <script>
+             $(function(){
+             
+                $('#div1').hover(function(){
+
+                    //$('#div2').css('background','blue')
+                    //$('#div2').hide(1000)  宽高透明度同时变
+                    //$('#div2').fadeOut(1000) 淡出淡入
+                    //$('#div2').fadeTo(1000,0.2) 淡出淡入至一定程度 时间 ，透明度
+                    $('#div2').slideUp(1000)
+                },function(){
+                    //$('#div2').css('background','red')
+                    //$('#div2').show(1000)
+                    // $('#div2').fadeIn(1000)
+                    // $('#div2').fadeTo(1000,1)
+                     $('#div2').slideDown(1000)    //时间默认为400
+                })
+
+
+             })  
+         </script>
+    </head>
+    <body>
+        <div id="div1"></div>
+        <div id="div2"></div>
+    </body>
+</html>

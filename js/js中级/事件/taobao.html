@@ -1,0 +1,55 @@
+<!DOCTPY html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<style>
+			*{margin:0;padding:0;}
+		</style>
+		<script>
+		window.onload = function(){
+			var oBox1 = document.getElementById('box1');
+			var oBigtu = document.getElementById('bigImg');
+			var Move = document.getElementById('move');
+			var oBig = document.getElementById('big');
+			var olist = document.getElementById('list');
+			oBox1.onmouseover = function(){
+				if(oBox1.setCapture){       //阻止选择的文字，给当前添加全局捕获   
+						oBox1.setCapture();
+					}
+				Move.style.display = 'block';
+				oBig.style.display = 'block';	
+				oBox1.onmousemove = function(ev){
+					var ev = ev || event;
+					Move.style.left = ev.clientX-50 + 'px';
+					Move.style.top = ev.clientY-50 + 'px';
+						if(Move.offsetLeft>=200) Move.style.left=200+'px';
+						if(Move.offsetTop>=200) Move.style.top=200+'px';
+						if(Move.offsetTop<=0) Move.style.top=0+'px';
+						if(Move.offsetLeft<=0) Move.style.left=0+'px';
+					var oLeft = Move.offsetLeft;
+					var oTop = Move.offsetTop;
+					oBigtu.style.left = -3*oLeft+'px';
+					oBigtu.style.top = -3*oTop+'px';
+				}
+			};
+			oBox1.onmouseout = function(){
+				Move.style.display = 'none';
+				oBig.style.display = 'none';
+					if(oBox1.releaseCapture){
+							oBox1.releaseCapture();      //释放全局捕获
+						}
+			};
+		};
+		</script>
+	</head>
+	<body style="height:2000px;">
+		<div id="box1" style="border:5px solid #ccc;position:absolute;left:0px;top:0px;overflow:hidden;">
+			<img id="list" style="width:300px;height:300px; display:block;" src="1.jpg" />
+			<div id="move" style="display:none;width:100px;height:100px;background:#ccc;opacity:0.5;filter:alpha(opacity=50);position:absolute;top:0px;left:0px;"></div>
+		</div>
+		<div id="big" style="display:none;width:300px;height:300px;border:5px solid #ccc;position:absolute;left:600px;top:100px;overflow:hidden;">
+			<img id="bigImg" style="width:900px;height:900px;position:absolute;left:0px;top:0px;" src="1.jpg" />
+		</div>
+	</body>
+</html>

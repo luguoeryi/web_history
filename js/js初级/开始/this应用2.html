@@ -1,0 +1,64 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>for循环应用</title>
+		<style>
+		body,ul,li{
+		margin:0px;padding:0px;
+		}
+		li{
+		list-style:none;
+		}
+	
+		li{
+		width:100px;height:100px;
+		background:#ccc;
+		margin:60px;
+		float:left;
+		position:relative;
+		}
+		li div{
+		width:200px;height:150px;
+		background:pink;
+		position:absolute;
+		left:0px;top:100px;
+		display:none;
+		}
+		</style>
+		<script>
+		window.onload = function (){
+		var Oli = document.getElementsByTagName('li');
+		var that=null;
+		for (var i=0;i<Oli.length;i++){
+		Oli[i].onmouseover = function(){
+		this.getElementsByTagName('div')[0].style.display = 'block';
+		};
+		Oli[i].onmouseout = function(){
+		that = this;
+		one();
+		};
+		}
+		function one(){
+		that.getElementsByTagName('div')[0].style.display = 'none';
+		}
+		
+		};
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<div></div>
+			</li>
+			<li>
+				<div></div>
+			</li>
+			<li>
+				<div></div>
+			</li>
+			<li>
+				<div></div>
+			</li>
+		</ul>
+	</body>
+</html>

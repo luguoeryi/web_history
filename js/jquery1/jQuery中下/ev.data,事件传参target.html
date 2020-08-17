@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>ev.data时间函数传参</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+
+                    $('div').on('click',{name:'你好'},function(ev){
+                        //alert(ev.data.name)       //ev,data支持事件传参
+                       // alert(ev.target)  事件源
+                       alert(ev.type)     //类型：click
+                    })    
+
+			})
+			
+		</script>
+    </head>
+    <body>
+      <div>df</div>
+    </body>
+</html>

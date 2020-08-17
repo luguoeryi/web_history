@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>siblings,nextAll,prevAll</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+			
+				 // $('p').siblings('h2').css('background','red')   //获取所有兄弟节点，参数为过滤
+				// $('p').nextAll('span').css('background','red')  下面所有兄弟节点，参数为筛选功能
+         $('p').prevAll('div').css('background','red') 上面的所有元素，参数为筛选功能。
+
+			})
+			
+		</script>
+    </head>
+    <body class="box">
+    	<h2>h2</h2>
+       <div>div</div>
+       <p>p</p>
+       <h1>h1</h1>
+       <h2>h2</h2>
+       <span>span</span>
+    </body>
+</html>

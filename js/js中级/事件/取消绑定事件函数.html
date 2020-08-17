@@ -1,0 +1,28 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>取消绑定事件</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+		function fn1(){
+			alert(1);
+		}
+		function fn2(){
+			alert(2);
+		}
+			/* document.attachEvent('onclick',fn1);
+			document.attachEvent('onclick',fn2);
+			document.detachEvent('onclick',fn1);  detachEvent(事件名称，事件函数) 为取消的绑定事件  ie */
+			document.addEventListener('click',fn1,false);
+			document.addEventListener('click',fn2,true);
+			document.addEventListener('click',fn1,true);
+			document.removeEventListener('click',fn1,false);  //removeEventListener()需要注明是否捕获
+		};
+			
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

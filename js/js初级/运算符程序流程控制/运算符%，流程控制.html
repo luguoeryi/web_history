@@ -1,0 +1,43 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>运算符</title>
+		<style>
+		body,ul,li{margin:0;padding:0;} .li{list-style:none;height:20px;} ul{margin:10px auto;}
+		</style>
+		<script> 
+		window.onload = function(){
+			var s = 605;
+			alert(Math.floor(s/60)+'分'+s%60+'秒')
+		
+			var oUl = document.getElementById('list');
+			var oLi = oUl.getElementsByTagName('li');
+			var num = ['pink','gray','gold','green'];
+			var str = '';
+			for(var i=0;i<18;i++){
+				oUl.innerHTML += '<li class="li"></li>';
+				oLi[i].style.background = num[i%num.length];
+				};
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].index = i;
+				oLi[i].onmouseover = function(){
+					str = this.style.background;     //2 先存起来
+					this.style.background = 'black';
+				};
+				oLi[i].onmouseout = function(){
+					//this.style.background = num[this.index%num.length];        注：如有两个相对应事件，可使用；
+					this.style.background = str;     //2
+				};
+			}
+			
+			
+		
+		};
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			
+		</ul>
+	</body>
+</html>

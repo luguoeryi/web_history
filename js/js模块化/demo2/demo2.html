@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>js模块化之sea.js</title>
+<meta charset="utf-8">
+<script src="sea/sea.js" type="text/javascript"></script>
+<script>
+	//sea的根目录为sea.js这个文件
+	seajs.use('./js/common1.js', function(ex){
+		ex.show();
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

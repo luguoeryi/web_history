@@ -1,0 +1,32 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>for循环应用</title>
+		<style>
+		
+		</style>
+		<script>
+		window.onload = function (){
+		var Bin = document.getElementsByTagName('input');
+		var that ='';
+		for(var i=0;i<Bin.length;i++){
+			Bin[i].onclick = function(){
+			//this.style.background = 'yellow';  1
+			/* that = this;
+			one();    2  */                   //3  =one;                下面函数里that改this.
+			}
+		}
+		
+		function one(){
+		that.style.background = 'red';
+		}
+		
+		};
+		</script>
+	</head>
+	<body>
+		<input type="button" value="提交" />
+		<input type="button" value="提交" />
+		<input type="button" value="提交" />
+	</body>
+</html>

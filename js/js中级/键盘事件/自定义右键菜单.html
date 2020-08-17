@@ -1,0 +1,25 @@
+<!DOCTPY html>
+<html>
+	<head>
+		<title>事件默认行为</title>
+		<meta charset="utf-8" />
+		<script>
+		window.onload = function(){
+			var oDiv =  document.getElementsByTagName('div')[0];
+			document.oncontextmenu = function(ev){
+				var ev = ev || evenr;
+				oDiv.style.left = ev.clientX +'px';
+				oDiv.style.top= ev.clientY +'px';
+				oDiv.style.display = 'block';
+				return false;
+			};
+			document.onclick = function(){
+				oDiv.style.display = 'none';
+			};
+		};
+		</script>
+	</head>
+	<body style="height:2000px;">
+	<div style="display:none;width:100px;height:200px;border:1px solid red;position:absolute;left:0;top:0;"></div>
+	</body>
+</html>

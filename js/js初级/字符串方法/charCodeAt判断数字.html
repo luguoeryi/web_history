@@ -1,0 +1,31 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>1</title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+					var str = '1121212';	//isNaN 第一和最后一个空格无法判断，以及小数点
+			//alert(str.charAt());
+			//alert(str.charCodeAt())
+			//alert(String.fromCharCode(65,90)) //65~90 A~Z   97~122 a~z  0~9 48~57
+			var oInp = document.getElementsByTagName('input');
+				oInp[1].onclick = function(){
+				var nus = oInp[0].value;
+					detnum(nus) ? alert('恭喜您注册成功！') : alert('你输入的数字不符合要求');
+				};
+	
+			};
+			function detnum(str){
+				for(var i=0;i<str.length;i++){
+					if(str.charCodeAt(i)<48 || str.charCodeAt(i)>57) return false;
+				}
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" value="12121212" />
+		<input type="button" value="检测" />
+	</body>
+</html>

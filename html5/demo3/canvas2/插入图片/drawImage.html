@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+
+				var oGC = oC.getContext('2d');
+
+				var yImg = new Image();			//canvas中插入图片需先加载完  创建image对象	
+
+				yImg.src = '2.png';
+
+				yImg.onload = function(){
+					show(this);
+				};
+
+				function show(obj){
+					oGC.drawImage(obj,0,0,oC.width,oC.height);
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="400" height="400">
+			<span>您的浏览器不支持canvas</span>
+		</canvas>
+	</body>
+</html>

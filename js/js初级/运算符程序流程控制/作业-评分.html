@@ -1,0 +1,71 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>评分</title>
+		<style>
+			*{margin:0px;padding:0px;} 
+			li{list-style:none;float:left;} ul{margin:50px 0 0 450px;height:25px;line-height:30px;text-align:center;} a{float:left;;height:28px;width:28px;}
+		</style>
+		<script> 
+		window.onload = function(){
+		var oLi = document.getElementsByTagName('li');
+		var oImg = oLi[1].getElementsByTagName('img');
+		var ovis = ['images/2015-10.png','images/2015-11.png','images/2015-12.png'];
+		var onum = ['很差','较差','还行','推荐','力荐'];
+		var nul = null;
+		var arr = true;	
+			for(var i=0;i<oImg.length;i++){
+				oImg[i].index = i;
+				oImg[i].onmouseover = function(){
+					nul = this.index;
+					arr = true;
+					fn2();
+					fn1();
+				};
+				oImg[i].onclick = function(){
+					arr = false;
+					fn1();
+				};
+				oImg[i].onmouseout = function(){
+					if(arr==false){
+						fn1();
+					} else{
+						fn2();
+					}
+				};
+			}
+				function fn1(){
+					if(nul<2){
+						for(var i=0;i<=nul;i++){
+							oImg[i].src = ovis[1]
+						}
+					} else{
+						for(var i=0;i<=nul;i++){
+							oImg[i].src = ovis[2]
+						}
+					}
+					oLi[2].innerHTML = onum[nul];
+				}
+				function fn2(){
+					for(var i=0;i<oImg.length;i++){
+							oImg[i].src = ovis[0];
+						}
+					oLi[2].innerHTML = '打个分呗 ~ ~';
+				}
+		};
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>总体评分：</li>
+			<li>
+				<a href="#"><img src="images/2015-10.png" /></a>
+				<a href="#"><img src="images/2015-10.png" /></a>
+				<a href="#"><img src="images/2015-10.png" /></a>
+				<a href="#"><img src="images/2015-10.png" /></a>
+				<a href="#"><img src="images/2015-10.png" /></a>
+			</li>
+			<li style="margin-left:5px;color:#FF4600;">打个分呗 ~ ~</li>
+		</ul>
+	</body>
+</html>

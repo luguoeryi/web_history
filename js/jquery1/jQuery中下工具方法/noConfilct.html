@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>proxy</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+      var miaov = $.noConflict()
+			var $ = 10
+			miaov(function(){                //防止冲突 $ = jQuery
+
+          alert(123)
+			})
+         
+			
+		</script>
+    </head>
+    <body>
+      <div>df</div>
+    </body>
+</html>

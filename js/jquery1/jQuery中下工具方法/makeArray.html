@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>makeArray转类数组</title>
+      <meta charset="utf-8">
+      <script src="jquery-1.11.3.min.js"></script>
+      <script>
+          window.onload = function(){
+            var oDiv = document.getElementsByTagName('div');
+
+           // oDiv.push()      不是真正的数组报错
+           $.makeArray(oDiv).push()
+
+
+          };
+			
+		  </script>
+  </head>
+  <body>
+    <div>123</div>
+    <div>123</div>
+    <div>123</div>
+    <div>123</div>
+  </body>
+</html>

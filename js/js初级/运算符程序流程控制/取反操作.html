@@ -1,0 +1,36 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>运算符</title>
+		<script>
+		window.onload = function(){
+		
+		var inPut = document.getElementsByTagName('input');
+		inPut[0].onclick = function(){
+			for(var i=1;i<inPut.length;i++){
+				/* if(inPut[i].checked){
+					inPut[i].checked = false;
+				} else{
+					inPut[i].checked = true;
+				} */
+				inPut[i].checked = !inPut[i].checked;
+			}
+		};
+		
+		};
+		</script>
+	</head>
+	<body>
+		<ul>
+			<LI><input type="button" value="取反" /></LI>
+			<LI><input type="checkbox" checked /></LI>
+			<LI><input type="checkbox" /></LI>
+			<LI><input type="checkbox" checked /></LI>
+			<LI><input type="checkbox" checked /></LI>
+			<LI><input type="checkbox" checked /></LI>
+			<LI><input type="checkbox" /></LI>
+			<LI><input type="checkbox" /></LI>
+			<LI><input type="checkbox" /></LI>
+		</ul>
+	</body>
+</html>

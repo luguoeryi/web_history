@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>函数传参</title>
+		<script>
+		
+		
+		
+		fn2(100);
+		fn2('english');
+		fn2(function(){alert(1);});
+		function fn2(a){
+			if(typeof a==='number' && a===a){
+				alert(a+20);
+			} else if(typeof a==='string'){
+				alert(a.charAt(2));
+			} else if(typeof a==='function'){
+				a();
+			}
+		}
+		
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

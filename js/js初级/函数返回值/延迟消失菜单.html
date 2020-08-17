@@ -1,0 +1,67 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>延迟消失</title>
+		<style>
+		*{margin:0;padding:0;} a{text-decoration:none;} body{font-size:15px;}
+		ul{width:500px;overflow:hidden;background:#6C6C6C;margin:30px auto 200px;} ul li{height:40px;list-style:none;float:left;}
+		li a{display:block;width:100px;text-align:center;height:30px;margin-top:5px;line-height:30px;40px;color:#fff;border-radius:15px;font-weight:bold;}
+		li a:hover{color:272727;background:#ccc;}
+		#header div{width:280px;height:100px;position:absolute;left:0px;top:0px;display:none;border:5px solid #000;}
+		#header{width:100%;overflow:hidden;position:relative;}
+		</style>
+		<script>
+			window.onload = function(){
+			var arr = ['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg']
+			var headEr = document.getElementById('header');
+			var oDiv = headEr.getElementsByTagName('div');
+			var oA = headEr.getElementsByTagName('a');
+				for(var i=0;i<oDiv.length;i++){
+					oDiv[i].style.left = 330+i*100+'px';
+					oDiv[i].style.top = 85+'px';
+					oDiv[i].style.background = 'url('+arr[i]+')';
+				}
+			var num ='';
+			var timer = null;
+				for(var i=0;i<oA.length;i++){
+					oA[i].index = i;
+					oA[i].onmouseover = function(){
+						num = this.index;
+						for(var i=0;i<oDiv.length;i++){
+							oDiv[i].style.display = 'none';
+						}
+							show();
+					};
+					oA[i].onmouseout = hide;
+					oDiv[i].onmouseover = show;
+					oDiv[i].onmouseout = hide;
+				}
+				function show(){
+					clearInterval(timer);
+					oDiv[num].style.display = 'block'
+				}
+				function hide(){
+					timer = setTimeout(function(){
+						oDiv[num].style.display = 'none';
+					},200)
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="header">
+		<ul>
+			<li><a href="#">首页</a></li>
+			<li><a href="#">关于我们</a></li>
+			<li><a href="#">作品</a></li>
+			<li><a href="#">博客</a></li>
+			<li><a href="#">&gt;&gt;更多</a></li>
+		</ul>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>proxy</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+
+       /*   function show(){
+            alert(this)
+          }
+           
+           show()*/   //window
+
+           function show(n1,n2){
+            alert(n1+' '+n2)
+           }
+
+           $.proxy(show,document,1,2)() //document   一参函数，二参指向，后面可传参，后面括号也可传参
+			})
+         
+			
+		</script>
+    </head>
+    <body>
+      <div>df</div>
+    </body>
+</html>

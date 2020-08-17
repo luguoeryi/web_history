@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#menu{ width: 50px; height: 50px; position: fixed; right: 20px; bottom: 20px; border-radius: 50%; }
+			#menu #list{ width: 42px; height: 42px; margin: 4px; position: relative; }
+			#menu #list img{ border-radius: 50%; position: absolute; left: 0; top: 0; cursor: pointer; }
+			#home{ width: 50px; height: 50px; border-radius: 50%; position: absolute; left: 0; top: 0; background: url(./home.png) no-repeat center; background-size: cover; cursor: pointer; transition: 1s; }
+		</style>
+		<script>
+			window.onload = function(){
+				var aHome = document.getElementById('home');
+				var aImgs = document.getElementById('list').getElementsByTagName('img');
+				var onOff = true;
+				var iR = -150;
+				aHome.onclick = function(){
+					if( onOff ){
+						this.style.webkitTransform = 'rotate(-720deg)';
+						for(var i=0;i<aImgs.length;i++){
+							var oLT = getLT(iR, 90/4*i);
+							aImgs[i].style.left = oLT.L + 'px';
+							aImgs[i].style.top = oLT.T + 'px';
+							aImgs[i].style.webkitTransition = '0.5s '+i*100+'ms';
+							aImgs[i].style.webkitTransform = 'rotate(-720deg) scale(1)';
+						}
+					}else{
+						this.style.webkitTransform = 'rotate(0deg)';
+						for(var i=0;i<aImgs.length;i++){
+							aImgs[i].style.left = 0 + 'px';
+							aImgs[i].style.top = 0 + 'px';
+							aImgs[i].style.webkitTransition = 'left 0.5s '+(aImgs.length-i-1)*100+'ms ease,top 0.5s '+(aImgs.length-i-1)*100+'ms ease,-webkit-transform 0.3s linear';
+							aImgs[i].style.webkitTransform = 'rotate(0deg) scale(1)';
+						}
+					}
+					onOff = !onOff;
+				};
+				
+				for(var i=0;i<aImgs.length;i++){
+					aImgs[i].onclick = function(){
+						this.style.webkitTransition = '0.3s';
+						this.style.webkitTransform = 'rotate(-720deg) scale(2)';
+						this.style.opacity = '0.2';
+						addEnd(this, end)
+					};
+				}
+				
+				function end(){
+					this.style.webkitTransition = '0.1s';
+					this.style.webkitTransform = 'rotate(-720deg) scale(1)';
+					this.style.opacity = '1';
+					removeEnd(this, end)
+				}
+				
+				function getLT(iR, iDeg){
+					var iLeft = Math.round( Math.sin(iDeg/180*Math.PI) * iR ) ;
+					var iTop = Math.round( Math.cos(iDeg/180*Math.PI) * iR ) ;
+					return {
+						L : iLeft,
+						T : iTop
+					};
+				}
+				
+				function addEnd(obj, fn){
+					obj.addEventListener('transitionend', fn, false);
+					obj.addEventListener('webkitTransitionEnd', fn, false);
+				}
+				
+				function removeEnd(obj, fn){
+					obj.removeEventListener('transitionend', fn, false);
+					obj.removeEventListener('webkitTransitionEnd', fn, false);
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="menu">
+			<div id="list">
+				<img src="prev.png" />
+				<img src="open.png" />
+				<img src="clos.png" />
+				<img src="full.png" />
+				<img src="refresh.png" />
+			</div>
+			<div id="home"></div>
+		</div>
+	</body>
+</html>

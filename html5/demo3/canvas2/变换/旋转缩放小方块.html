@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>旋转缩放小方块</title>
+        <meta charset="utf-8">
+        <style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+        <script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				
+				var oGC = oC.getContext('2d');
+				
+				var num = 0;
+				
+				var num2 = 0;
+				
+				var value = 1;
+				
+				setInterval(function(){
+					num++;
+				
+					oGC.save();
+						oGC.clearRect(0,0,oC.width,oC.height);
+						oGC.translate(100,100);
+						
+						if(num2 == 100){
+							value = -1;
+						}else if(num2 == 0){
+							value = 1;
+						}
+						num2+=value
+						oGC.scale(num2*1/50,num2*1/50);		
+						
+						oGC.rotate(num*Math.PI/180);
+						oGC.translate(-50,-50);
+						oGC.fillRect(0,0,100,100);
+					oGC.restore();
+				},30);
+					
+			};
+		</script>
+    </head>
+    <body>
+    	<canvas id="c1" width="400" height="400">
+        	<span>您的浏览器不支持canvas</span>
+        </canvas>
+    </body>
+</html>

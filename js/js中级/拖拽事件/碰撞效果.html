@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>碰撞效果</title>
+		<meta charset="utf-8" />
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementsByTagName('div')[0];
+				var oImg = document.getElementsByTagName('img')[0];
+				oDiv.onmousedown = function(ev){
+					if(oDiv.setCapture){
+						oDiv.setCapture();
+					}
+					var ev = ev || event;
+					var disx = ev.clientX - oDiv.offsetLeft;
+					var disy = ev.clientY - oDiv.offsetTop;
+					document.onmousemove = function(ev){
+						var ev = ev || event;
+						var L = ev.clientX - disx ; 
+						var T = ev.clientY - disy ;
+						
+						var L1 = L;           //div当前的值
+						var R1 = L1 + oDiv.offsetWidth;   
+						var T1 = T;
+						var B1 = T1 + oDiv.offsetHeight;
+						
+						var L2 = oImg.offsetLeft;
+						var R2 = L2 + oImg.offsetWidth;
+						var T2 = oImg.offsetTop;
+						var B2 = T2 + oImg.offsetHeight;
+						if(R1 < L2 || B1 < T2 || L1 > R2 || T1 > B2){    //碰撞效果
+							oImg.src = '1.jpg';
+						}else{
+							oImg.src = '2.jpg';
+						}
+						oDiv.style.left = L + 'px';
+						oDiv.style.top = T + 'px';
+					};
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						if(oDiv.releaseCapture){
+							oDiv.releaseCapture();
+						}
+					};
+					return false;
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div style="width:100px;height:100px;background:red;position:absolute;z-index:2;"></div>
+		<img style="position:absolute;left:600px;top:300px;" src="1.jpg" />
+	</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>加密</title>
+		<meta charset="utf-8">
+		<script>
+		window.onload = function(){
+			var oInp = document.getElementsByTagName('input');
+			var oDiv = document.getElementsByTagName('div')[0];
+		/* 	var onm = '';
+			for(var i=2000;i<40000;i++){
+				onm += String.fromCharCode(i)+' ';
+			}
+			oDiv.innerHTML = onm; */
+			oInp[1].onclick = function(){
+				var str = '';
+				str = oInp[0].value;
+				var nus = '';
+				for(var i=0;i<str.length;i++){
+					nus += String.fromCharCode((str.charCodeAt(i)-10000))+' ';
+				}
+				oDiv.innerHTML = nus;
+			};
+			//alert(String.fromCharCode(22937,21619))   //接收编码返回字符
+			//alert('miao'.charAt(2))
+			//alert('miao'.charCodeAt(2))   接收字符返回编码
+		};
+		
+		</script>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="button" value="加密" />
+		<div>
+		
+		</div>
+	</body>
+</html>

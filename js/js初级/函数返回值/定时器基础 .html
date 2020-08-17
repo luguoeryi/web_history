@@ -1,0 +1,46 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>my name is setInterval</title>
+		<script>
+		/* var i = 0;
+		var timer = null;
+		function fn1(){
+			i++;
+			document.title = i;
+			if(i===10){
+			clearInterval(timer)
+			}
+		}
+		timer = setInterval(fn1,500); */
+		</script>
+	</head>
+	<body>
+		<input type="button" value="换背景" />
+		<script>
+		var btn = document.getElementsByTagName('input');
+		var arrUrl = ['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg'];
+		var Body = document.body;
+		var num = 0;
+		var timer = null;
+		var list = true;
+		Body.style.background = 'url('+arrUrl[num]+')';
+			btn[0].onclick = function(){
+				if(list){
+				clearInterval(timer);
+				timer=setInterval(fn1,1000);
+				list = false;
+				} else{
+				clearInterval(timer);
+				list = true;
+				}
+			};
+			
+			function fn1(){
+				Body.style.background = 'url('+arrUrl[num]+')';
+				num++;
+				num%=arrUrl.length;
+				}
+		</script>
+	</body>
+</html>

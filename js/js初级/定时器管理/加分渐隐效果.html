@@ -1,0 +1,64 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>加分效果</title>
+		<meta charset="utf-8" />
+	<style>
+		*{margin:0;padding:0;}
+		#cont{width:600px;height:50px;border:1px solid #ccc;margin:250px auto;position:relative;} li{list-style:none;}
+		#cont div{width:0px;height:50px;background:#52CAF3;position:absolute;}
+		#cont ul{position:absolute;} #cont ul li{width:60px;height:50px;text-align:center;line-height:50px;font-size:20px;position:absolute;top:0px;}
+	</style>
+	<script type="text/javascript" src="zuanshu.js"></script>
+	<script>
+	window.onload = function(){
+		var oCont = document.getElementById('cont');
+		var oDiv = oCont.getElementsByTagName('div')[0];
+		var oLi = oCont.getElementsByTagName('li');
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].style.left = 60*i+'px';
+			}
+		var onOff = true;
+		oCont.onclick = function(){
+			if(!onOff) return;
+			clearInterval(timer);
+			var timer = null;
+			var num = 0;
+			var nus = 0;
+			timer = setInterval(function(){
+				onOff = false;
+				doMove(oLi[num],'top',12,-250,30,function(){
+					if(nus==9){ for(var i=0;i<oLi.length;i++){oLi[i].style.top = 0+'px'; opac(oLi[i],100);}
+						oDiv.style.width = 0+'px'; opac(oDiv,100);}	nus++;
+				});
+				opacity(oLi[num],100,5,30);
+				num++;
+				oDiv.style.width = parseInt(getStyle(oDiv,'width'))+60+'px';
+				if(num==oLi.length){opacity(oDiv,100,5,30,function(){
+				onOff = !onOff;
+				});
+				clearInterval(timer);
+				}
+			},40);
+		};
+	};
+	</script>
+	</head>
+	<body>
+		<div id="cont">
+			<div></div>
+			<ul>
+				<li>+1</li>
+				<li>+1</li>
+				<li>+1</li>
+				<li>+1</li>
+				<li>+1</li>
+				<li>+1</li>
+				<li>+1</li>
+				<li>+1</li>
+				<li>+1</li>
+				<li>+1</li>
+			</ul>
+		</div>
+	</body>
+</html>

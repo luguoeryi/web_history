@@ -1,0 +1,92 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>传参应用实例，商城价格</title>
+		<script>
+		window.onload = function(){
+				var oUl = document.getElementById('list');
+				var oLi = oUl.getElementsByTagName('li');
+				var oP = document.getElementById('lis');
+				var pEm = oP.getElementsByTagName('em');
+			
+			for(var i=0;i<oLi.length;i++){
+				fn1(oLi[i]);
+			}
+			
+		};
+			function fn1(aLi){
+				var bIn = aLi.getElementsByTagName('input');
+				var sTrong = aLi.getElementsByTagName('strong')[0];
+				var eM = aLi.getElementsByTagName('em')[0];
+				var sPan = aLi.getElementsByTagName('span')[0];
+				var num = Number(sTrong.innerHTML);   //从HTML中获取的任何值都是字符串；
+				var eMc = parseFloat(eM.innerHTML);
+				sTrong.innerHTML = num;
+				bIn[1].onclick = function(){
+					num++;                          //如果是字符串 num +=1 不行， num++则行 隐式转换；
+					sTrong.innerHTML = num;
+					sPan.innerHTML = num*eMc+'元';
+				}
+				bIn[0].onclick = function(){
+					num--;
+						if(num<0){
+							num=0;
+						}
+					sTrong.innerHTML = num;
+					sPan.innerHTML = num*eMc+'元';
+				}
+			}
+		
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				单价：<em>12.5元</em>
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				单价：<em>10.5元</em>
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				单价：<em>9.5元</em>
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				单价：<em>8.5元</em>
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				单价：<em>7.5元</em>
+				小计：<span>0元</span>
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				单价：<em>6.5元</em>
+				小计：<span>0元</span>
+			</li>
+			<p id="lis">
+			商品合计共：<em>0件</em>，共花费了：<em>0元</em><br />
+			其中最贵的商品单价是：<em>0元</em>
+			</p>
+		</ul>
+	</body>
+</html>

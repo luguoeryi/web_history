@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>深度克隆对象</title>
+        <meta charset="utf-8">
+        <script src="JSON.js"></script>
+        <script>
+			window.onload = function(){
+				/*var a = {
+						name:{one:'leo',two:'sex'},
+						age:{one:21,two:34}
+					};	
+				var b = a;
+				b.name.one = 'xiao';   //引用的同一位置，a修改则b也改
+				
+				alert(a.name.one);  */
+				
+				var a = {
+						name:{one:'leo',two:'sex'},
+						age:{one:21,two:34}
+					};	
+					
+				var str = JSON.stringify(a);
+				var b = JSON.parse(str);
+				b.name.one = 'xiao';
+				
+				alert(a.name.one);
+				
+			};
+		</script>
+    </head>
+    <body>
+    	
+    </body>
+</html>

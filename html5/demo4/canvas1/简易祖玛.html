@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>html5简易祖玛</title>
+		<meta charset="utf-8">
+		<style>
+			*{ margin:0; padding:0; }
+			body{ background:#000; }
+			#div1{ width:600px; margin:20px auto; overflow:hidden; }
+			#c1{  background:#fff; }
+			span{ color:#fff; }
+			#btn{ display:block; border:none; width:100px; height:30px; background:#3BBEF9; margin:0 auto; color:#fff; cursor:pointer; }
+		</style>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+				var yImg = new Image();
+				yImg.src = 'person.png';
+
+				var aBtn = document.getElementById('btn');
+				tExt();
+				onOff = true;
+
+
+				yImg.onload = function(){
+
+					aBtn.onclick = function(){
+						if(onOff){
+							onOff = !onOff;
+							bEgin();
+						}
+
+					};
+
+				};
+
+				function bEgin(){
+					setInterval(function(){
+						oGC.clearRect(0,0,oC.width,oC.height);
+
+						/* 绘画路径 */
+						oGC.beginPath();
+							oGC.arc(300,200,200,-90*Math.PI/180,180*Math.PI/180,false);
+						oGC.stroke();
+
+						oGC.beginPath();
+							oGC.arc(250,200,150,180*Math.PI/180,360*Math.PI/180,false);
+						oGC.stroke();
+
+						oGC.beginPath();
+							oGC.arc(400,200,20,0,360*Math.PI/180,false);
+						oGC.stroke();
+						/* !--绘画路径 */
+
+						/* 绘画黑球 */
+						for(var i=0;i<ball.length;i++){
+							oGC.beginPath();
+							oGC.moveTo(ball[i]['x'],ball[i]['y']);
+							oGC.arc(ball[i]['x'],ball[i]['y'],20,0,360*Math.PI/180,false);
+							oGC.fill();
+
+						}
+						/* !--绘画黑球 */
+
+						/* 更新图片位置 */
+						oGC.save();
+							oGC.translate(300,200);
+							oGC.rotate(iRotate);
+							oGC.translate(-40,-40);
+							oGC.drawImage(yImg,0,0);
+						oGC.restore();
+						/* !--更新图片位置 */	
+
+						/* 绘画子弹 */
+						for(var i=0;i<bullet.length;i++){
+							oGC.save();
+								oGC.beginPath();
+								oGC.fillStyle = 'red';
+								oGC.moveTo(bullet[i]['x'],bullet[i]['y']);
+								oGC.arc(bullet[i]['x'],bullet[i]['y'],20,0,360*Math.PI/180,false);
+								oGC.fill();
+							oGC.restore();
+						}
+						/* !--绘画子弹 */
+
+						
+						tExt();
+					},1000/60);
+
+					/* 创建红球 */
+					var ball = [];
+
+					ball[0] = {
+						x:300,
+						y:0,
+						r:200,
+						num:0,
+						startX:300,
+						startY:0
+					};
+
+					setInterval(function(){
+						ball.push({
+							x:300,
+							y:0,
+							r:200,
+							num:0,
+							startX:300,
+							startY:0
+						});
+					},350);
+					/* !--创建红球 */
+
+
+					setInterval(function(){	//整体运动
+						for(var i=0;i<ball.length;i++){
+
+							ball[i]['num']++;
+
+							if(ball[i]['num'] == 270){
+								ball[i]['r'] = 150;
+								ball[i]['startX'] = 250;
+								ball[i]['startY'] = 50;
+
+							}
+
+							if(ball[i]['num'] == 270+180){
+								alert('游戏结束');
+								window.location.reload();
+
+							}
+							ball[i]['x'] = Math.sin(ball[i]['num']*Math.PI/180) * ball[i]['r'] + ball[i]['startX'] ;
+							ball[i]['y'] = ball[i]['r'] - Math.cos(ball[i]['num']*Math.PI/180) * ball[i]['r'] + ball[i]['startY'] ;
+
+						}
+
+						for(var i=0;i<bullet.length;i++){
+							bullet[i]['x'] = bullet[i]['x'] + bullet[i]['sX'] ;
+							bullet[i]['y'] = bullet[i]['y'] + bullet[i]['sY'] ;
+						}
+
+						for(var i=0;i<bullet.length;i++){
+							for(var j=0;j<ball.length;j++){
+								if( pz(bullet[i]['x'] , bullet[i]['y'] ,ball[j]['x'] ,ball[j]['y']) ){
+									ball.splice(j,1);
+									bullet.splice(i,1);
+									break;
+								}
+							}
+						}
+					},30);
+
+					/* 青蛙转向 */
+					var iRotate = 0;
+
+					oC.onmousemove = function(ev){
+						var ev = ev || event ;
+
+						var x = ev.clientX - oC.offsetLeft ;
+						var y = ev.clientY - oC.offsetTop ;
+
+						var a = x - 300;
+						var b = y - 200;
+
+						var c = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
+
+						if(a > 0 && b > 0){
+							iRotate = Math.asin(b/c) + 90 * Math.PI/180 ;
+						}else if(a > 0){
+							iRotate = Math.asin(a/c);
+						}
+
+						if(a < 0 && b > 0){
+							iRotate = -(Math.asin(b/c) + 90 * Math.PI/180) ;
+						}else if(a < 0){
+							iRotate = Math.asin(a/c);
+						}
+					};
+					/* !--青蛙转向 */
+
+					/* 点击发射子弹 */
+					var bullet = [];
+
+					oC.onmousedown = function(ev){
+						var ev = ev || event;
+						var x = ev.clientX - oC.offsetLeft ;
+						var y = ev.clientY - oC.offsetTop;
+
+						var a = x - 300;
+						var b = y - 200;
+
+						var c = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
+
+						var speed = 5;
+
+						var sX = speed * a/c;
+						var sY = speed * b/c;
+
+						bullet.push({
+							x:300,
+							y:200,
+							sX:sX,
+							sY:sY
+						});
+					};
+					/* !--点击发射子弹 */
+				}
+
+				function tExt(){
+				// 文字效果
+					oGC.save();
+						oGC.font = '80px impact';
+						oGC.textBaseline = 'top';
+						oGC.fillStyle = '#0ff000';
+						oGC.shadowOffsetX = '10';
+						oGC.shadowOffsetY = '10';
+						oGC.shadowColor = 'green';
+						oGC.shadowBlur = '10';
+
+						var w = oGC.measureText('简易祖玛').width ;
+						var h = 60;
+						oGC.fillText('简易祖玛',(oC.width - w)/2,450);
+					oGC.restore();
+				};
+
+				/* 圆的碰撞检测 */
+				function pz(x1,y1,x2,y2){
+					var a = x1 - x2 ;
+					var b = y1 - y2 ;
+
+					var c = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
+
+					if(c < 40){
+						return true;
+					}else{	
+						return false;
+					}
+				}
+					/* !--圆的碰撞检测 */
+			};
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<canvas id="c1" width="600" height="600">
+				<span>您的浏览器不支持canvas</span>
+			</canvas>
+			<input id="btn" type="button" value="开始游戏" />
+		</div>
+	</body>
+</html>

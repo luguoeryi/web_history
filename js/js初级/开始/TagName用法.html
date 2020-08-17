@@ -1,0 +1,31 @@
+﻿<!DOCTPY HTML>
+<html>
+<head>
+<title>TagName用法</title>
+<script>
+	window.onload = function () {
+       var one = document.getElementById('list');
+	  //var two = one.getElementsByTagName('li');
+	   var two = document.getElementsByTagName('li');
+	   var nor = document.getElementsByTagName('input');
+	   two[1].innerHTML += '<input type="button" value="按钮" /> <input type="button" value="按钮" /> <input type="button" value="按钮" />';
+	  alert(two.length);
+	   /* nor[1].onclick = function() {
+	   two[1].innerHTML = '<img src="images/l5.jpg" />';
+	   }; */
+	};
+</script>
+</head>
+<body>
+<ul id="list">
+	<li>你好</li>
+	<li>你很好</li>
+	<li>你非常好</li>
+</ul>
+<ol>
+	<li>你好</li>
+	<li>你很好</li>
+	<li>你非常好</li>
+</ol>
+</body>
+</html>

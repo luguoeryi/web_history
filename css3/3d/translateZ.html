@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{ width: 100px; height: 100px; padding: 100px; margin: 200px auto; border: 5px solid #FF0000; -webkit-transform-style: preserve-3d; -webkit-perspective: 200px; }
+			.box{ width: 100px; height: 100px; background: red; transition: .8s; }
+			.wrap:hover .box{ transform: translateZ(100px); }  /* 相当于 scale() */
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="box"></div>
+		</div>
+	</body>
+</html>

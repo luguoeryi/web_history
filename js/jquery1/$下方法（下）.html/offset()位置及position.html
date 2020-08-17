@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>事件细节</title>
+        <meta charset="utf-8">
+        <style>
+            *{margin:0; padding:0;} 
+            #div1{ width:150px; height:150px; background:gold; margin:20px; position:absolute; overflow:hidden;}
+            #div2{ width:30px; height:30px; background:red; margin:25px; }
+        </style>
+        <script src="jquery/jquery-1.11.3.min.js"></script>
+         <script>
+             $(function(){
+                // alert($('#div2').offset().left)   offset 为自身到最屏幕顶端距离
+                alert($('#div2').position().left)  // position 为有定位父级的距离，忽略自身边距，转成类似定位形式
+             })  
+         </script>
+    </head>
+    <body>
+        <div id="div1">
+            <div id="div2">2</div>
+        </div>
+        
+    </body>
+</html>

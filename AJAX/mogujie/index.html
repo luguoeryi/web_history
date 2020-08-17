@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>瀑布流</title>
+        <meta charset="utf-8">
+        <style>
+			*{ margin:0; padding:0; } li{ list-style:none; } img{ border:none; }
+			body{ background:#999; text-align:center; }
+			#ul1{ width:1045px; margin: 100px auto; }
+			#ul1 li{ float:left; margin-left:15px; }
+			#ul1 li div{ width: 192px; margin-bottom:15px; overflow:hidden; border:1px solid #FC3; background:#fff; }
+			#ul1 li div img{ display:block; width: 192px; }
+			#ul1 li div p{ font-size:12px; text-align:left; }
+		</style>
+        <script src="JSON.js"></script>
+        <script src="ajax.js"></script>
+        <script>
+			window.onload = function(){
+				var oUl = document.getElementById('ul1') ;
+				var oLi = oUl.getElementsByTagName('li') ;
+				var iLen = oLi.length ;
+				var page = 1 ;
+				var onOff = true;
+				ajax({
+					'url':'getpics.php',
+					'data':'cpage='+page,
+					'success':fn1
+				})	
+				
+				function fn1(data){
+					var data = JSON.parse(data);
+					if(!data.length) return ;
+					for(var i=0;i<data.length;i++){
+						var _index = getShort() ;
+						var aDiv = document.createElement('div') ;
+						var aA = document.createElement('a') ;
+						aA.href = data[i]['url'];
+						aA.target = '_blank';
+						var aImg = document.createElement('img') ;
+						aImg.src = data[i]['preview'] ;
+						aImg.style.height = 192 / data[i]['width'] * data[i]['height'] + 'px';
+						var aP = document.createElement('p');
+						aP.innerHTML = data[i]['title'] ;
+						aA.appendChild(aImg);
+						aDiv.appendChild(aA);
+						aDiv.appendChild(aP);
+						oLi[_index].appendChild(aDiv);
+						onOff = true ;
+					}
+				}
+				
+				window.onscroll = function(){
+					if(getplay() && onOff){
+						onOff = false;
+						page++;
+						ajax({
+							'url':'getpics.php',
+							'data':'cpage='+page,
+							'success':fn1
+						})
+					}
+				};
+				
+				function getplay(){
+					var _index = getShort() ;
+					var iT = getTop(oLi[_index]) ;
+					var scTop = document.documentElement.scrollTop || document.body.scrollTop;
+					var nux = document.documentElement.clientHeight + scTop ;
+					return iT + oLi[_index].offsetHeight < nux ? true : false ;
+				}
+				
+				function getTop(obj){
+					var iTop = 0 ;
+					while(obj){
+						iTop += obj.offsetTop ;
+						obj = obj.offsetParent ;
+					}
+					return iTop ;
+				}
+				
+				function getShort(){           //获得高度最小li的索引
+					var index = 0;
+					var iH = oLi[index].offsetHeight ;
+					for(var i=0;i<iLen;i++){
+						if(iH > oLi[i].offsetHeight){
+							iH = oLi[i].offsetHeight ;
+							index = i ;
+						}
+					}
+					return index ;	
+				}
+			};
+		</script>
+    </head>
+    <body>
+    	<ul id="ul1">
+        	<li></li>
+        	<li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </body>
+</html>

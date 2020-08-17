@@ -1,0 +1,123 @@
+﻿<!DOCTPY html>
+<html>
+	<head>
+		<title>查找、替换、删除</title>
+		<meta charset="utf-8" />
+		<style>
+		*{margin:0;padding:0;} #list{width:500px;text-align:justify;margin:50px auto 20px;padding:15px;border:5px solid #ccc;font-size:18px;position:relative;} li{list-style:none;}
+		#cont{text-align:center;cursor:pointer;line-height:35px;color:#fff;background:#8198B7;position:absolute;left:960px;top:50px;}
+		h2{width:80px;height:35px;font-size:15px;} #cont ul{width:80px;display:none;} #cont li{height:35px;background:#ccc;} 
+		#cont li:hover{background:#E86F34;}
+		#cont2{display:none;position:absolute;left:50%;margin-left:-270px;width:500px;border:5px solid #E71063;background:url(img/0.1.png) 492px 10px #E7E7B5 no-repeat;padding:15px 10px;}
+		#cont2 ul{position:relative;width:100%;border-bottom:2px solid #E73100;overflow:hidden;} #cont2 ul li{text-align:center;line-height:25px;font-size:15px;width:60px;height:25px;float:left;}
+		#cont2 p{margin-top:15px;display:none;} #cont2 ul a{display:blobk;position:absolute;right:0;top:0px;width:15px;height:15px;} #cont2 ul li{cursor:pointer;}
+		span{background:gold;}
+		</style>
+		<script>
+		window.onload = function(){
+			var oDiv = document.getElementsByTagName('div');
+			var oP = document.getElementById('list');
+			var H2 = oDiv[0].getElementsByTagName('h2')[0];
+			var oUl = oDiv[0].getElementsByTagName('ul')[0];
+			var oLi = oUl.getElementsByTagName('li');
+			var onOff = true;
+				H2.onclick = function(){
+					onOff ? oUl.style.display = 'block' : oUl.style.display = 'none';
+					onOff = !onOff;
+				};
+				oLi[0].onclick = function(){ //查找
+					oDiv[1].style.display = 'block';
+					oPs[1].style.display = 'none';
+					oPs[0].style.display = 'block';
+					oLis[0].style.background = '#E73100';
+					oLis[1].style.background = '';
+					oLis[0].style.color = '#fff';
+					oLis[1].style.color = '#000';
+				}
+				oLi[1].onclick = function(){ //替换
+					oDiv[1].style.display = 'block';
+					oPs[0].style.display = 'none';
+					oPs[1].style.display = 'block';
+					oLis[1].style.background = '#E73100';
+					oLis[0].style.background = '';
+					oLis[1].style.color = '#fff';
+					oLis[0].style.color = '#000';
+				}
+			var oPs = oDiv[1].getElementsByTagName('p');
+			var oLis = oDiv[1].getElementsByTagName('li');
+			var oA = oDiv[1].getElementsByTagName('a')[0];
+			fn1(oLis[0],oLis[1],oPs[0],oPs[1])
+			fn1(oLis[1],oLis[0],oPs[1],oPs[0])
+			oA.onclick = function(){ oDiv[1].style.display = 'none';} //关闭
+			var oInp = oPs[0].getElementsByTagName('input');
+			var lis = oP.innerHTML;
+				oInp[1].onclick = function(){
+					oP.innerHTML = lis;
+					var str = oInp[0].value;
+					if(!str) alert('请输入要查找的内容')
+					if(lis.indexOf(str)==-1) alert(str+'没有找到')
+					oP.innerHTML = oP.innerHTML.split(str).join('<span>'+str+'</span>');
+				};
+			var oInps = oPs[1].getElementsByTagName('input');
+				oInps[2].onclick = function(){
+					var ysor = oInps[0].value;
+					var bsor = oInps[1].value;
+					if(!ysor) return alert('请输入要替换的内容')
+					if(ysor && !bsor){
+						if(oP.innerHTML.indexOf(ysor)== -1){
+							alert(ysor+'没有找到')
+						} else{
+							if(confirm('确定删除 { '+ysor+' } ?')){
+								oP.innerHTML = oP.innerHTML.split(ysor).join('');
+							} else{
+								return;
+							}
+						}
+					}
+					oP.innerHTML = oP.innerHTML.split(ysor).join('<span>'+bsor+'</span>');
+				};
+		};
+		function fn1(attr,obj,oPs,ops1){
+			attr.onclick = function(){
+					this.style.background = '#E73100';
+					this.style.color = '#fff';
+					oPs.style.display = 'block';
+					ops1.style.display = 'none';
+					obj.style.background = '';
+					obj.style.color = '#000';
+			};
+		}
+		</script>
+	</head>
+	<body>
+		<p id="list">
+		对了，你家老婆长什么样？呃，也不知道你那时候结婚没有，不过一般我们那边到了你那年龄应该早结婚了；你别误会啊，我不是问你老婆长的漂不
+     对了，你家小孩现在几岁了，几岁大的小孩是比较调皮的，有时候总是会爱哭爱闹的，小孩嘛，天性无知，哭哭闹闹也是正常的；我跟你说，等她长大了，你就很难看她傻傻地哭了。等她长到十八岁，这么大个姑娘了（还不晓得是姑娘家还是臭小子）应该有男朋友了吧，很多事情不需要你整天操心了，你要给她，足够的空间和时间，记得给她足够的零花钱
+		对了，你家老婆长什么样？呃，也不知道你那时候结婚没有，不过一般我们那边到了你那年龄应该早结婚了；你别误会啊，我不是问你老婆长的漂不
+		。杨立峰 2015年 6月 6日。
+		</p>
+		<div id="cont">
+			<h2>展开</h2>
+			<ul>
+				<li>查找</li>
+				<li>替换</li>
+			</ul>
+		</div>
+		<div id="cont2">
+			<ul>
+				<li style="background:#E73100;color:#fff;">查找</li>
+				<li>替换</li>
+				<a href="#"></a>
+			</ul>
+			<p style="display:block;">
+				<input style="height:24px;border:1px solid #E73100;width:180px;text-indent:5px;size:10;size:10px;" type="text" />
+				<input type="button" value="查找" />
+			</p>
+			<p>
+				<input style="height:24px;border:1px solid #E73100;width:180px;text-indent:5px;size:10;size:10px;" type="text" />
+				<input style="height:24px;border:1px solid #E73100;width:180px;text-indent:5px;size:10;size:10px;" type="text" />
+				<input type="button" value="替换" />
+			</p>
+		</div>
+	</body>
+</html>

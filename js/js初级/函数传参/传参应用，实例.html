@@ -1,0 +1,95 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>传参应用实例,简化代码</title>
+		<style>
+		body,ing,ul,li,p{
+		margin:0;padding:0;
+		}
+		li{list-style:none;}
+		body{
+		background:#4B4B48;
+		}
+		.box{
+		background:#ccc;
+		width:391px;height:479px;
+		position:relative;
+		margin-left:200px;
+		float:left;
+		}
+		span,p{
+		position:absolute;left:0px;width:100%;height:20px;background:#000;color:#fff;text-align:center;line-height:20px;
+		}
+		span{
+		top:0px;
+		}
+		p{
+		bottom:0px;
+		}
+		ul{
+		position:absolute;
+		left:396px;top:0;
+		}
+		ul li{
+		width:40px;height:40px;background:#ccc;margin-bottom:5px;
+		}
+		.active{
+		background:#000;
+		}
+		</style>
+		<script>
+		window.onload = function (){
+			fn1('Odiv1',['images/1.png','images/2.png','images/3.png','images/4.png'],['雄鹰展翅','白发魔女','精灵美女','黑暗超人'],'onclick');
+			fn1('Odiv2',['images/2.png','images/3.png','images/4.png'],['白发魔女','精灵美女','黑暗超人'],'onmouseover');
+		};
+		function fn1(Id,arr,att,on){
+			var oDiv = document.getElementById(Id);
+			var oUl = oDiv.getElementsByTagName('ul')[0];
+			for(var i=0;i<arr.length;i++){
+			oUl.innerHTML +='<li></li>';
+			}
+			var Img = oDiv.getElementsByTagName('img')[0];
+			var Span = oDiv.getElementsByTagName('span')[0];
+			var P1 = oDiv.getElementsByTagName('p')[0];
+			var Oli = oDiv.getElementsByTagName('li');
+			var num =0;
+				function taby(){
+					Img.src = arr[num];
+					Span.innerHTML = 1+num+'/'+arr.length;
+					P1.innerHTML = att[num];
+					for (var i=0;i<Oli.length;i++){
+						  Oli[i].className = '';
+					  }
+				    Oli[num].className = 'active';}
+				
+				  taby();
+				for(var i=0;i<Oli.length;i++){
+					Oli[i].index = i;
+					Oli[i][on] = function(){    //如果要变则把点去掉加 【】
+					num=this.index;
+					taby();
+					
+					}
+				}
+		}
+			/* 重用代码：
+			1.尽量保证HTML代码结构一致，可以通过父级选区子元素。
+			2.把核心主程序实现，用函数抱起来。
+			3.把每组里不同的值找出来，通过传参实现。 */
+		</script>
+	</head>
+	<body>
+		<div id="Odiv1" class="box">
+			<span>图片数量正在计算中...</span>
+			<img style="width:391px;height:479px;" src="images/lo.gif" title="雄鹰" alt="雄鹰" />
+			<p>图片正在加载中...</p>
+			<ul></ul>
+		</div>
+		<div id="Odiv2" class="box">
+			<span>图片数量正在计算中...</span>
+			<img style="width:391px;height:479px;" src="images/lo.gif" title="雄鹰" alt="雄鹰" />
+			<p>图片正在加载中...</p>
+			<ul></ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>for循环应用</title>
+		<style>
+		#list{
+		width:100px;height:100px;
+		border:1px solid pink;
+		}
+		</style>
+		<script>
+		window.onload = function () {
+			var Div = document.getElementById('list');
+			var Bin = document.getElementById('bin1');
+			 Div.onclick = function (){
+			/* Div.style.width = 200+'px'; */  //修改DIV本身
+			Div.style.cssText='width:300px;height:300px;'; //cssText重置前面
+			}; 
+			Bin.onclick = function (){
+				Div.style.cssText='width:400px;'; //cssText重置前面 若为零，css样式还存在
+				
+			};
+			
+	
+		};
+		</script>
+	</head>
+	<body>
+    <div id="list"></div>
+	<input id="bin1" type="button" value="提交" />
+	</body>
+</html>

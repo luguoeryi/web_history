@@ -1,0 +1,200 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>传参</title>
+		<style>
+		body,ul,li,p,h3{margin:0px;padding:0px;} li{list-style:none;} body{font-size:14px;font-family:微软雅黑；}
+		#mian{width:254px;overflow:hidden;background:#dee7e7;margin:50px auto;padding:0px 7px;}
+		#top{width:254px;height:37px;color:#185273;} #top h3{font-weight:normal;width:147px;height:36px;text-indent:20px;line-height:36px;border-bottom:1px solid #94bdd6;float:left;}
+		#t_mian{width:107px;height:27px;float:left;margin-top:10px;} #t_mian p{width:33px;height:25px;border:1px solid #94bdd6;text-align:center;line-height:25px;float:left;cursor:pointer;}
+		.list{width:254px;overflow:hidden;display:none;} .lblo{display:block;} .list p{width:100%;height:28px;} .list div{width:100%;height:80px;display:none;}
+		.list .blok{display:block;} .list .non{display:none;} #t_mian .fff{background:#fff;border-bottom:none;} #mian ul li{cursor:pointer;}
+		</style>
+		<script>
+		window.onload = function(){
+		
+			var oDiv1 = document.getElementById("t_mian");
+			var oP1 = t_mian.getElementsByTagName('p');
+			var oUl = document.getElementsByTagName('ul');
+			for(var i=0;i<oP1.length;i++){
+				oP1[i].index = i;
+				oP1[i].onclick = function(){
+					for(var y=0;y<oUl.length;y++){
+						oUl[y].style.display = 'none';
+					}
+					for(var i=0;i<oP1.length;i++){
+						oP1[i].className = '';
+					}
+					oUl[this.index].style.display = 'block';
+					oP1[this.index].className = 'fff';
+				}; 
+			}
+			
+				fn1(oUl[0],'onmouseover');
+				fn1(oUl[1],'onmouseout');
+				fn1(oUl[2],'onclick');
+		};
+		
+		function fn1(aUl,on){
+		var oLi = aUl.getElementsByTagName('li');
+		var oLp = aUl.getElementsByTagName('p');
+		var oLd = aUl.getElementsByTagName('div');
+		for(var i=0;i<oLi.length;i++){
+			oLi[i].index = i;
+			oLi[i][on] = function (){
+				for(var i=0;i<oLp.length;i++){
+					oLp[i].style.display = 'block';
+				}
+				oLp[this.index].style.display = 'none';
+				for(var y=0;y<oLd.length;y++){
+					oLd[y].style.display = 'none';
+				}
+				oLd[this.index].style.display = 'block';
+			};
+		}
+		
+		}
+		
+		</script>
+	</head>
+	<body>
+		<div id="mian">
+			<div id="top">
+				<h3>观看排行榜</h3>
+				<div id="t_mian">
+					<p class="fff">每日</p>
+					<p>每周</p>
+					<p>全部</p>
+				</div>
+			</div>
+			<ul class="list lblo">
+				<li>
+					<p class="non" style="background:url(images/搜狐视频_01.gif);"></p>
+					<div class="blok" style="background:url(images/2015-10-1.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_02.gif);"></p>
+					<div style="background:url(images/2015-10-2.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_03.gif);"></p>
+					<div style="background:url(images/2015-10-3.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_04.gif);"></p>
+					<div style="background:url(images/2015-10-4.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_05.gif);"></p>
+					<div style="background:url(images/2015-10-5.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_06.gif);"></p>
+					<div style="background:url(images/2015-10-6.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_07.gif);"></p>
+					<div style="background:url(images/2015-10-7.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_08.gif);"></p>
+					<div style="background:url(images/2015-10-8.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_09.gif);"></p>
+					<div style="background:url(images/2015-10-9.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_10.gif);"></p>
+					<div style="background:url(images/2015-10-10.png)"></div>
+				</li>
+			</ul>
+			<ul class="list">
+				<li>
+					<p class="non" style="background:url(images/搜狐视频_01.gif);"></p>
+					<div class="blok" style="background:url(images/2015-10-2.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_02.gif);"></p>
+					<div style="background:url(images/2015-10-1.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_03.gif);"></p>
+					<div style="background:url(images/2015-10-3.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_04.gif);"></p>
+					<div style="background:url(images/2015-10-4.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_05.gif);"></p>
+					<div style="background:url(images/2015-10-5.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_06.gif);"></p>
+					<div style="background:url(images/2015-10-6.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_07.gif);"></p>
+					<div style="background:url(images/2015-10-7.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_08.gif);"></p>
+					<div style="background:url(images/2015-10-8.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_09.gif);"></p>
+					<div style="background:url(images/2015-10-9.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_10.gif);"></p>
+					<div style="background:url(images/2015-10-10.png)"></div>
+				</li>
+			</ul>
+			<ul class="list">
+				<li>
+					<p class="non" style="background:url(images/搜狐视频_01.gif);"></p>
+					<div class="blok" style="background:url(images/2015-10-3.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_02.gif);"></p>
+					<div style="background:url(images/2015-10-2.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_03.gif);"></p>
+					<div style="background:url(images/2015-10-1.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_04.gif);"></p>
+					<div style="background:url(images/2015-10-4.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_05.gif);"></p>
+					<div style="background:url(images/2015-10-5.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_06.gif);"></p>
+					<div style="background:url(images/2015-10-6.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_07.gif);"></p>
+					<div style="background:url(images/2015-10-7.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_08.gif);"></p>
+					<div style="background:url(images/2015-10-8.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_09.gif);"></p>
+					<div style="background:url(images/2015-10-9.png)"></div>
+				</li>
+				<li>
+					<p style="background:url(images/搜狐视频_10.gif);"></p>
+					<div style="background:url(images/2015-10-10.png)"></div>
+				</li>
+			</ul>
+			
+			<div style="width:100%;height:28px;"><span style="float:right">更多&gt;&gt;</span></div>
+		</div>
+	</body>
+</html>

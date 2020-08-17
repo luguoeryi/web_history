@@ -1,0 +1,41 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>函数返回值</title>
+		<style>
+		div{width:100px;height:120px;background:red;}
+		</style>
+		<script>
+			function $(v){
+				if(typeof v=='function'){
+					window.onload = v;
+				} else if(typeof v=='string'){
+					return document.getElementById(v);
+				} else if(typeof v=='object'){
+					return v;
+				}
+			}
+			
+			$(function(){
+				//$('div1').style.width = '300px';
+				//$('div1').style.cssText = 'width:400px;';
+				$('btn1').onclick = function(){
+					//alert($('div1').style.width); //只能获取行间的样式。
+					//alert(getComputedStyle($('div1')).width)  //计算机（浏览器）计算后的样式  标准浏览器支持
+					//alert($('div1').currentStyle.width); // ie 6 7 8支持
+					if($('div1').currentStyle){
+						alert($('div1').currentStyle.width);
+					} else{
+						alert(getComputedStyle($('div1')).width)
+					}
+					
+				};
+			})
+		
+		</script>
+	</head>
+	<body>
+		<input id="btn1" type="button" value="按钮" />
+		<div id="div1" style="width:200px;"></div>
+	</body>
+</html>

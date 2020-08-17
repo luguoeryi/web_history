@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>放大镜</title>
+        <meta charset="utf-8">
+        <style>
+			*{margin:0; padding:0;}
+			#box1{ width:300px; height:300px; border:5px solid #333333; position:absolute; left:20px; top:20px;}
+			#box1 .img1{ width:100%; height:100%;}
+			#box1 #Move{ display:none; width:100px; height:100px; position:absolute; left:180px; top:150px; background:#666666; opacity:0.5; filter:alpha(opacity=50) }
+			#box2{ display:none; width:400px; height:400px; position:absolute; left:450px; top:200px; border:5px solid #CCCCCC; overflow:hidden;} 
+			#box2 .img2{ width:1200px; height:1200px; position:absolute;}
+		</style>
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			$(function(){
+
+				
+				$('#box1').mousedown(function(){
+					return false;
+				})
+				$('#box1').mouseover(function(ev){
+					$('#Move').css('display','block')
+					$('#box2').css('display','block')
+					$(document).mousemove(function(ev){
+						var L = ev.pageX-$('#Move').width()/2 - $('#box1').offset().left ;
+						var T = ev.pageY-$('#Move').height()/2 - $('#box1').offset().top ;
+						if(L<=0) L = 0 ;
+						if(L>=200) L = 200 ;
+						if(T<=0) T = 0 ;
+						if(T>=200) T = 200 ;
+							$('#Move').css({'left':L,'top':T})
+							$('.img2').css({'left':-4*L,'top':-4*T})
+					})
+				})
+				
+				$('#box1').mouseout(function(){
+					$('#box2').css('display','none')
+					$('#Move').css('display','none')
+					$(document).off();
+				})
+			
+			})
+		</script>
+    </head>
+    <body>
+    	<div id="box1">
+        	<img class="img1" src="1.jpg" title="darry 真爱戒指" />
+            <div id="Move"></div>
+        </div>
+        <div id="box2"><img class="img2" src="1.jpg" title="darry 真爱戒指" ></div>
+    </body>
+</html>

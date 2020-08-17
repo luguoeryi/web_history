@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<title>主动促发</title>
+        <meta charset="utf-8">
+        <script src="jquery-1.11.3.min.js"></script>
+        <script>
+			
+			$(function(){
+			   
+                      $('div').click(function(){
+                        alert(123)
+                    })      
+                    //$('div').trigger('click')    //主动促发
+
+                    $('div').on('show',function(){
+                        alert(456)
+                    })  
+
+                     $('div').on('show',function(){
+                        alert(789)
+                    })   
+
+                    $('div').trigger('show')   //且支持自定义事件同时促发   
+
+			})
+			
+		</script>
+    </head>
+    <body>
+      <div>df</div>
+    </body>
+</html>

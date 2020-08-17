@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>地理信息</title>
+		<meta charset="utf-8">
+		<script>
+			window.onload = function(){
+				var aInp = document.getElementById('aInp');
+				var T1 = document.getElementById('t1');
+				var timer = null;
+				
+				aInp.onclick = function(){
+					timer = navigator.geolocation.watchPosition(function(position){
+						T1.value += '经度：'+ position.coords.longitude+'\n';
+						T1.value += '纬度：'+ position.coords.latitude+'\n';
+						T1.value += '准确度：'+ position.coords.accuracy+'\n';
+						T1.value += '海拔：'+ position.coords.altitude+'\n';
+						T1.value += '海拔准确度：'+ position.coords.altitudeAcuracy+'\n';
+						T1.value += '行进方向 ：'+ position.coords.heading+'\n';
+						T1.value += '地面速度：'+ position.coords.speed+'\n';
+						T1.value += '时间戳 ：'+ new Date(position.timestamp)+'\n';
+					},function(err){
+						switch( err.code ){
+							case 0:
+								alert('错误编码：'+err.code+' 不包括其他错误编号中的错误');
+							break;
+							case 1:
+								alert('错误编码：'+err.code+' 用户拒绝浏览器获取位置信息');
+							break;
+							case 2:
+								alert('错误编码：'+err.code+' 尝试获取用户信息，但失败了');
+							break;
+							case 3:
+								alert('错误编码：'+err.code+' 设置了timeout值，获取位置超时了');
+							break;
+						}
+						navigator.geolocation.clearWatch( timer ); //关闭更新请求
+					},{
+						enableHighAcuracy: true, //更精确的查找，默认false
+						timeout:5000,				//获取位置允许最长时间，默认infinity
+						maximumAge:5000,			//位置可以缓存的最大时间，默认0
+						frequency:6000			//更新频率
+					});
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<input id="aInp" type="button" value="请求" /><br />
+		<textarea id="t1" style="width: 400px; height: 200px; border: 1px solid #000;"></textarea>
+	</body>
+</html>	

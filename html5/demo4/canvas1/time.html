@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>时钟</title>
+	<meta charset="utf-8">
+	<style>
+		*{ margin:0; padding:0; }
+		#timeCanvas{ width:800px; margin:0 auto; overflow:hidden; background:#fff;}
+		body{ background:#000; }
+	</style>
+	<script>
+		window.onload = function(){
+			var oC = document.getElementById('c1');
+			var oGC = oC.getContext('2d');
+
+			var yImgBg = new Image();
+			yImgBg.src = 'img/time.jpg';
+
+
+			yImgBg.onload = function(){
+				show();
+				setInterval(function(){
+					show();
+				},1000);
+			};
+
+			var x = 400;
+			var y = 384;
+			var r = 350;
+
+
+			function show(){
+				var Time = new Date();
+				var iHours = Time.getHours();
+				var iMinutes = Time.getMinutes();
+				var iSeconds = Time.getSeconds();
+				
+				var iHouvalue = (iHours*30-90+iMinutes/2)*Math.PI/180 ;
+				var iMinvalue = (iMinutes*6-90)*Math.PI/180 ;
+				var iSecvalue = (iSeconds*6-90)*Math.PI/180 ;
+
+				oGC.clearRect(0,0,oC.width,oC.height);
+
+				oGC.drawImage(yImgBg,0,0);
+
+				Tshow(iHouvalue,r*10/20,14,'#000');
+				Tshow(iHouvalue + 180*Math.PI/180,r*2/20,14,'#000');
+				
+				Tshow(iMinvalue,r*15/20,14,'#000#000');
+				Tshow(iMinvalue + 180*Math.PI/180,r*3/20,14,'#000');
+				
+				Tshow(iSecvalue,r*18/20,12,'#000');
+				Tshow(iSecvalue + 180*Math.PI/180,r*4/20,12,'#000');
+			};
+
+			function Tshow(go,l,W,color){	//时分秒针
+				oGC.beginPath();
+				oGC.moveTo(x,y);
+				oGC.arc(x,y,l,go,go,false);
+				oGC.closePath();
+				oGC.lineWidth = W;
+				oGC.strokeStyle = color;
+				oGC.lineCap = 'square';
+				oGC.stroke();
+			}
+
+		};
+	</script>
+</head>
+<body>
+	<div id="timeCanvas">
+		<canvas id="c1" width="800" height="768">
+			<span>您的浏览器不支持canvas</span>
+		</canvas>
+	</div>
+</body>
+</html>

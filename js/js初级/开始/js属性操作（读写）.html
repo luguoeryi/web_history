@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+	<title>js属性操作</title>
+    <script>
+	window.onload = function () {
+	var binn1 = document.getElementById('bin1');
+	var binn2 = document.getElementById('bin2');
+	var selectone = document.getElementById('select1');
+	var imgone = document.getElementById('img1');
+	var pone = document.getElementById('p1');
+	binn1.onclick = function () {
+	//alert(bin1.id);
+	//alert(binn2.value);
+	//alert(selectone.value);
+	//alert(binn2.value+'在'+selectone.value); /*字符串连接*/
+	/*读操作*/
+	
+	//binn1.value='按钮';
+	//binn2.value = selectone.value;
+	/*写操作*/
+	imgone.src = binn2.value;
+	//alert(pone.innerHTML);
+	//pone.innerHTML=binn2.value;
+	binn2.value='';
+	};
+	};
+	</script>
+    </head>
+    
+	<body>
+	<input id="bin2" type="text">
+	<select id="select1">
+	<option value="北京">北京</option>
+	<option value="上海">上海</option>
+	<option value="广州">广州</option>
+	</select>
+	<input id="bin1" type="button" value="您已点击按钮">
+	
+	<br />
+	<img id="img1" src="images/l2.jpg" />
+	<P id="p1">你好，你妈好，你全家好！</P>
+	</body>
+</html>

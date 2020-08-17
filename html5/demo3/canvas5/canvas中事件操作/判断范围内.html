@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>canvas中的事件</title>
+		<meta charset="utf-8">
+		<style>
+			body{ background:#000; }
+			#c1{ background:#fff; }
+			span{ color:#fff; }
+		</style>
+		<script>
+			window.onload = function(){
+				var oC = document.getElementById('c1');
+				var oGC = oC.getContext('2d');
+
+			
+				oGC.beginPath();
+				oGC.arc(100,100,50,0,360*Math.PI/180,false);
+				oGC.closePath();
+				oGC.fill();
+				
+
+				oGC.beginPath();
+				oGC.arc(200,200,50,0,360*Math.PI/180,false);
+				oGC.closePath();
+				oGC.fill();
+
+	
+					oC.onmousedown = function(ev){
+						var ev = ev || event;
+						var X = ev.clientX - this.offsetLeft;
+						var Y = ev.clientY - this.offsetTop;
+
+						if(oGC.isPointInPath(X,Y)){
+							alert(123)
+						}
+					};
+				
+			};
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="400" height="400">
+			<span>您的浏览器不支持canvas</span>
+		</canvas>
+	</body>
+</html>

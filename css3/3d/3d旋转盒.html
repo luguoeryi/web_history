@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{ margin: 0; padding: 0; }
+			.wrap{ width: 100px; height: 100px; padding: 100px; border: 5px solid #000; margin: 200px auto; -webkit-perspective: 200px; -webkit-transform: scale(2);}
+			.box{ width: 100px; height: 100px; position: relative; -webkit-transition: 1s; -webkit-transform-style: preserve-3d; -webkit-transform-origin: center center -50px; }
+			.box>div{ position: absolute; width: 100px; height: 100px; text-align: center; font: 24px/100px "微软雅黑"; color: #fff; }
+			.box>div:nth-child(1){ left: 0; top: -100px; background: red; -webkit-transform-origin: bottom; -webkit-transform: rotateX(90deg);}
+			.box>div:nth-child(2){ left: -100px; top: 0; background: green; -webkit-transform-origin: right; -webkit-transform: rotateY(-90deg); }
+			.box>div:nth-child(3){ left: 0; top: 0; background: blue; }
+			.box>div:nth-child(4){ left: 100px; top: 0; background: gray; -webkit-transform-origin: left; -webkit-transform: rotateY(90deg);}
+			.box>div:nth-child(5){ left: 0; top: 100px; background: gold; -webkit-transform-origin: top; -webkit-transform: rotateX(-90deg);}
+			.box>div:nth-child(6){ left: 0; top: 0; background: pink; -webkit-transform: translateZ(-100px) rotateX(180deg); }
+			
+			.wrap:hover .box{ -webkit-transform: rotateX(180deg);}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="box">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+				<div>5</div>
+				<div>6</div>
+			</div>
+		</div>
+	</body>
+</html>

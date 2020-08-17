@@ -1,0 +1,27 @@
+<!DOCTPY html>
+<html>
+	<head>
+		<title>onmousemove·â×°</title>
+		<meta charset="utf-8" />
+		<script src="zuanshu.js"></script>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementsByTagName('div')[0];
+				document.onmousemove = function(ev){
+					var ev = ev || event;
+					var Xy = getXy(ev);
+					oDiv.style.left = Xy.x + 'px';
+					oDiv.style.top = Xy.y + 'px';
+				};
+			};
+			/* function getXy(Event){
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+				return {x:scrollLeft+Event.clientX,y:scrollTop+Event.clientY};
+			} */
+		</script>
+	</head>
+	<body style="width:2000px;height:3000px">
+		<div style="width:100px;height:100px;background:red;position:absolute;"></div>
+	</body>
+</html>

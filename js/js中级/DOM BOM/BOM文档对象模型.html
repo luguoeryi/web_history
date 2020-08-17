@@ -1,0 +1,38 @@
+﻿<html>
+	<head>
+		<title>bom</title>
+		<meta charset="utf-8" />
+		<script>
+			window.onload = function(){
+				var oBtn = document.getElementsByTagName('input');
+					var lis = null;
+					oBtn[0].onclick = function(){
+						//open('http://www.baidu.com','_self');  open()方法打开窗口 （‘url’,'打开方式'）
+						lis = window.open();
+						// lis.document.body.style.background = 'red'; 操作打开的window
+						// alert(lis==window)打开的widow不等于上个window
+					}
+					oBtn[1].onclick = function(){
+						close();			//close 关闭窗口
+					}
+					oBtn[2].onclick = function(){
+						lis.close();
+					}
+					//window.navigator.userAgent 浏览器信息
+					/* if(window.navigator.userAgent.indexOf('MSIE')!= -1 || window.navigator.userAgent.indexOf('Trident')!= -1){
+						alert('我是ie');
+					} else{
+						alert('我不是ie');
+					} */
+					//alert(window.location);   浏览器url 后面.href
+					//alert(window.location.search)  浏览器？后面的内容
+					alert(window.location.hash)
+			}; 
+		</script>
+	</head>
+	<body>
+		<input type="button" value="打开窗口" />
+		<input type="button" value="关闭窗口" />
+		<input type="button" value="关闭" />
+	</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<!DOCTPY HTML>
+<html>
+	<head>
+		<title>索引值</title>
+	</head>
+	<body>
+		<input type="button" value="1" />
+		<input type="button" value="1" />
+		<input type="button" value="1" />
+		<p>你好</p>
+		<p>你好</p>
+		<p>你好</p>
+			<script>
+			var Bin = document.getElementsByTagName('input');
+			var oP = document.getElementsByTagName('p');
+			var Min = ['杨周斌','聂江涛','徐长海'];
+			for(var i=0;i<Bin.length;i++){
+				Bin[i].index = i;
+				Bin[i].onclick = function (){
+				this.value = Min[this.index];
+				oP[this.index].innerHTML = Min[this.index];
+				};
+			}
+		    </script>
+	</body>
+</html>

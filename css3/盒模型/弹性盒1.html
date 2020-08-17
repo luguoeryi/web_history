@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{ margin: 0; padding: 0; }
+			.box{ height: 100px; border: 10px solid #000; padding: 10px;  color: gold; font-weight: bold;
+				display: -webkit-box; 
+				display: -moz-box;
+				/*-webkit-box-orient: vertical; 垂直显示 */ 
+				/*-webkit-box-orient: horizontal; 水平显示  默认 */
+				/*-webkit-box-direction: normal; 正序 默认 */
+				/*-webkit-box-direction: reverse; 反序 */
+			}
+			
+			.box div{ width: 100px; height: 100px; background: red; border: 1px solid #ccc; }
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+		</div>
+	</body>
+</html>
