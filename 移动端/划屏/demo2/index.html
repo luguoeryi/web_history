@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style type="text/css">
+	*{ margin: 0; padding: 0; }
+	#banner_wrap{ width: 470px; height: 150px; margin: auto; overflow: hidden; position: relative; }	
+	.img_wrap{ width: 2350px; position: absolute; left: 0; top: 0; }
+	.img_wrap>a{ float: left; width: 470px; height: 150px; }
+	.cursor_wrap{ position: absolute; left: 0; bottom: 10px; width: 100%; text-align: center; overflow: hidden; }
+	.cursor_wrap>a{ display: inline-block; border: 1px solid #000; padding: 6px; background: #fff; margin-left: 6px; border-radius: 50%; }
+	.cursor_wrap>a.active{ background: orange; }
+</style>
+</head>
+<body>
+<div id="banner_wrap">
+	<div class="img_wrap">
+		<a href="javascript:;"><img src="./img/1.jpg" alt=""></a>
+		<a href="javascript:;"><img src="./img/2.jpg" alt=""></a>
+		<a href="javascript:;"><img src="./img/3.jpg" alt=""></a>
+		<a href="javascript:;"><img src="./img/4.jpg" alt=""></a>
+		<a href="javascript:;"><img src="./img/5.jpg" alt=""></a>
+	</div>
+</div>
+<script type="text/javascript">
+	var bannerWrap = document.getElementById('banner_wrap');
+	var imgWrap = bannerWrap.getElementsByClassName('img_wrap')[0];
+	var imgList = imgWrap.getElementsByTagName('a');
+	var cursorWrap = null, cursorList = null, that = null;
+
+		cursorWrap = document.createElement('div');
+		cursorWrap.className = 'cursor_wrap';
+		var html = '';
+		for(var i=0;i<imgList.length;i++){
+			html += '<a href="javascript:;"></a>';
+		}
+		cursorWrap.innerHTML = html;
+		bannerWrap.appendChild(cursorWrap);
+		cursorList = cursorWrap.getElementsByTagName('a');
+		cursorList[0].className = 'active';
+		that = cursorList[0];
+
+	var w = imgList[0].offsetWidth;
+	imgWrap.style.width = imgList.length * w + 'px';
+
+	document.addEventListener('touchmove', function(ev){
+		ev.preventDefault();
+	});
+	
+	var downX = 0, downLeft = 0, iNow = 0, onOff = null, downTime;
+
+	imgWrap.addEventListener('touchstart', fnStart, false);
+
+	function fnStart(ev){
+		onOff = true;
+		downTime = Date.now();
+
+		downX = ev.changedTouches[0].pageX;
+		downLeft = this.offsetLeft;
+
+		Transition(this, null);
+
+		this.addEventListener('touchmove', fnMove, false);
+
+		this.addEventListener('touchend', fnEnd, false);
+	};
+
+	function fnMove(ev){
+		var moveX = ev.changedTouches[0].pageX;
+		if( this.offsetLeft >= 0 ){
+
+			if( onOff ){
+				onOff = false;
+				downX = moveX;
+			}
+
+			this.style.left = (moveX - downX) / 3 +  'px';
+			
+		} else if(this.offsetLeft <= bannerWrap.offsetWidth - this.offsetWidth ){
+
+			if( onOff ){
+				onOff = false;
+				downX = moveX;
+			}
+
+			this.style.left = (moveX - downX) / 3 + (bannerWrap.offsetWidth - this.offsetWidth) + 'px';
+
+		} else{
+
+			this.style.left = moveX - downX + downLeft + 'px';
+
+		}
+	};
+
+	function fnEnd(ev){
+
+		var upX = ev.changedTouches[0].pageX;
+
+		this.removeEventListener('touchmove', fnMove, false);
+		this.removeEventListener('touchend', fnEnd, false);
+
+		if( 
+			( (upX < downX) && (iNow != imgList.length-1) && (downX - upX > w/3) ) || 
+			( (Date.now() - downTime < 300)  && (upX < downX) && (iNow != imgList.length-1) ) 
+			)
+		{
+
+			iNow++;
+
+		} else if( 
+			( (upX > downX) && (iNow != 0) && (upX - downX > w/3) ) || 
+			( (Date.now() - downTime < 300) && (upX > downX) && (iNow != 0) )
+			)
+		{
+
+			iNow--;
+
+		}
+
+		Transition(this,'.4s ease');
+
+		this.style.left = -iNow * w + 'px';
+
+		if( that ){
+			that.className = null;
+		}
+		cursorList[iNow].className = 'active';
+		that = cursorList[iNow];
+	};
+
+	function Transition(obj, value){
+		obj.style.webkitTransition =  obj.style.mozTransition = obj.style.oTransition = obj.style.transition = value;
+	};
+</script>
+</body>
+</html>

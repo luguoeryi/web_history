@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>图片切换</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no,target-densitydpi=medium-dpi" />
+		<script>
+			document.getElementsByTagName('html')[0].style.fontSize = window.screen.width/10+"px";;
+		</script>
+		<style>
+			*{ margin:0; padding:0; }
+			body{ font-size:0.5rem; background:#f3f2f3; }
+			#picWrap{ width:100%; overflow:hidden; }
+			#picList{ width:40rem; overflow:hidden; }
+			#picList img{ width:10rem; }
+			#picList a{ float:left; -webkit-tap-highlight-color:rgba(0,0,0,0); /* 按下背景 */}
+			#picBtns{ height:0.3rem; padding:0.2rem; margin:0; text-align:center;}
+			#picBtns span{ width:0.3rem; height:0.3rem; margin:0 0.1rem; border:1px solid #000; display:inline-block; border-radius:0.15rem; box-sizing:border-box; vertical-align:top;}
+			#picBtns span.active{ background:#f60; }
+		</style>
+	</head>
+	<body>
+		<section id="picWrap">
+		    <nav id="picList">
+				<a data-href="http://www.baidu.com" ontouchmove="this.s=1" ontouchend="this.s||window.open(this.dataset.href),this.s=0;"><img src="img/1.jpg" /></a>
+				<a data-href="http://www.baidu.com" ontouchmove="this.s=1" ontouchend="this.s||window.open(this.dataset.href),this.s=0;"><img src="img/2.jpg" /></a>
+				<a data-href="http://www.baidu.com" ontouchmove="this.s=1" ontouchend="this.s||window.open(this.dataset.href),this.s=0;"><img src="img/3.jpg" /></a>
+				<a data-href="http://www.baidu.com" ontouchmove="this.s=1" ontouchend="this.s||window.open(this.dataset.href),this.s=0;"><img src="img/4.jpg" /></a>
+			</nav>
+		</section>
+		<p id="picBtns">
+			<span class="active"></span>
+		    <span></span>
+		    <span></span>
+		    <span></span>
+		</p>
+	</body>
+	<script>
+		var picList = document.getElementById('picList');
+		var aBtns = document.getElementById('picBtns').children;
+		var iScroll=0;
+		var iNow=0;
+		var iStartX=0;
+		var iStartScroll=0;
+
+		document.addEventListener('touchmove', function(e){
+			e.preventDefault();
+		});
+
+		picList.addEventListener('touchstart', fnStart, false);
+
+		function fnStart(ev){
+			iStartX = ev.changedTouches[0].pageX;
+			iStartScroll = iScroll;
+		}
+
+		picList.addEventListener('touchmove', fnMove, false);
+		
+		function fnMove(ev){
+			var iDis = ev.changedTouches[0].pageX - iStartX;
+			iScroll = iStartScroll+iDis;
+			toStyle();
+		}
+
+		picList.addEventListener('touchend', fnEnd, false);
+		
+		function fnEnd(ev){
+			var iDis = ev.changedTouches[0].pageX - iStartX;
+			iScroll = iStartScroll+iDis;
+			iNow = -iScroll/window.screen.width;
+			iNow = iNow%1<0.3? Math.floor(iNow) : Math.ceil(iNow);
+			if( iNow < 0 ){
+				iNow = 0;
+			}else if( iNow > aBtns.length-1 ){
+				iNow = aBtns.length-1;
+			}
+			console.log(iNow);
+			iScroll = -iNow*window.screen.width;
+			for(var i=0;i<aBtns.length;i++){
+				if(i != iNow){
+					aBtns[i].className = '';
+				}else{
+					aBtns[i].className = 'active';
+				}
+			}
+			toStyle();
+		}
+		function toStyle(){
+			picList.style.webkitTransition = picList.style.transition = '.3s';
+			picList.style.webkitTransform = picList.style.transform = 'translateX('+iScroll+'px)';
+		}
+	</script>
+</html>

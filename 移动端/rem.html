@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,height=device-
+height,user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,target-densitydpi=medium-dpi" />
+		<style>
+			*{ margin:0; padding:0; }
+			html{ font-size:20px; }
+			#box{ width:5rem; height:5rem; background:red;} /* 1rem等于html中设置字体大小*/ 
+		</style>
+		<script>
+				window.onload = function(){
+					var oBox = document.getElementById('box');
+					oBox.addEventListener("touchend",function(){alert(1)},false);
+				};
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
